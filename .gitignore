@@ -1,0 +1,30 @@
+# Package Files
+# ----
+*.jar
+*.zip
+*.rar
+
+# Gradle
+# ------
+.gradle
+gradle-app.setting
+!gradle-wrapper.jar
+.gradletasknamecache
+/build
+/buildSrc/build
+
+# IDEA
+# ----
+/.idea/*
+/*.iml
+/out
+
+### Java ###
+# Compiled class file
+# ----
+*.class
+
+# Logs
+# ----
+/*.log
+
