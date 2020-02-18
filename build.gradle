@@ -1,0 +1,51 @@
+plugins {
+    // Apply the java plugin to add support for Java
+    id 'java'
+
+    // Apply the application plugin to add support for building a CLI application
+    id 'application'
+
+    // Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that can you can "just run"
+    id 'org.springframework.boot' version "$versionSpringBoot"
+
+    // A Gradle plugin that provides Maven-like dependency management and exclusions
+    id 'io.spring.dependency-management' version "$versionDependencyManagment"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Use JUnit Jupiter API for testing
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$versionJunitJupiterApi"
+
+    // Use JUnit Jupiter Engine for testing
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$versionJunitJupiterApi"
+
+    // JDBC Type 4 driver for MySQL
+    implementation 'mysql:mysql-connector-java'
+
+    // Starter for using Spring Data JPA with Hibernate
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Starter for building web, including RESTful, applications using Spring MVC. Uses Tomcat as the default embedded container
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    //For building MVC web applications using FreeMarker views
+    implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+
+    // Starter for testing Spring Boot applications with libraries including JUnit, Hamcrest and Mockito
+    // testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Default servlet container starter used by spring-boot-starter-web
+    implementation 'org.springframework.boot:spring-boot-starter-tomcat'
+}
+
+application {
+    mainClassName = 'social.network.itmo.students.february.App'
+}
+
+test {
+    useJUnitPlatform()
+}
