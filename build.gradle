@@ -43,7 +43,7 @@ dependencies {
 }
 
 application {
-    mainClassName = 'social.network.itmo.students.february.App'
+    mainClassName = 'com.uthanks.App'
 }
 
 test {
