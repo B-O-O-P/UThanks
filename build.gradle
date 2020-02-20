@@ -32,8 +32,8 @@ dependencies {
     // Starter for building web, including RESTful, applications using Spring MVC. Uses Tomcat as the default embedded container
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    //For building MVC web applications using FreeMarker views
-    implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+    // Starter for building MVC web applications using Thymeleaf views
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
     // Starter for testing Spring Boot applications with libraries including JUnit, Hamcrest and Mockito
     // testImplementation 'org.springframework.boot:spring-boot-starter-test'
