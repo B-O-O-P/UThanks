@@ -6,10 +6,10 @@ plugins {
     id 'application'
 
     // Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that can you can "just run"
-    id 'org.springframework.boot' version "$versionSpringBoot"
+    id 'org.springframework.boot' version '2.2.4.RELEASE'
 
     // A Gradle plugin that provides Maven-like dependency management and exclusions
-    id 'io.spring.dependency-management' version "$versionDependencyManagment"
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 }
 
 repositories {
