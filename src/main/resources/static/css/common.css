@@ -2,6 +2,7 @@ html,
 body {
     min-height: 100%;
     height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
 }
@@ -16,9 +17,12 @@ body {
     grid-template-columns: 1fr 3fr 1fr 1fr;
     position: sticky;
     background-color: #FEE044;
+
+    font-weight: normal;
     top: 0;
 }
 .header__name {
+    font-size: 30px;
     font-family: 'Questrial', serif;
 }
 .page-btn {
@@ -37,6 +41,47 @@ body {
     font-size: 30px;
     background-color: #FEE044;
     cursor: pointer;
+}
+.header__btn-menu_visible {
+    display: none;
+}
+#menu-check {
+    display: none;
+}
+
+#menu-check:checked ~ .header .header__btn-menu {
+    transform: rotate(90deg);
+}
+.menu {
+    position: absolute;
+    display: block;
+    width: 70%;
+    height: calc(100% - 160px);
+    top: 80px;
+    left: -70%;
+    background-color: #BABABA ;
+
+    font-family: 'Questrial', serif;
+    font-size: 25px;
+    transition: left 1s ease-out 0.3s;
+}
+#menu-check:checked ~ .menu {
+    left: 0;
+    transition: left 1s ease-out 0.3s;
+}
+.menu__name {
+    padding: 10px;
+    font-weight: normal;
+    text-align: center;
+}
+.menu__item {
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #ADADAD;
+    cursor: pointer;
+}
+.menu__item:hover {
+    background-color: #939393;
 }
 .footer {
     background-color: #FFFACC;

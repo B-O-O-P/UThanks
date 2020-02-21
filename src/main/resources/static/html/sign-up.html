@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
     <title>UThanks</title>
     <link rel="stylesheet" href="../css/sign-up.css">
     <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
@@ -26,13 +27,19 @@
                 <label for="pers">Person</label>
             </div>
         </div>
-        <label for="login">Login:</label>
-        <input required type="text" id="login" placeholder="Write your login">
-        <label for="pass">Password:</label>
-        <input required type="password" id="pass" placeholder="Write your password">
-        <label for="email">E-mail:</label>
-        <input required type="email" id="email" placeholder="Write your e-mail">
-        <input type="submit" id="submit" value="Sign up">
+        <div class="form__item">
+            <label for="login">Login:</label>
+            <input required type="text" id="login" maxlength="32">
+        </div>
+        <div class="form__item">
+            <label for="pass">Password:</label>
+            <input required type="password" id="pass" maxlength="32">
+        </div>
+        <div class="form__item">
+            <label for="email">E-mail:</label>
+            <input required type="email" id="email">
+        </div>
+        <input type="submit" id="submit" value="Sign up" class="form__submit">
     </form>
 </main>
 <footer class="footer"></footer>
