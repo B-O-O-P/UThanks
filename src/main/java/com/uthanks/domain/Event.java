@@ -1,37 +1,32 @@
 package com.uthanks.domain;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-/**
- * Volunteer entity.
- */
 @Entity
-public class User {
+public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotNull
-    @NotEmpty
-    private String login;
+    private long compId;
 
     @CreationTimestamp
     private Date creationTime;
 
-    private String fullName;
+    @DateTimeFormat
+    private Date eventBeginTime;
 
-    private int countryId;
+    @DateTimeFormat
+    private Date eventEndTime;
 
-    private int age;
+    private int neededUsers;
 
     private String skills;
 
@@ -43,12 +38,12 @@ public class User {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
+    public long getCompId() {
+        return compId;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setCompId(long compId) {
+        this.compId = compId;
     }
 
     public Date getCreationTime() {
@@ -59,28 +54,28 @@ public class User {
         this.creationTime = creationTime;
     }
 
-    public String getFullName() {
-        return fullName;
+    public Date getEventBeginTime() {
+        return eventBeginTime;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setEventBeginTime(Date eventBeginTime) {
+        this.eventBeginTime = eventBeginTime;
     }
 
-    public int getCountryId() {
-        return countryId;
+    public Date getEventEndTime() {
+        return eventEndTime;
     }
 
-    public void setCountryId(int countryId) {
-        this.countryId = countryId;
+    public void setEventEndTime(Date eventEndTime) {
+        this.eventEndTime = eventEndTime;
     }
 
-    public int getAge() {
-        return age;
+    public int getNeededUsers() {
+        return neededUsers;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setNeededUsers(int neededUsers) {
+        this.neededUsers = neededUsers;
     }
 
     public String getSkills() {

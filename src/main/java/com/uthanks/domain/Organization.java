@@ -6,34 +6,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-/**
- * Volunteer entity.
- */
 @Entity
-public class User {
+public class Organization {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotNull
-    @NotEmpty
-    private String login;
+    private String name;
 
     @CreationTimestamp
     private Date creationTime;
 
-    private String fullName;
-
     private int countryId;
-
-    private int age;
-
-    private String skills;
 
     public long getId() {
         return id;
@@ -43,12 +29,12 @@ public class User {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
+    public String getName() {
+        return name;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Date getCreationTime() {
@@ -59,35 +45,11 @@ public class User {
         this.creationTime = creationTime;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
     public int getCountryId() {
         return countryId;
     }
 
     public void setCountryId(int countryId) {
         this.countryId = countryId;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getSkills() {
-        return skills;
-    }
-
-    public void setSkills(String skills) {
-        this.skills = skills;
     }
 }

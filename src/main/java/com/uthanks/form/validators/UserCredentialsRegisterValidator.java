@@ -1,6 +1,6 @@
 package com.uthanks.form.validators;
 
-// import com.uthanks.services.UserService;
+import com.uthanks.services.UserService;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class UserCredentialsRegisterValidator {
-    /*private final UserService userService;
+    private final UserService userService;
 
     public UserCredentialsRegisterValidator(UserService userService) {
         this.userService = userService;
-    }*/
+    }
 }
