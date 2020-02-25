@@ -10,6 +10,8 @@ plugins {
 
     // A Gradle plugin that provides Maven-like dependency management and exclusions
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+
+    id "io.freefair.lombok" version "5.0.0-rc4"
 }
 
 repositories {
