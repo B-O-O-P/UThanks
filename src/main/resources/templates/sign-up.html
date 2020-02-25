@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://thymeleaf.org" lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -15,29 +15,29 @@
     <a href="/sign-up" class="header__btn-log-in">Sign up</a>
 </header>
 <main class="content">
-    <form class="form">
+    <form class="form" th:action="@{/sign-up}" th:object="${registerForm}" method="post">
         <div class="form__name">Sign up</div>
         <div class="form__radio">
             <div class="radio-index">
-                <input type="radio" name="type" id="comp" checked>
+                <input type="radio" name="type" id="comp" value="0" th:field="*{isUser}" checked>
                 <label for="comp">Company</label>
             </div>
             <div class="radio-index">
-                <input type="radio" name="type" id="pers">
+                <input type="radio" name="type" id="pers" value="1" th:field="*{isUser}">
                 <label for="pers">Person</label>
             </div>
         </div>
         <div class="form__item">
             <label for="login">Login:</label>
-            <input required type="text" id="login" maxlength="32">
+            <input required type="text" id="login" maxlength="32" th:field="*{login}">
         </div>
         <div class="form__item">
             <label for="pass">Password:</label>
-            <input required type="password" id="pass" maxlength="32">
+            <input required type="password" id="pass" maxlength="32" th:field="*{password}">
         </div>
         <div class="form__item">
             <label for="email">E-mail:</label>
-            <input required type="email" id="email">
+            <input required type="email" id="email" th:field="*{email}">
         </div>
         <input type="submit" id="submit" value="Sign up" class="form__submit">
     </form>

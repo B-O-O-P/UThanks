@@ -24,6 +24,10 @@ public class User {
     @NotEmpty
     private String login;
 
+    @NotNull
+    @NotEmpty
+    private String email;
+
     @CreationTimestamp
     private Date creationTime;
 
@@ -89,5 +93,13 @@ public class User {
 
     public void setSkills(String skills) {
         this.skills = skills;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
