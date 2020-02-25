@@ -1,6 +1,6 @@
 package com.uthanks.domain;
 
-import org.springframework.data.annotation.Id;
+//import javax.persistence.Id;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -10,7 +10,7 @@ import java.util.Date;
  * Volunteer entity.
  */
 public class User {
-    @Id
+    // @Id
     private long id;
 
     @NotNull
