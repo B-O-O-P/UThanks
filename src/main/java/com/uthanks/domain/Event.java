@@ -1,21 +1,24 @@
 package com.uthanks.domain;
 
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
+@Data
 @Entity
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private long compId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "creator_id")
+    private User creator;
 
     @CreationTimestamp
     private Date creationTime;
@@ -28,61 +31,14 @@ public class Event {
 
     private int neededUsers;
 
+    @OneToMany
+    @JoinTable(
+            name = "user_events",
+            joinColumns = @JoinColumn(name = "event_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id")
+    )
+    private List<User> volunteers;
+
+    @Lob
     private String skills;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getCompId() {
-        return compId;
-    }
-
-    public void setCompId(long compId) {
-        this.compId = compId;
-    }
-
-    public Date getCreationTime() {
-        return creationTime;
-    }
-
-    public void setCreationTime(Date creationTime) {
-        this.creationTime = creationTime;
-    }
-
-    public Date getEventBeginTime() {
-        return eventBeginTime;
-    }
-
-    public void setEventBeginTime(Date eventBeginTime) {
-        this.eventBeginTime = eventBeginTime;
-    }
-
-    public Date getEventEndTime() {
-        return eventEndTime;
-    }
-
-    public void setEventEndTime(Date eventEndTime) {
-        this.eventEndTime = eventEndTime;
-    }
-
-    public int getNeededUsers() {
-        return neededUsers;
-    }
-
-    public void setNeededUsers(int neededUsers) {
-        this.neededUsers = neededUsers;
-    }
-
-    public String getSkills() {
-        return skills;
-    }
-
-    public void setSkills(String skills) {
-        this.skills = skills;
-    }
 }
