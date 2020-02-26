@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>UThanks</title>
+    <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/sign-up.css}" href="../static/css/sign-up.css">
+</head>
+<body>
+<div th:replace="common :: #menu-check"></div>
+<div th:replace="common :: #menu-sign-check"></div>
+<div th:replace="common :: head"></div>
+<div th:replace="common :: menu"></div>
+<div th:replace="common :: menu-sign"></div>
+<main class="content">
+    <form class="form">
+        <div class="form__name">Log in</div>
+        <div class="form__item">
+            <label for="login">Login:</label>
+            <input required type="text" id="login" maxlength="32">
+        </div>
+        <div class="form__item">
+            <label for="pass">Password:</label>
+            <input required type="password" id="pass" maxlength="32">
+        </div>
+        <input type="submit" id="submit" value="Sign up" class="form__submit">
+    </form>
+</main>
+<footer class="footer"></footer>
+</body>
+</html>

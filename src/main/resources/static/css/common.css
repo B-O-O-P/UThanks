@@ -13,6 +13,7 @@ body {
     background-color: #FFF8EA;
 }
 .header {
+    z-index: 3;
     display: grid;
     grid-template-columns: 1fr 3fr 1fr 1fr;
     position: sticky;
@@ -25,6 +26,11 @@ body {
     font-size: 30px;
     font-family: 'Questrial', serif;
 }
+.header__name a {
+    text-decoration: none;
+    color: #000000;
+}
+
 .page-btn {
     display: inline-block;
 
@@ -42,10 +48,12 @@ body {
     background-color: #FEE044;
     cursor: pointer;
 }
-.header__btn-menu_visible {
+
+#menu-check {
     display: none;
 }
-#menu-check {
+
+#menu-sign-check {
     display: none;
 }
 
@@ -53,6 +61,7 @@ body {
     transform: rotate(90deg);
 }
 .menu {
+    z-index: 1;
     position: absolute;
     display: block;
     width: 70%;
@@ -63,11 +72,30 @@ body {
 
     font-family: 'Questrial', serif;
     font-size: 25px;
-    transition: left 1s ease-out 0.3s;
+    transition: left 1s ease-out 0.2s;
+}
+.menu-sign-up {
+    z-index: 2;
+    position: absolute;
+    display: block;
+    width: 150px;
+    height: 100px;
+    top: -100px;
+    right: 10%;
+    background-color: #BABABA ;
+
+    font-family: 'Questrial', serif;
+    font-size: 25px;
+    transition: top 1s ease-out 0.1s;
 }
 #menu-check:checked ~ .menu {
     left: 0;
-    transition: left 1s ease-out 0.3s;
+    transition: left 1s ease-out 0.2s;
+}
+
+#menu-sign-check:checked ~ .menu-sign-up {
+    top: 70px;
+    transition: top 1s ease-out 0.1s;
 }
 .menu__name {
     padding: 10px;
@@ -79,6 +107,8 @@ body {
     margin: 10px 0;
     background-color: #ADADAD;
     cursor: pointer;
+    color: #000000;
+    text-decoration: none;
 }
 .menu__item:hover {
     background-color: #939393;
@@ -88,4 +118,68 @@ body {
 }
 .content {
     height: 100%;
+}
+
+
+/*NO MINE*/
+
+.carousel {
+    position: relative;
+    width: 398px;
+    padding: 10px 40px;
+}
+
+.carousel img {
+    width: 130px;
+    height: 130px;
+    display: block;
+}
+
+.arrow {
+    position: absolute;
+    top: 60px;
+    padding: 0;
+    background: #ddd;
+    border-radius: 15px;
+    border: 1px solid gray;
+    font-size: 24px;
+    line-height: 24px;
+    color: #444;
+    display: block;
+}
+
+.arrow:focus {
+    outline: none;
+}
+
+.arrow:hover {
+    background: #ccc;
+    cursor: pointer;
+}
+
+.prev {
+    left: 7px;
+}
+
+.next {
+    right: 7px;
+}
+
+.gallery {
+    width: 390px;
+    overflow: hidden;
+}
+
+.gallery ul {
+    height: 130px;
+    width: 9999px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    transition: margin-left .2s;
+    font-size: 0;
+}
+
+.gallery li {
+    display: inline-block;
 }
