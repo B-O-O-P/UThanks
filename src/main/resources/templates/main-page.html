@@ -9,11 +9,9 @@
 </head>
 <body>
 <div th:replace="common :: #menu-check"></div>
-<div th:replace="common :: #menu-sign-check"></div>
 <div th:replace="common :: head"></div>
-<div th:replace="common :: menu"></div>
-<div th:replace="common :: menu-sign"></div>
 <main class="content">
+    <div th:replace="common :: menu"></div>
     <img src="images/hands.png" th:src="@{/images/hands.png}" class="hands">
     <div class="slogan">
         Want to help people? </br>
