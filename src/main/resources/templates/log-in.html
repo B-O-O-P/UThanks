@@ -23,6 +23,7 @@
         <div class="form__item">
             <label for="pass">Password:</label>
             <input required type="password" id="pass" maxlength="32" th:field="*{password}">
+            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
         </div>
         <input type="submit" id="submit" value="Sign up" class="form__submit">
     </form>
