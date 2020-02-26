@@ -14,6 +14,7 @@ public class Role {
     private long id;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     private Name name;
 
     private enum Name {
