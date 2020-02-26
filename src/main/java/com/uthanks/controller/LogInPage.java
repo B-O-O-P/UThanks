@@ -46,8 +46,6 @@ public class LogInPage extends Page {
             return "log-in";
         }
 
-        System.out.println(enterForm.getLogin());
-        System.out.println(enterForm.getPassword());
         setUser(httpSession, getUserService().findByLoginAndPassword(enterForm.getLogin(), enterForm.getPassword()));
 
         return "redirect:/";
