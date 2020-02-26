@@ -23,13 +23,12 @@
 </header>
 <nav class="menu-sign-up" th:fragment="menu-sign">
     <div class="menu__item">
-        <a href="/sign-up" class="menu__item">Sign up</a>
+        <a th:if="${session.user}" th:href="@{/}" class="menu__item">Profile</a>
+        <a th:unless="${session.user}" th:href="@{/sign-up}" class="menu__item">Sign up</a>
     </div>
     <div class="menu__item">
-        <a href="/log-in" class="menu__item">Log in</a>
-    </div>
-    <div class="menu__item">
-        <a href="/log-out" class="menu__item">Log out</a>
+        <a th:if="${session.user}" th:href="@{/log-out}" class="menu__item">Log out</a>
+        <a th:unless="${session.user}" th:href="@{/log-in}" class="menu__item">Log in</a>
     </div>
 </nav>
 <nav class="menu" th:fragment="menu">

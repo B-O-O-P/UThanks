@@ -20,11 +20,9 @@ import javax.validation.Valid;
  */
 @Controller
 public class LogInPage extends Page {
-    //private final UserService userService;
     private final UserCredentialsEnterValidator userCredentialsEnterValidator;
 
-    public LogInPage(UserService userService, UserCredentialsEnterValidator userCredentialsEnterValidator) {
-        //this.userService = userService;
+    public LogInPage(UserCredentialsEnterValidator userCredentialsEnterValidator) {
         this.userCredentialsEnterValidator = userCredentialsEnterValidator;
     }
 
