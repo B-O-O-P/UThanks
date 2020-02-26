@@ -15,17 +15,7 @@
 <div th:replace="common :: menu-sign"></div>
 <main class="content">
     <form class="form">
-        <div class="form__name">Sign up</div>
-        <div class="form__radio">
-            <div class="radio-index">
-                <input type="radio" name="type" id="comp" checked>
-                <label for="comp">Company</label>
-            </div>
-            <div class="radio-index">
-                <input type="radio" name="type" id="pers">
-                <label for="pers">Person</label>
-            </div>
-        </div>
+        <div class="form__name">Log in</div>
         <div class="form__item">
             <label for="login">Login:</label>
             <input required type="text" id="login" maxlength="32">
@@ -33,10 +23,6 @@
         <div class="form__item">
             <label for="pass">Password:</label>
             <input required type="password" id="pass" maxlength="32">
-        </div>
-        <div class="form__item">
-            <label for="email">E-mail:</label>
-            <input required type="email" id="email">
         </div>
         <input type="submit" id="submit" value="Sign up" class="form__submit">
     </form>
