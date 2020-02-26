@@ -1,5 +1,6 @@
 html,
 body {
+    position: relative;
     min-height: 100%;
     height: 100%;
     width: 100%;
@@ -12,11 +13,17 @@ body {
     grid-template-rows: 80px 1fr 80px;
     background-color: #FFF8EA;
 }
-.header {
+.wrapper {
     z-index: 3;
+    position: sticky;
+    top: 0;
+}
+.header {
+    position: absolute;
+    width: 100%;
+    z-index: 4;
     display: grid;
     grid-template-columns: 1fr 3fr 1fr 1fr;
-    position: sticky;
     background-color: #FEE044;
 
     font-weight: normal;
@@ -60,13 +67,17 @@ body {
 #menu-check:checked ~ .header .header__btn-menu {
     transform: rotate(90deg);
 }
+.content {
+    position: relative;
+     height: 100%;
+ }
 .menu {
-    z-index: 1;
+    z-index: 2;
     position: absolute;
     display: block;
     width: 70%;
-    height: calc(100% - 160px);
-    top: 80px;
+    top: 0;
+    height: 100%;
     left: -70%;
     background-color: #BABABA ;
 
@@ -88,7 +99,7 @@ body {
     font-size: 25px;
     transition: top 1s ease-out 0.1s;
 }
-#menu-check:checked ~ .menu {
+#menu-check:checked ~ .content .menu {
     left: 0;
     transition: left 1s ease-out 0.2s;
 }
@@ -116,9 +127,7 @@ body {
 .footer {
     background-color: #FFFACC;
 }
-.content {
-    height: 100%;
-}
+
 
 
 /*NO MINE*/
