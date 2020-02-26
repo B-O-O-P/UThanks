@@ -10,6 +10,8 @@ plugins {
 
     // A Gradle plugin that provides Maven-like dependency management and exclusions
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+
+    id "io.freefair.lombok" version "5.0.0-rc4"
 }
 
 repositories {
@@ -24,10 +26,10 @@ dependencies {
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$versionJunitJupiterApi"
 
     // JDBC Type 4 driver for MySQL
-    // implementation 'mysql:mysql-connector-java'
+    implementation 'mysql:mysql-connector-java'
 
     // Starter for using Spring Data JPA with Hibernate
-    // implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
     // Starter for building web, including RESTful, applications using Spring MVC. Uses Tomcat as the default embedded container
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -37,10 +39,10 @@ dependencies {
 
 
     // Starter for testing Spring Boot applications with libraries including JUnit, Hamcrest and Mockito
-    // testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     // Default servlet container starter used by spring-boot-starter-web
-    // implementation 'org.springframework.boot:spring-boot-starter-tomcat'
+    implementation 'org.springframework.boot:spring-boot-starter-tomcat'
 }
 
 application {
