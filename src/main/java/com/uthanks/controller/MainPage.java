@@ -15,7 +15,9 @@ public class MainPage extends Page {
         return "main-page";
     }
 
+    @GetMapping(path = "/logout")
     public String index(HttpSession httpSession) {
+        unsetUser(httpSession);
         return "redirect:/";
     }
 }
