@@ -38,6 +38,7 @@
         <div class="form__item">
             <label for="email">E-mail:</label>
             <input required type="email" id="email" th:field="*{email}">
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
         </div>
         <input type="submit" id="submit" value="Sign up" class="form__submit">
     </form>

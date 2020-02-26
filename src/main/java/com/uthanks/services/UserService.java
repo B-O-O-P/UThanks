@@ -29,4 +29,8 @@ public class UserService {
         userRepository.updatePasswordSha(user.getId(), registerForm.getPassword());
         return user;
     }
+
+    public User findByLoginAndPassword(String login, String password) {
+        return login == null || password == null ? null : userRepository.findByLoginAndPassword(login, password);
+    }
 }

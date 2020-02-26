@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://thymeleaf.org" lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -14,15 +14,15 @@
 <div th:replace="common :: menu"></div>
 <div th:replace="common :: menu-sign"></div>
 <main class="content">
-    <form class="form">
+    <form class="form" th:action="@{/log-in}" th:object="${enterForm}" method="post">
         <div class="form__name">Log in</div>
         <div class="form__item">
             <label for="login">Login:</label>
-            <input required type="text" id="login" maxlength="32">
+            <input required type="text" id="login" maxlength="32" th:field="*{login}">
         </div>
         <div class="form__item">
             <label for="pass">Password:</label>
-            <input required type="password" id="pass" maxlength="32">
+            <input required type="password" id="pass" maxlength="32" th:field="*{password}">
         </div>
         <input type="submit" id="submit" value="Sign up" class="form__submit">
     </form>
