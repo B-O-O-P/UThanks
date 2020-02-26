@@ -16,12 +16,17 @@ public class Page {
     private UserService userService;
 
     void setUser(HttpSession httpSession, User user) {
-        //System.out.println(user.getLogin()); // debugInfo
-        //System.out.println(user.getEmail()); // debugInfo
-        /*if (user != null) {
-            httpSession.setAttribute(USER_ID_SESSION_KEY, user.getId());
+        if (user != null) {
+            httpSession.setAttribute("user", user);
+            httpSession.setAttribute("IS_USER", true);
         } else {
-            httpSession.removeAttribute(USER_ID_SESSION_KEY);
-        }*/
+            httpSession.removeAttribute("user");
+            httpSession.removeAttribute("IS_USER");
+        }
+    }
+
+    void unsetUser(HttpSession httpSession) {
+        httpSession.removeAttribute("user");
+        httpSession.removeAttribute("IS_USER");
     }
 }

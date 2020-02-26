@@ -25,11 +25,11 @@ public class UserCredentialsRegisterValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        /*if (!errors.hasErrors()) {
+        if (!errors.hasErrors()) {
             UserCredentials registerForm = (UserCredentials) target;
             if (!userService.isLoginVacant(registerForm.getLogin())) {
                 errors.rejectValue("login", "login.is.in.use", "login is in use");
             }
-        }*/
+        }
     }
 }
