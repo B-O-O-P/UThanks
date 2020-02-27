@@ -2,11 +2,25 @@ package com.uthanks.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GenerationType;
+import javax.persistence.Index;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.UniqueConstraint;
+import javax.persistence.JoinColumn;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
+import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
+import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.CascadeType;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
