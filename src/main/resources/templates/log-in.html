@@ -9,11 +9,9 @@
 </head>
 <body>
 <div th:replace="common :: #menu-check"></div>
-<div th:replace="common :: #menu-sign-check"></div>
 <div th:replace="common :: head"></div>
-<div th:replace="common :: menu"></div>
-<div th:replace="common :: menu-sign"></div>
 <main class="content">
+    <div th:replace="common :: menu"></div>
     <form class="form" th:action="@{/log-in}" th:object="${enterForm}" method="post">
         <div class="form__name">Log in</div>
         <div class="form__item">

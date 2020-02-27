@@ -9,28 +9,30 @@
 </head>
 <body>
 <input type="checkbox" id="menu-check">
-<input type="checkbox" id="menu-sign-check">
-<header class="header" th:fragment="head">
-    <label for="menu-check" class="header__btn-menu page-btn">☰</label>
-    <h1 class="header__name">
-        <a href="/">Uthanks</a>
-    </h1>
-    <img class="header__btn-search page-btn" th:src="@{/images/search.png}" src="../static/images/search.png">
-    <label for="menu-sign-check">
-        <img class="header__btn-search page-btn" th:src="@{/images/user.png}"
-             src="../static/images/user.png">
-    </label>
-</header>
-<nav class="menu-sign-up" th:fragment="menu-sign">
-    <div class="menu__item">
-        <a th:if="${session.user}" th:href="@{/}" class="menu__item">Profile</a>
-        <a th:unless="${session.user}" th:href="@{/sign-up}" class="menu__item">Sign up</a>
-    </div>
-    <div class="menu__item">
-        <a th:if="${session.user}" th:href="@{/log-out}" class="menu__item">Log out</a>
-        <a th:unless="${session.user}" th:href="@{/log-in}" class="menu__item">Log in</a>
-    </div>
-</nav>
+<div class="wrapper" th:fragment="head">
+    <input type="checkbox" id="menu-sign-check">
+    <header class="header">
+        <label for="menu-check" class="header__btn-menu page-btn">☰</label>
+        <h1 class="header__name">
+            <a href="/">Uthanks</a>
+        </h1>
+        <img class="header__btn-search page-btn" th:src="@{/images/search.png}" src="../static/images/search.png">
+        <label for="menu-sign-check">
+            <img class="header__btn-search page-btn" th:src="@{/images/user.png}"
+                 src="../static/images/user.png">
+        </label>
+    </header>
+    <nav class="menu-sign-up" th:fragment="menu-sign">
+        <div class="menu__item">
+            <a th:if="${session.user}" th:href="@{/}" class="menu__item">Profile</a>
+            <a th:unless="${session.user}" th:href="@{/sign-up}" class="menu__item">Sign up</a>
+        </div>
+        <div class="menu__item">
+            <a th:if="${session.user}" th:href="@{/log-out}" class="menu__item">Log out</a>
+            <a th:unless="${session.user}" th:href="@{/log-in}" class="menu__item">Log in</a>
+        </div>
+    </nav>
+</div>
 <nav class="menu" th:fragment="menu">
     <h2 class="menu__name">Menu</h2>
     <div class="menu__item">Companies</div>
@@ -57,7 +59,8 @@
         </div>
         <button class="arrow next">⇨</button>
     </div>
-    <script type="text/javascript" src="../static/js/carousel.js" th:src="@{/js/carousel.js}" th:fragment="carousel-script"></script>
+    <script type="text/javascript" src="../static/js/carousel.js" th:src="@{/js/carousel.js}"
+            th:fragment="carousel-script"></script>
 </main>
 <footer class="footer" th:fragment="foot"></footer>
 </body>
