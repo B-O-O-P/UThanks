@@ -11,7 +11,7 @@
 <input type="checkbox" id="menu-check">
 <div class="wrapper" th:fragment="head">
     <input type="checkbox" id="menu-sign-check">
-    <header class="header" >
+    <header class="header">
         <label for="menu-check" class="header__btn-menu page-btn">☰</label>
         <h1 class="header__name">
             <a href="/">Uthanks</a>
@@ -21,18 +21,18 @@
             <img class="header__btn-search page-btn" th:src="@{/images/user.png}"
                  src="../static/images/user.png">
         </label>
-
     </header>
     <nav class="menu-sign-up" th:fragment="menu-sign">
         <div class="menu__item">
-            <a href="/sign-up" class="menu__item">Sign up</a>
+            <a th:if="${session.user}" th:href="@{/}" class="menu__item">Profile</a>
+            <a th:unless="${session.user}" th:href="@{/sign-up}" class="menu__item">Sign up</a>
         </div>
         <div class="menu__item">
-            <a href="/log-in" class="menu__item">Log in</a>
+            <a th:if="${session.user}" th:href="@{/log-out}" class="menu__item">Log out</a>
+            <a th:unless="${session.user}" th:href="@{/log-in}" class="menu__item">Log in</a>
         </div>
     </nav>
 </div>
-
 
 <main class="content">
     <nav class="menu" th:fragment="menu">
@@ -60,8 +60,7 @@
         </div>
         <button class="arrow next">⇨</button>
     </div>
-    <script type="text/javascript" src="../static/js/carousel.js" th:src="@{/js/carousel.js}"
-            th:fragment="carousel-script"></script>
+    <script type="text/javascript" src="../static/js/carousel.js" th:src="@{/js/carousel.js}" th:fragment="carousel-script"></script>
 </main>
 <footer class="footer" th:fragment="foot"></footer>
 </body>

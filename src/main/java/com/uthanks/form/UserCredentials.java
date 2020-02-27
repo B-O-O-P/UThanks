@@ -45,7 +45,6 @@ public class UserCredentials {
     @NotEmpty
     private String password;
 
-    @NotEmpty
     @Email
     private String email;
 

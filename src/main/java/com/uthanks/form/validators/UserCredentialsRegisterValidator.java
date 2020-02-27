@@ -30,6 +30,9 @@ public class UserCredentialsRegisterValidator implements Validator {
             if (!userService.isLoginVacant(registerForm.getLogin())) {
                 errors.rejectValue("login", "login.is.in.use", "login is in use");
             }
+            if (registerForm.getEmail() == null || registerForm.getEmail().isEmpty()) {
+                errors.rejectValue("email", "email.is.empty", "email can not be empty");
+            }
         }
     }
 }
