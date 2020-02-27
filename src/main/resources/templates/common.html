@@ -33,14 +33,15 @@
         </div>
     </nav>
 </div>
-<nav class="menu" th:fragment="menu">
-    <h2 class="menu__name">Menu</h2>
-    <div class="menu__item">Companies</div>
-    <div class="menu__item">Events</div>
-    <div class="menu__item">About us</div>
-    <div class="menu__item">Our contacts</div>
-</nav>
+
 <main class="content">
+    <nav class="menu" th:fragment="menu">
+        <h2 class="menu__name">Menu</h2>
+        <div class="menu__item">Companies</div>
+        <div class="menu__item">Events</div>
+        <div class="menu__item">About us</div>
+        <div class="menu__item">Our contacts</div>
+    </nav>
     <div class="carousel" th:fragment="carousel">
         <button class="arrow prev">⇦</button>
         <div class="gallery">
@@ -59,8 +60,7 @@
         </div>
         <button class="arrow next">⇨</button>
     </div>
-    <script type="text/javascript" src="../static/js/carousel.js" th:src="@{/js/carousel.js}"
-            th:fragment="carousel-script"></script>
+    <script type="text/javascript" src="../static/js/carousel.js" th:src="@{/js/carousel.js}" th:fragment="carousel-script"></script>
 </main>
 <footer class="footer" th:fragment="foot"></footer>
 </body>

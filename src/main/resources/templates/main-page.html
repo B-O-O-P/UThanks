@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://thymeleaf.org" lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -9,11 +9,9 @@
 </head>
 <body>
 <div th:replace="common :: #menu-check"></div>
-<div th:replace="common :: #menu-sign-check"></div>
 <div th:replace="common :: head"></div>
-<div th:replace="common :: menu"></div>
-<div th:replace="common :: menu-sign"></div>
 <main class="content">
+    <div th:replace="common :: menu"></div>
     <img src="images/hands.png" th:src="@{/images/hands.png}" class="hands">
     <div class="slogan">
         Want to help people? </br>
