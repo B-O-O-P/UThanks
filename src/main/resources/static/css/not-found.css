@@ -30,6 +30,7 @@ body {
 
 .content {
     display: flex;
+    margin: auto;
     font-family: 'Questrial', serif;
     font-size: 30px;
 }
