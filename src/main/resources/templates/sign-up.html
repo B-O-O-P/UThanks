@@ -16,11 +16,11 @@
         <div class="form__name">Sign up</div>
         <div class="form__radio">
             <div class="radio-index">
-                <input type="radio" name="type" id="comp" value="0" th:field="*{isUser}" checked>
+                <input type="radio" name="type" id="comp" value="0" th:field="*{userType}" checked>
                 <label for="comp">Company</label>
             </div>
             <div class="radio-index">
-                <input type="radio" name="type" id="pers" value="1" th:field="*{isUser}">
+                <input type="radio" name="type" id="pers" value="1" th:field="*{userType}">
                 <label for="pers">Person</label>
             </div>
         </div>
@@ -32,6 +32,7 @@
         <div class="form__item">
             <label for="pass">Password:</label>
             <input required type="password" id="pass" maxlength="32" th:field="*{password}">
+            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
         </div>
         <div class="form__item">
             <label for="email">E-mail:</label>

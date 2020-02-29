@@ -1,6 +1,6 @@
 package com.uthanks.form.validators;
 
-// import com.uthanks.services.UserService;
+import org.apache.commons.lang3.StringUtils;
 import com.uthanks.form.UserCredentials;
 import com.uthanks.services.UserService;
 import org.springframework.stereotype.Component;
@@ -27,12 +27,21 @@ public class UserCredentialsRegisterValidator implements Validator {
     public void validate(Object target, Errors errors) {
         if (!errors.hasErrors()) {
             UserCredentials registerForm = (UserCredentials) target;
-            if (!userService.isLoginVacant(registerForm.getLogin())) {
+
+            if (StringUtils.isAnyBlank(registerForm.getLogin())) {
+                errors.rejectValue("login", "login.is.empty", "login can not be empty");
+            } else if (!userService.isLoginVacant(registerForm.getLogin())) {
                 errors.rejectValue("login", "login.is.in.use", "login is in use");
             }
-            if (registerForm.getEmail() == null || registerForm.getEmail().isEmpty()) {
+
+            if (StringUtils.isAnyBlank(registerForm.getEmail())) {
                 errors.rejectValue("email", "email.is.empty", "email can not be empty");
             }
+
+            /*if (registerForm.getEmail() == null || registerForm.getEmail().isEmpty()) {
+                errors.rejectValue("email", "email.is.empty", "email can not be empty");
+            }*/
+
         }
     }
 }

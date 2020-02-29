@@ -2,6 +2,7 @@ package com.uthanks.form.validators;
 
 import com.uthanks.form.UserCredentials;
 import com.uthanks.services.UserService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -23,8 +24,12 @@ public class UserCredentialsEnterValidator implements Validator {
     public void validate(Object target, Errors errors) {
         if (!errors.hasErrors()) {
             UserCredentials enterForm = (UserCredentials) target;
-            if (userService.findByLoginAndPassword(enterForm.getLogin(), enterForm.getPassword()) == null) {
-                errors.rejectValue("password", "invalid.login.or.password", "invalid login or password");
+
+            if (StringUtils.isAnyBlank(enterForm.getLogin())) {
+                errors.rejectValue("login", "login.is.empty", "login can not be empty");
+            } else if (userService.findByLoginAndPassword(enterForm.getLogin(), enterForm.getPassword()) == null) {
+                errors.rejectValue("password", "invalid.login.or.password",
+                        "invalid login or password");
             }
         }
     }
