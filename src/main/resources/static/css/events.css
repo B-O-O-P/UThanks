@@ -50,11 +50,14 @@ body {
     padding-right: 10px;
 }
 
-.card-about-events {
-    font-size: 20px;
-    font-weight: normal;
-    text-align: right;
+.card-comp-wrap {
+    display: flex;
+    justify-content: space-between;
     padding-right: 10px;
+}
+.card-company {
+    text-align: right;
+    font-size: 20px;
 }
 
 .card-photo {
@@ -67,25 +70,28 @@ body {
     object-position: top;
 }
 
-.card-events {
-    display: flex;
-    margin: auto;
-}
-
-.card-event-pic {
-    width: 60px;
-    height: 60px;
-    margin: 5px;
-    object-fit: cover;
-    object-position: center;
-}
-
 .card-more {
+    font-size: 15px;
     display: block;
     width: calc(100% - 10px);
     text-decoration: underline;
     color: #686450;
     margin: 5px;
-    font-size: 15px;
     text-align: right;
+}
+.card-about-events {
+    margin: 10px;
+    margin-left: 0;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: left;
+}
+
+.card-about {
+    height: 50px;
+    padding-right: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+    font-size: 18px;
 }
