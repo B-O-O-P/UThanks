@@ -1,0 +1,97 @@
+html,
+body {
+    position: relative;
+    min-height: 100%;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.page-name {
+    padding-left: 30px;
+    font-weight: normal;
+    font-size: 30px;
+    font-family: 'Questrial', serif;
+}
+
+.page-content {
+    display: flex;
+    margin: auto;
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.page-content li {
+    list-style-type: none;
+}
+
+.page-content__card {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+
+    margin: 10px;
+    padding: 0;
+    width: 320px;
+
+    background-color: #FFFACC;
+    font-family: 'Questrial', serif;
+    font-weight: normal;
+}
+.page-content__card:hover {
+    box-shadow: 1px 1px 3px #C4C4C4;
+}
+
+.card-name {
+    font-size: 25px;
+    font-weight: normal;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.card-comp-wrap {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
+}
+.card-company {
+    text-align: right;
+    font-size: 20px;
+}
+
+.card-photo {
+    display: flex;
+    margin: auto;
+    width: 90px;
+    height: 90px;
+    border-radius: 90px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.card-more {
+    font-size: 15px;
+    display: block;
+    width: calc(100% - 10px);
+    text-decoration: underline;
+    color: #686450;
+    margin: 5px;
+    text-align: right;
+}
+.card-about-events {
+    margin: 10px;
+    margin-left: 0;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: left;
+}
+
+.card-about {
+    height: 50px;
+    padding-right: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+    font-size: 18px;
+}

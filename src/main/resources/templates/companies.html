@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>UThanks</title>
+    <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/companies.css}" href="../static/css/companies.css">
+</head>
+<body>
+<div th:replace="common :: #menu-check"></div>
+<div th:replace="common :: head"></div>
+<main class="content">
+    <div th:replace="common :: menu"></div>
+    <h2 class="page-name">Companies</h2>
+    <ul class="page-content">
+        <li class="page-content__card">
+            <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}" class="card-photo">
+            <div class="card-info">
+                <h3 class="card-name">ITMO University</h3>
+                <h4 class="card-about-events">Available events</h4>
+                <div class="card-events">
+                    <a href="/not-found" th:href="@{/not-found}"><img src="images/dummy-event.jpg"
+                                                                      th:src="@{images/dummy-event.jpg}"
+                                                                      class="card-event-pic"></a>
+                    <a href="/not-found" th:href="@{/not-found}"><img src="images/dummy-event.jpg"
+                                                                      th:src="@{images/dummy-event.jpg}"
+                                                                      class="card-event-pic"></a>
+                    <a href="/not-found" th:href="@{/not-found}"><img src="images/dummy-event.jpg"
+                                                                      th:src="@{images/dummy-event.jpg}"
+                                                                      class="card-event-pic"></a>
+                </div>
+                <a href="/not-found" th:href="@{/not-found}" class="card-more">View more</a>
+            </div>
+        </li>
+        <li class="page-content__card">
+            <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}" class="card-photo">
+            <div class="card-info">
+                <h3 class="card-name">ITMO University</h3>
+                <h4 class="card-about-events">Available events</h4>
+                <div class="card-events">
+                    <a href="/not-found" th:href="@{/not-found}"><img src="images/dummy-event.jpg"
+                                                                      th:src="@{images/dummy-event.jpg}"
+                                                                      class="card-event-pic"></a>
+                    <a href="/not-found" th:href="@{/not-found}"><img src="images/dummy-event.jpg"
+                                                                      th:src="@{images/dummy-event.jpg}"
+                                                                      class="card-event-pic"></a>
+                    <a href="/not-found" th:href="@{/not-found}"><img src="images/dummy-event.jpg"
+                                                                      th:src="@{images/dummy-event.jpg}"
+                                                                      class="card-event-pic"></a>
+                </div>
+                <a href="/not-found" th:href="@{/not-found}" class="card-more">View more</a>
+            </div>
+        </li>
+        <li class="page-content__card">
+            <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}" class="card-photo">
+            <div class="card-info">
+                <h3 class="card-name">ITMO University</h3>
+                <h4 class="card-about-events">Available events</h4>
+                <div class="card-events">
+                    <a href="/not-found" th:href="@{/not-found}"><img src="images/dummy-event.jpg"
+                                                                      th:src="@{images/dummy-event.jpg}"
+                                                                      class="card-event-pic"></a>
+                    <a href="/not-found" th:href="@{/not-found}"><img src="images/dummy-event.jpg"
+                                                                      th:src="@{images/dummy-event.jpg}"
+                                                                      class="card-event-pic"></a>
+                    <a href="/not-found" th:href="@{/not-found}"><img src="images/dummy-event.jpg"
+                                                                      th:src="@{images/dummy-event.jpg}"
+                                                                      class="card-event-pic"></a>
+                </div>
+                <a href="/not-found" th:href="@{/not-found}" class="card-more">View more</a>
+            </div>
+        </li>
+    </ul>
+</main>
+<footer th:replace="common :: foot"></footer>
+</body>
+</html>
