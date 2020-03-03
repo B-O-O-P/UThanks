@@ -94,9 +94,10 @@ body {
 }
 .menu-sign-up {
     z-index: 2;
+    overflow: hidden;
     position: absolute;
     width: 150px;
-    height: 100px;
+    height: 125px;
     display: none;
     opacity: 0;
     background-color: #BABABA ;
@@ -124,13 +125,15 @@ body {
     text-align: center;
 }
 .menu__item {
-    padding: 15px;
     margin-bottom: 10px;
     background-color: #ADADAD;
     cursor: pointer;
     color: #000000;
 }
 .menu__item a {
+    display: block;
+    padding: 15px;
+    width: 100%;
     text-decoration: none;
     color: #000;
 }
