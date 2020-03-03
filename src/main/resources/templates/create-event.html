@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>UThanks</title>
+    <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/sign-up.css}" href="../static/css/sign-up.css">
+</head>
+<body>
+<div th:replace="common :: #menu-check"></div>
+<div th:replace="common :: head"></div>
+<main class="content">
+    <div th:replace="common :: menu"></div>
+    <form class="form">
+        <div class="form__name">Create an event</div>
+        <div class="form__item">
+            <label for="name">Name:</label>
+            <input required type="text" id="name">
+            <!--            <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></span>-->
+        </div>
+        <div class="form__time-borders">
+            <div class="form__item">
+                <label for="date-begin">Start:</label>
+                <input required type="date" id="date-begin">
+            </div>
+            <div class="form__item">
+                <label for="date-end">Finish:</label>
+                <input required type="date" id="date-end">
+            </div>
+        </div>
+
+        <div class="form__item">
+            <label for="desc">Description:</label>
+            <textarea required type="text" id="desc" class="form__desc" rows="10"></textarea>
+        </div>
+        <input type="submit" id="submit" value="Create event" class="form__submit">
+    </form>
+</main>
+<div th:replace="common :: foot"></div>
+</body>
+</html>

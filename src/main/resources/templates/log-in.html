@@ -24,9 +24,9 @@
             <input required type="password" id="pass" maxlength="32" th:field="*{password}">
             <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
         </div>
-        <input type="submit" id="submit" value="Sign up" class="form__submit">
+        <input type="submit" id="submit" value="Log in" class="form__submit">
     </form>
 </main>
-<footer class="footer"></footer>
+<div th:replace="common :: foot"></div>
 </body>
 </html>

@@ -1,0 +1,11 @@
+.form__item textarea {
+    height: 128px;
+    width: 100%;
+    font-size: 25px;
+    outline-color: #C4C4C4;
+    resize: none;
+}
+.form__time-borders {
+    display: flex;
+    justify-content: space-between;
+}

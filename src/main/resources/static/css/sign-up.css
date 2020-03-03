@@ -81,7 +81,7 @@ body {
 .form__submit {
     display: flex;
 
-    width: 136px;
+    /*width: 136px;*/
     height: 42px;
     padding: 0 25px;
     margin: auto;

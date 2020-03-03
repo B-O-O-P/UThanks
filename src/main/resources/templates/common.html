@@ -24,12 +24,12 @@
     </header>
     <nav class="menu-sign-up" th:fragment="menu-sign">
         <div class="menu__item">
-            <a th:if="${session.user}" th:href="@{/}" class="menu__item">Profile</a>
-            <a th:unless="${session.user}" th:href="@{/sign-up}" class="menu__item">Sign up</a>
+            <a th:if="${session.user}" th:href="@{/}">Profile</a>
+            <a th:unless="${session.user}" th:href="@{/sign-up}">Sign up</a>
         </div>
         <div class="menu__item">
-            <a th:if="${session.user}" th:href="@{/log-out}" class="menu__item">Log out</a>
-            <a th:unless="${session.user}" th:href="@{/log-in}" class="menu__item">Log in</a>
+            <a th:if="${session.user}" th:href="@{/log-out}">Log out</a>
+            <a th:unless="${session.user}" th:href="@{/log-in}">Log in</a>
         </div>
     </nav>
 </div>
@@ -46,6 +46,13 @@
         </div>
         <div class="menu__item">
             <a th:href="@{/not-found}">Our contacts</a>
+        </div>
+        <div class="menu__item">
+<!--            TO DO if company-->
+            <a th:href="@{/create-event}">Create an event</a>
+        </div>
+        <div class="menu__item">
+            <a th:href="@{/not-found}">⚙ Settings</a>
         </div>
     </nav>
     <div class="carousel" th:fragment="carousel">
