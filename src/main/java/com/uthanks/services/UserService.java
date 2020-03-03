@@ -1,7 +1,6 @@
 package com.uthanks.services;
 
 // import com.uthanks.repository.UserRepository;
-import com.uthanks.domain.Role;
 import com.uthanks.domain.User;
 import com.uthanks.form.UserCredentials;
 import com.uthanks.repository.UserRepository;
@@ -26,8 +25,6 @@ public class UserService {
         User user = new User();
         user.setLogin(registerForm.getLogin());
         user.setEmail(registerForm.getEmail());
-        Role def = new Role(1, Role.Name.VOLUNTEER);
-        user.setRole(def);
         userRepository.save(user);
         userRepository.updatePasswordSha(user.getId(), registerForm.getPassword());
         return user;
