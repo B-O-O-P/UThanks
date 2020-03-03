@@ -25,23 +25,26 @@ public class UserCredentialsRegisterValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        if (!errors.hasErrors()) {
-            UserCredentials registerForm = (UserCredentials) target;
+        if (errors.hasErrors()) {
+            return;
+        }
 
-            if (StringUtils.isAnyBlank(registerForm.getLogin())) {
-                errors.rejectValue("login", "login.is.empty", "login can not be empty");
-            } else if (!userService.isLoginVacant(registerForm.getLogin())) {
-                errors.rejectValue("login", "login.is.in.use", "login is in use");
-            }
+        UserCredentials registerForm = (UserCredentials) target;
 
-            if (StringUtils.isAnyBlank(registerForm.getEmail())) {
-                errors.rejectValue("email", "email.is.empty", "email can not be empty");
-            }
+        if (StringUtils.isBlank(registerForm.getLogin())) {
+            String errorCode = "login.is.empty";
+            String errorMessage = "login can not be empty";
+            errors.rejectValue("login", errorCode, errorMessage);
+        } else if (!userService.isLoginVacant(registerForm.getLogin())) {
+            String errorCode = "login.is.in.use";
+            String errorMessage = "login is in use";
+            errors.rejectValue("login", errorCode, errorMessage);
+        }
 
-            /*if (registerForm.getEmail() == null || registerForm.getEmail().isEmpty()) {
-                errors.rejectValue("email", "email.is.empty", "email can not be empty");
-            }*/
-
+        if (StringUtils.isBlank(registerForm.getEmail())) {
+            String errorCode = "email.is.empty";
+            String errorMessage = "email can not be empty";
+            errors.rejectValue("email", errorCode, errorMessage);
         }
     }
 }

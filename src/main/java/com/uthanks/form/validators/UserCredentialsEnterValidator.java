@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+/**
+ * Class for validation of data for login.
+ */
 @Component
 public class UserCredentialsEnterValidator implements Validator {
     private final UserService userService;
@@ -22,15 +25,20 @@ public class UserCredentialsEnterValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        if (!errors.hasErrors()) {
-            UserCredentials enterForm = (UserCredentials) target;
+        if (errors.hasErrors()) {
+            return;
+        }
 
-            if (StringUtils.isAnyBlank(enterForm.getLogin())) {
-                errors.rejectValue("login", "login.is.empty", "login can not be empty");
-            } else if (userService.findByLoginAndPassword(enterForm.getLogin(), enterForm.getPassword()) == null) {
-                errors.rejectValue("password", "invalid.login.or.password",
-                        "invalid login or password");
-            }
+        UserCredentials enterForm = (UserCredentials) target;
+
+        if (StringUtils.isAnyBlank(enterForm.getLogin())) {
+            String errorCode = "login.is.empty";
+            String errorMessage = "login can not be empty";
+            errors.rejectValue("login", errorCode, errorMessage);
+        } else if (userService.findByLoginAndPassword(enterForm.getLogin(), enterForm.getPassword()) == null) {
+            String errorCode = "invalid.login.or.password";
+            String errorMessage = "invalid login or password";
+            errors.rejectValue("password", errorCode, errorMessage);
         }
     }
 }
