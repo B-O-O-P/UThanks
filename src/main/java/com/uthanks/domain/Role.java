@@ -27,9 +27,9 @@ public class Role {
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    private Name name;
+    private RoleName name;
 
-    public enum Name {
+    public enum RoleName {
         VOLUNTEER,
         ORGANIZATION,
         ADMIN

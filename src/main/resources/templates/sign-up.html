@@ -16,11 +16,11 @@
         <div class="form__name">Sign up</div>
         <div class="form__radio">
             <div class="radio-index">
-                <input type="radio" name="type" id="comp" value="2" th:field="*{userType}" checked>
+                <input type="radio" name="type" id="comp" th:value="${organizationRole}" th:field="*{userType}" checked>
                 <label for="comp">Company</label>
             </div>
             <div class="radio-index">
-                <input type="radio" name="type" id="pers" value="1" th:field="*{userType}">
+                <input type="radio" name="type" id="pers" th:value="${volunteerRole}" th:field="*{userType}">
                 <label for="pers">Person</label>
             </div>
             <span th:if="${#fields.hasErrors('userType')}" th:errors="*{userType}"></span>

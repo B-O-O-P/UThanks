@@ -1,5 +1,6 @@
 package com.uthanks.controller;
 
+import com.uthanks.domain.Role.RoleName;
 import com.uthanks.form.UserCredentials;
 import com.uthanks.form.validators.UserCredentialsRegisterValidator;
 import com.uthanks.services.UserService;
@@ -36,6 +37,8 @@ public class RegisterPage extends Page {
     @GetMapping(path = "/sign-up")
     public String registerGet(Model model) {
         model.addAttribute("registerForm", new UserCredentials());
+        model.addAttribute("organizationRole", RoleName.ORGANIZATION);
+        model.addAttribute("volunteerRole", RoleName.VOLUNTEER);
         return "sign-up";
     }
 

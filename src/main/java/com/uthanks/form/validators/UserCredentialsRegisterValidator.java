@@ -1,5 +1,6 @@
 package com.uthanks.form.validators;
 
+import com.uthanks.domain.Role.RoleName;
 import org.apache.commons.lang3.StringUtils;
 import com.uthanks.form.UserCredentials;
 import com.uthanks.services.UserService;
@@ -44,7 +45,8 @@ public class UserCredentialsRegisterValidator implements Validator {
             errors.rejectValue("login", "login.is.in.use", "login is in use");
         }
 
-        if (registerForm.getUserType() != 1 && registerForm.getUserType() != 2) {
+        if (registerForm.getUserType() != RoleName.VOLUNTEER
+                && registerForm.getUserType() != RoleName.ORGANIZATION) {
             errors.rejectValue("userType", "type.is.empty",
                     "choose register as company or person");
         }

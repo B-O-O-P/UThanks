@@ -15,8 +15,8 @@ import java.util.List;
 public class UserService {
     private final UserRepository userRepository;
 
-    private final Role VOLUNTEER_ROLE = new Role(1, Role.Name.VOLUNTEER);
-    private final Role ORGANIZATION_ROLE = new Role(2, Role.Name.ORGANIZATION);
+    private final Role VOLUNTEER_ROLE = new Role(1, Role.RoleName.VOLUNTEER);
+    private final Role ORGANIZATION_ROLE = new Role(2, Role.RoleName.ORGANIZATION);
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -31,11 +31,14 @@ public class UserService {
         user.setLogin(registerForm.getLogin());
         user.setEmail(registerForm.getEmail());
         switch (registerForm.getUserType()) {
-            case 1:
+            case VOLUNTEER:
                 user.setRole(VOLUNTEER_ROLE);
                 break;
-            case 2:
+            case ORGANIZATION:
                 user.setRole(ORGANIZATION_ROLE);
+                break;
+            default:
+                throw new IllegalArgumentException("Unmapped role");
         }
         userRepository.save(user);
         userRepository.updatePasswordSha(user.getId(), registerForm.getPassword());
