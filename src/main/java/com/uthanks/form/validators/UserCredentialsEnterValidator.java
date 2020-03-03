@@ -1,5 +1,6 @@
 package com.uthanks.form.validators;
 
+import com.uthanks.domain.User;
 import com.uthanks.form.UserCredentials;
 import com.uthanks.services.UserService;
 import org.apache.commons.lang3.StringUtils;
@@ -31,14 +32,15 @@ public class UserCredentialsEnterValidator implements Validator {
 
         UserCredentials enterForm = (UserCredentials) target;
 
-        if (StringUtils.isAnyBlank(enterForm.getLogin())) {
-            String errorCode = "login.is.empty";
-            String errorMessage = "login can not be empty";
-            errors.rejectValue("login", errorCode, errorMessage);
-        } else if (userService.findByLoginAndPassword(enterForm.getLogin(), enterForm.getPassword()) == null) {
-            String errorCode = "invalid.login.or.password";
-            String errorMessage = "invalid login or password";
-            errors.rejectValue("password", errorCode, errorMessage);
+        if (StringUtils.isBlank(enterForm.getLogin())) {
+            errors.rejectValue("login", "login.is.empty", "login can not be empty");
+            return;
+        }
+
+        User user = userService.findByLoginAndPassword(enterForm.getLogin(), enterForm.getPassword());
+        if (user == null) {
+            errors.rejectValue("password", "invalid.login.or.password",
+                    "invalid login or password");
         }
     }
 }

@@ -31,20 +31,17 @@ public class UserCredentialsRegisterValidator implements Validator {
 
         UserCredentials registerForm = (UserCredentials) target;
 
-        if (StringUtils.isBlank(registerForm.getLogin())) {
-            String errorCode = "login.is.empty";
-            String errorMessage = "login can not be empty";
-            errors.rejectValue("login", errorCode, errorMessage);
-        } else if (!userService.isLoginVacant(registerForm.getLogin())) {
-            String errorCode = "login.is.in.use";
-            String errorMessage = "login is in use";
-            errors.rejectValue("login", errorCode, errorMessage);
+        if (StringUtils.isBlank(registerForm.getEmail())) {
+            errors.rejectValue("email", "email.is.empty", "email can not be empty");
         }
 
-        if (StringUtils.isBlank(registerForm.getEmail())) {
-            String errorCode = "email.is.empty";
-            String errorMessage = "email can not be empty";
-            errors.rejectValue("email", errorCode, errorMessage);
+        if (StringUtils.isBlank(registerForm.getLogin())) {
+            errors.rejectValue("login", "login.is.empty", "login can not be empty");
+            return;
+        }
+
+        if (!userService.isLoginVacant(registerForm.getLogin())) {
+            errors.rejectValue("login", "login.is.in.use", "login is in use");
         }
     }
 }
