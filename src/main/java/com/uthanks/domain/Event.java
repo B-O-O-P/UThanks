@@ -14,6 +14,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
@@ -27,6 +29,10 @@ public class Event {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "creator_id")
     private User creator;
+
+    @NotNull
+    @NotEmpty
+    private String name;
 
     @CreationTimestamp
     private Date creationTime;

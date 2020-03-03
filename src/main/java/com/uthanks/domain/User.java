@@ -15,7 +15,7 @@ import javax.persistence.UniqueConstraint;
 import javax.persistence.JoinColumn;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.OneToMany;
 import javax.persistence.ManyToMany;
@@ -58,7 +58,7 @@ public class User {
     @Lob
     private String skills;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
 
