@@ -1,6 +1,6 @@
 package com.uthanks.controller;
 
-import com.uthanks.domain.Role;
+import com.uthanks.domain.Role.RoleName;
 import com.uthanks.domain.User;
 import com.uthanks.services.EventService;
 import com.uthanks.services.UserService;
@@ -24,13 +24,13 @@ public class Page {
     private UserService userService;
 
     @ModelAttribute("organizationRole")
-    public Role.RoleName getOrganizationRole() {
-        return Role.RoleName.ORGANIZATION;
+    public RoleName getOrganizationRole() {
+        return RoleName.ORGANIZATION;
     }
 
     @ModelAttribute("volunteerRole")
-    public Role.RoleName getVolunteerRole() {
-        return Role.RoleName.VOLUNTEER;
+    public RoleName getVolunteerRole() {
+        return RoleName.VOLUNTEER;
     }
 
     void setUser(HttpSession httpSession, User user) {
