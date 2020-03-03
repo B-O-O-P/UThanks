@@ -1,10 +1,12 @@
 package com.uthanks.services;
 
-// import com.uthanks.repository.UserRepository;
+import com.uthanks.domain.Role;
 import com.uthanks.domain.User;
 import com.uthanks.form.UserCredentials;
 import com.uthanks.repository.UserRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Class for working with userRepository.
@@ -12,6 +14,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+
+    private final Role VOLUNTEER_ROLE = new Role(1, Role.Name.VOLUNTEER);
+    private final Role ORGANIZATION_ROLE = new Role(2, Role.Name.ORGANIZATION);
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -25,6 +30,13 @@ public class UserService {
         User user = new User();
         user.setLogin(registerForm.getLogin());
         user.setEmail(registerForm.getEmail());
+        switch (registerForm.getUserType()) {
+            case 1:
+                user.setRole(VOLUNTEER_ROLE);
+                break;
+            case 2:
+                user.setRole(ORGANIZATION_ROLE);
+        }
         userRepository.save(user);
         userRepository.updatePasswordSha(user.getId(), registerForm.getPassword());
         return user;
@@ -32,5 +44,9 @@ public class UserService {
 
     public User findByLoginAndPassword(String login, String password) {
         return login == null || password == null ? null : userRepository.findByLoginAndPassword(login, password);
+    }
+
+    public List<User> findOrganizations() {
+        return userRepository.findByRoleId(ORGANIZATION_ROLE.getId());
     }
 }

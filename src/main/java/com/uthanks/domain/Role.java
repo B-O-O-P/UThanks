@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Enumerated;
 import javax.persistence.EnumType;
-
 import javax.validation.constraints.NotNull;
 
 @Getter
@@ -25,7 +24,14 @@ public class Role {
     @Enumerated(EnumType.STRING)
     private Name name;
 
-    private enum Name {
+    public Role() {}
+
+    public Role(long id, Name name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public enum Name {
         VOLUNTEER,
         ORGANIZATION,
         ADMIN

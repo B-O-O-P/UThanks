@@ -1,6 +1,7 @@
 package com.uthanks.controller;
 
 import com.uthanks.domain.User;
+import com.uthanks.services.EventService;
 import com.uthanks.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,11 +13,14 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 public class Page {
-    private static final String USER_ID_SESSION_KEY = "userId";
+    @SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
+    @Autowired
+    private EventService eventService;
 
     @SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
     @Autowired
     private UserService userService;
+
 
     void setUser(HttpSession httpSession, User user) {
         if (user != null) {
@@ -32,5 +36,9 @@ public class Page {
 
     UserService getUserService() {
         return userService;
+    }
+
+    EventService getEventService() {
+        return eventService;
     }
 }

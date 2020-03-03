@@ -43,5 +43,10 @@ public class UserCredentialsRegisterValidator implements Validator {
         if (!userService.isLoginVacant(registerForm.getLogin())) {
             errors.rejectValue("login", "login.is.in.use", "login is in use");
         }
+
+        if (registerForm.getUserType() != 1 && registerForm.getUserType() != 2) {
+            errors.rejectValue("userType", "type.is.empty",
+                    "choose register as company or person");
+        }
     }
 }
