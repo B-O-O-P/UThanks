@@ -43,6 +43,9 @@ dependencies {
 
     // Default servlet container starter used by spring-boot-starter-web
     implementation 'org.springframework.boot:spring-boot-starter-tomcat'
+
+    // Dependency for StringUtils
+    implementation "org.apache.commons:commons-lang3:$versionLang3"
 }
 
 application {

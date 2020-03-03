@@ -1,52 +1,29 @@
 package com.uthanks.form;
 
+import lombok.Data;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * Class for managing user data.
  */
+@Data
 public class UserCredentials {
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getIsUser() {
-        return isUser;
-    }
-
-    public void setIsUser(int isUser) {
-        this.isUser = isUser;
-    }
-
+    @NotNull
     @NotEmpty
     private String login;
 
+    @NotNull
     @NotEmpty
+    @Size(min = 4, max = 32,
+    message = "password must be between {min} and {max} characters long")
     private String password;
 
     @Email
     private String email;
 
-    private int isUser;
+    private int userType;
 }
