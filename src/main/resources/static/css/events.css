@@ -9,7 +9,7 @@ body {
 }
 
 .page-name {
-    padding-left: 30px;
+    margin-left: 30px;
     font-weight: normal;
     font-size: 30px;
     font-family: 'Questrial', serif;
@@ -34,13 +34,14 @@ body {
     margin: 10px;
     padding: 0;
     width: 320px;
+    box-shadow: 1px 1px 3px #C4C4C4;
 
     background-color: #FFFACC;
     font-family: 'Questrial', serif;
     font-weight: normal;
 }
 .page-content__card:hover {
-    box-shadow: 1px 1px 3px #C4C4C4;
+    box-shadow: 1px 1px 3px #A8A8A8;
 }
 
 .card-name {
@@ -88,10 +89,10 @@ body {
 }
 
 .card-about {
-    height: 50px;
+    height: 3.6em;
     padding-right: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: justify;
-    font-size: 18px;
+    font-size: 1em;
 }

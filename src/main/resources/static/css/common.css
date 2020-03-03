@@ -59,6 +59,10 @@ body {
     cursor: pointer;
 }
 
+.menu-sign-up-btn-wrapper {
+    position: relative;
+}
+
 #menu-check {
     display: none;
 }
@@ -86,30 +90,33 @@ body {
 
     font-family: 'Questrial', serif;
     font-size: 25px;
-    transition: left 1s ease-out 0.2s;
+    transition: left 0.5s ease-out;
 }
 .menu-sign-up {
     z-index: 2;
     position: absolute;
-    display: block;
     width: 150px;
     height: 100px;
-    top: -100px;
-    right: 10%;
+    display: none;
+    opacity: 0;
     background-color: #BABABA ;
 
     font-family: 'Questrial', serif;
     font-size: 25px;
-    transition: top 1s ease-out 0.1s;
+    transition: opacity 1s ease-out 0.4s;
 }
 #menu-check:checked ~ .content .menu {
     left: 0;
-    transition: left 1s ease-out 0.2s;
+    transition: left 0.5s ease-out;
 }
 
-#menu-sign-check:checked ~ .menu-sign-up {
-    top: 70px;
-    transition: top 1s ease-out 0.1s;
+#menu-sign-check:checked ~ .header .menu-sign-up-btn-wrapper .menu-sign-up {
+    top: 80px;
+    left: -80px;
+    position: absolute;
+    display: block;
+    opacity: 1;
+    transition: opacity 1s ease-out 0.4s;
 }
 .menu__name {
     padding: 10px;
@@ -118,7 +125,7 @@ body {
 }
 .menu__item {
     padding: 15px;
-    margin: 10px 0;
+    margin-bottom: 10px;
     background-color: #ADADAD;
     cursor: pointer;
     color: #000000;
