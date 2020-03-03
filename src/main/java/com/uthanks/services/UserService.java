@@ -26,8 +26,6 @@ public class UserService {
         User user = new User();
         user.setLogin(registerForm.getLogin());
         user.setEmail(registerForm.getEmail());
-        Role def = new Role(1, Role.Name.VOLUNTEER);
-        user.setRole(def);
         userRepository.save(user);
         userRepository.updatePasswordSha(user.getId(), registerForm.getPassword());
         return user;
