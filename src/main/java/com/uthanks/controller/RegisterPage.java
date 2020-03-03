@@ -37,8 +37,6 @@ public class RegisterPage extends Page {
     @GetMapping(path = "/sign-up")
     public String registerGet(Model model) {
         model.addAttribute("registerForm", new UserCredentials());
-        model.addAttribute("organizationRole", RoleName.ORGANIZATION);
-        model.addAttribute("volunteerRole", RoleName.VOLUNTEER);
         return "sign-up";
     }
 

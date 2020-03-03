@@ -1,10 +1,12 @@
 package com.uthanks.controller;
 
+import com.uthanks.domain.Role;
 import com.uthanks.domain.User;
 import com.uthanks.services.EventService;
 import com.uthanks.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,6 +23,15 @@ public class Page {
     @Autowired
     private UserService userService;
 
+    @ModelAttribute("organizationRole")
+    public Role.RoleName getOrganizationRole() {
+        return Role.RoleName.ORGANIZATION;
+    }
+
+    @ModelAttribute("volunteerRole")
+    public Role.RoleName getVolunteerRole() {
+        return Role.RoleName.VOLUNTEER;
+    }
 
     void setUser(HttpSession httpSession, User user) {
         if (user != null) {
