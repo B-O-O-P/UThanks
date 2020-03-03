@@ -1,7 +1,6 @@
 package com.uthanks.services;
 
 // import com.uthanks.repository.UserRepository;
-import com.uthanks.domain.Role;
 import com.uthanks.domain.User;
 import com.uthanks.form.UserCredentials;
 import com.uthanks.repository.UserRepository;
