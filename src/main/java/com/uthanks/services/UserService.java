@@ -1,6 +1,7 @@
 package com.uthanks.services;
 
 // import com.uthanks.repository.UserRepository;
+
 import com.uthanks.domain.Role;
 import com.uthanks.domain.User;
 import com.uthanks.form.UserCredentials;
@@ -35,5 +36,9 @@ public class UserService {
 
     public User findByLoginAndPassword(String login, String password) {
         return login == null || password == null ? null : userRepository.findByLoginAndPassword(login, password);
+    }
+
+    public User findById(Long id) {
+        return id == null ? null : userRepository.findById(id).orElse(null);
     }
 }

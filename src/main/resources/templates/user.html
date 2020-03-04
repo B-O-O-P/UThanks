@@ -15,12 +15,13 @@
         <div class="user-card__item user-card__main-info">
             <div class="main-info__avatar">
                 <div class="avatar-wrapper">
-                    <img class="avatar-image" src="images/user.png" alt="User">
+                    <img class="avatar-image" th:src="@{/images/user.png}" src="images/user.png"
+                         alt="User">
                 </div>
             </div>
             <div class="main-text main-info__text">
-                <p class="main-text__text-line text-line text-line_end text-line_big">Username
-                    Usersurname</p>
+                <p class="main-text__text-line text-line text-line_end text-line_big"
+                   th:if="${userInfo != null}">[[${userInfo.login}]]</p>
                 <p class="main-text__text-line text-line text-line_end text-line_margined text-line_alpha">
                     10 years</p>
             </div>
@@ -39,10 +40,12 @@
             <div class="event-carousel">
                 <!--TODO сделать шаблон карточки thymeleaf-->
                 <button class="carousel-arrow event-carousel__arrow_left">
-                    <img class="carousel-arrow-svg" src="images/arrow-right.svg" alt="left arrow">
+                    <img class="carousel-arrow-svg" th:src="@{/images/arrow-right.svg}"
+                         src="images/arrow-right.svg" alt="left arrow">
                 </button>
                 <button class="carousel-arrow event-carousel__arrow_right">
-                    <img class="carousel-arrow-svg" src="images/arrow-right.svg" alt="right arrow">
+                    <img class="carousel-arrow-svg" th:src="@{/images/arrow-right.svg}"
+                         src="images/arrow-right.svg" alt="right arrow">
                 </button>
             </div>
         </div>
