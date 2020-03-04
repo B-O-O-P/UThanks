@@ -2,6 +2,7 @@
 <html xmlns:th="http://thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <title>UThanks</title>
     <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/user.css}" href="../static/css/user.css">
@@ -22,8 +23,8 @@
             <div class="main-text main-info__text">
                 <p class="main-text__text-line text-line text-line_end text-line_big"
                    th:if="${userInfo != null}">[[${userInfo.login}]]</p>
-                <p class="main-text__text-line text-line text-line_end text-line_margined text-line_alpha">
-                    10 years</p>
+                <p class="main-text__text-line text-line text-line_end text-line_margined text-line_alpha"
+                   th:if="${userInfo != null}">[[${userInfo.age}]] years</p>
             </div>
         </div>
         <div class="user-card__item user-card__item_main-text">
@@ -32,6 +33,7 @@
         </div>
         <div class="user-card__item user-card__item_skills">
             <h3 class="text-title">Skills</h3>
+            <p class="text-line" th:if="${userInfo != null}">[[${userInfo.skills}]]</p>
             <p class="text-line">Best of the best Best of the best Best of the best Best of the best
                 Best of the best Best of the best Best of the best</p>
         </div>
@@ -66,11 +68,9 @@
                     Post your comment:
                 </label>
                 <textarea class="comment-area comment-form__text-area" id="comment"
-                          placeholder="Post a new comment here" aria-required="true">
-
-                </textarea>
+                          placeholder="Post a new comment here" aria-required="true"></textarea>
                 <button class="comment-form__button" type="submit">
-                    Post comment
+                    Add comment
                 </button>
             </form>
         </div>
