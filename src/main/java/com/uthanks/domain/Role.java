@@ -15,7 +15,6 @@ import javax.persistence.EnumType;
 import javax.validation.constraints.NotNull;
 
 @Getter
-@AllArgsConstructor
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "name"))
 public class Role {
