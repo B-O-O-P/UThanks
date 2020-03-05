@@ -1,11 +1,12 @@
 package com.uthanks.services;
 
-// import com.uthanks.repository.UserRepository;
-
+import com.uthanks.domain.Role;
 import com.uthanks.domain.User;
 import com.uthanks.form.UserCredentials;
 import com.uthanks.repository.UserRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Class for working with userRepository.
@@ -13,6 +14,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+
+    private final Role VOLUNTEER_ROLE = new Role(1, Role.RoleName.VOLUNTEER);
+    private final Role ORGANIZATION_ROLE = new Role(2, Role.RoleName.ORGANIZATION);
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -26,6 +30,16 @@ public class UserService {
         User user = new User();
         user.setLogin(registerForm.getLogin());
         user.setEmail(registerForm.getEmail());
+        switch (registerForm.getUserType()) {
+            case VOLUNTEER:
+                user.setRole(VOLUNTEER_ROLE);
+                break;
+            case ORGANIZATION:
+                user.setRole(ORGANIZATION_ROLE);
+                break;
+            default:
+                throw new IllegalArgumentException("Unmapped role");
+        }
         userRepository.save(user);
         userRepository.updatePasswordSha(user.getId(), registerForm.getPassword());
         return user;
@@ -35,6 +49,9 @@ public class UserService {
         return login == null || password == null ? null : userRepository.findByLoginAndPassword(login, password);
     }
 
+    public List<User> findOrganizations() {
+        return userRepository.findByRoleId(ORGANIZATION_ROLE.getId());
+    }
 
     public User findById(Long id) {
         if (id == null) {

@@ -1,5 +1,6 @@
 package com.uthanks.form;
 
+import com.uthanks.domain.Role.RoleName;
 import lombok.Data;
 
 import javax.validation.constraints.Email;
@@ -25,5 +26,5 @@ public class UserCredentials {
     @Email
     private String email;
 
-    private int userType;
+    private RoleName userType;
 }
