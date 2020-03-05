@@ -12,16 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
  */
 @Controller
 public class UserPage extends Page {
-    private final UserService userService;
-
-    public UserPage(UserService userService) {
-        this.userService = userService;
-    }
-
     @GetMapping(path = "/user/{id}")
     public String index(@PathVariable("id") String requestId, Model model) {
         try {
-            User user = userService.findById(Long.parseLong(requestId));
+            User user = getUserService().findById(Long.parseLong(requestId));
             if (user != null) {
                 model.addAttribute("userInfo", user);
             }
