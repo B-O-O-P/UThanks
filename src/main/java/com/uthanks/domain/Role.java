@@ -2,6 +2,7 @@ package com.uthanks.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -15,6 +16,7 @@ import javax.persistence.EnumType;
 import javax.validation.constraints.NotNull;
 
 @Getter
+@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "name"))
@@ -25,9 +27,9 @@ public class Role {
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    private Name name;
+    private RoleName name;
 
-    public enum Name {
+    public enum RoleName {
         VOLUNTEER,
         ORGANIZATION,
         ADMIN

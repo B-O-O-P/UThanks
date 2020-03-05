@@ -17,21 +17,23 @@
             <a href="/">Uthanks</a>
         </h1>
         <img class="header__btn-search page-btn" th:src="@{/images/search.png}" src="../static/images/search.png">
-        <label for="menu-sign-check">
-            <img class="header__btn-search page-btn" th:src="@{/images/user.png}"
-                 src="../static/images/user.png">
-        </label>
+        <div class="menu-sign-up-btn-wrapper">
+            <label for="menu-sign-check">
+                <img class="header__btn-search page-btn" th:src="@{/images/user.png}"
+                     src="../static/images/user.png">
+            </label>
+            <nav class="menu-sign-up" th:fragment="menu-sign">
+                <div class="menu__item">
+                    <a th:if="${session.user}" th:href="@{/user/{id}(id=${session.user.id})}" class="menu__item">Profile</a>
+                    <a th:unless="${session.user}" th:href="@{/sign-up}" class="menu__item">Sign up</a>
+                </div>
+                <div class="menu__item">
+                    <a th:if="${session.user}" th:href="@{/log-out}" class="menu__item">Log out</a>
+                    <a th:unless="${session.user}" th:href="@{/log-in}" class="menu__item">Log in</a>
+                </div>
+            </nav>
+        </div>
     </header>
-    <nav class="menu-sign-up" th:fragment="menu-sign">
-        <div class="menu__item">
-            <a th:if="${session.user}" th:href="@{/}">Profile</a>
-            <a th:unless="${session.user}" th:href="@{/sign-up}">Sign up</a>
-        </div>
-        <div class="menu__item">
-            <a th:if="${session.user}" th:href="@{/log-out}">Log out</a>
-            <a th:unless="${session.user}" th:href="@{/log-in}">Log in</a>
-        </div>
-    </nav>
 </div>
 
 <main class="content">
@@ -46,13 +48,6 @@
         </div>
         <div class="menu__item">
             <a th:href="@{/not-found}">Our contacts</a>
-        </div>
-        <div class="menu__item">
-<!--            TO DO if company-->
-            <a th:href="@{/create-event}">Create an event</a>
-        </div>
-        <div class="menu__item">
-            <a th:href="@{/not-found}">⚙ Settings</a>
         </div>
     </nav>
     <div class="carousel" th:fragment="carousel">

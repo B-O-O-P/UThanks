@@ -12,7 +12,9 @@ body {
     display: grid;
     grid-template-rows: 80px 1fr 80px;
     background-color: #FFF8EA;
+    font-family: 'Questrial', serif;
 }
+
 .wrapper {
     height: 80px;
     z-index: 3;
@@ -59,6 +61,10 @@ body {
     cursor: pointer;
 }
 
+.menu-sign-up-btn-wrapper {
+    position: relative;
+}
+
 #menu-check {
     display: none;
 }
@@ -76,40 +82,44 @@ body {
  }
 .menu {
     z-index: 2;
-    position: absolute;
+    position: fixed;
     display: block;
     width: 70%;
-    top: 0;
-    height: 100%;
+    top: 80px;
+    height: calc(100% - 80px);
     left: -70%;
     background-color: #BABABA ;
 
     font-family: 'Questrial', serif;
     font-size: 25px;
-    transition: left 1s ease-out 0.2s;
+    transition: left 0.5s ease-out;
 }
 .menu-sign-up {
     z-index: 2;
+    overflow: hidden;
     position: absolute;
-    display: block;
     width: 150px;
-    height: 100px;
-    top: -100px;
-    right: 10%;
+    height: 125px;
+    display: none;
+    opacity: 0;
     background-color: #BABABA ;
 
     font-family: 'Questrial', serif;
     font-size: 25px;
-    transition: top 1s ease-out 0.1s;
+    transition: opacity 1s ease-out 0.4s;
 }
 #menu-check:checked ~ .content .menu {
     left: 0;
-    transition: left 1s ease-out 0.2s;
+    transition: left 0.5s ease-out;
 }
 
-#menu-sign-check:checked ~ .menu-sign-up {
-    top: 70px;
-    transition: top 1s ease-out 0.1s;
+#menu-sign-check:checked ~ .header .menu-sign-up-btn-wrapper .menu-sign-up {
+    top: 80px;
+    left: -80px;
+    position: absolute;
+    display: block;
+    opacity: 1;
+    transition: opacity 1s ease-out 0.4s;
 }
 .menu__name {
     padding: 10px;
@@ -117,13 +127,15 @@ body {
     text-align: center;
 }
 .menu__item {
-    padding: 15px;
-    margin: 10px 0;
+    margin-bottom: 10px;
     background-color: #ADADAD;
     cursor: pointer;
     color: #000000;
 }
 .menu__item a {
+    display: block;
+    padding: 15px;
+    width: 100%;
     text-decoration: none;
     color: #000;
 }

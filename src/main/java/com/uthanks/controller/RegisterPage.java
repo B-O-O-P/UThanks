@@ -2,7 +2,6 @@ package com.uthanks.controller;
 
 import com.uthanks.form.UserCredentials;
 import com.uthanks.form.validators.UserCredentialsRegisterValidator;
-import com.uthanks.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,11 +19,9 @@ import javax.validation.Valid;
  */
 @Controller
 public class RegisterPage extends Page {
-    private final UserService userService;
     private final UserCredentialsRegisterValidator userCredentialsRegisterValidator;
 
-    public RegisterPage(UserService userService, UserCredentialsRegisterValidator userCredentialsRegisterValidator) {
-        this.userService = userService;
+    public RegisterPage(UserCredentialsRegisterValidator userCredentialsRegisterValidator) {
         this.userCredentialsRegisterValidator = userCredentialsRegisterValidator;
     }
 
@@ -46,7 +43,7 @@ public class RegisterPage extends Page {
             return "sign-up";
         }
 
-        setUser(httpSession, userService.register(registerForm));
+        setUser(httpSession, getUserService().register(registerForm));
 
         return "redirect:/";
     }

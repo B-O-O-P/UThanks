@@ -14,7 +14,7 @@
     <div th:replace="common :: menu"></div>
     <h2 class="page-name">Events</h2>
     <ul class="page-content">
-        <li class="page-content__card">
+        <li class="page-content__card" th:each="event : ${events}">
             <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}" class="card-photo">
             <div class="card-info">
                 <h3 class="card-name">NEERC</h3>
@@ -27,6 +27,7 @@
                     -blah-blah-blah-blah-blah-blah-blah-blah-blah-blah-blah
                     -blah-blah-blah-blah-blah-blah-blah-blah-blah-blah-blah
                 </div>
+                <script type="text/javascript" src="../static/js/ellipsis.js" th:src="@{/js/ellipsis.js}"></script>
                 <a href="/not-found" th:href="@{/not-found}" class="card-more">View more</a>
             </div>
         </li>
