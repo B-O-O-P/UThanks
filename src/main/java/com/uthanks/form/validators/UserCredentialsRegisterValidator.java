@@ -36,19 +36,23 @@ public class UserCredentialsRegisterValidator implements Validator {
             errors.rejectValue("email", "email.is.empty", "email can not be empty");
         }
 
-        if (StringUtils.isBlank(registerForm.getLogin())) {
-            errors.rejectValue("login", "login.is.empty", "login can not be empty");
-            return;
-        }
-
-        if (!userService.isLoginVacant(registerForm.getLogin())) {
-            errors.rejectValue("login", "login.is.in.use", "login is in use");
-        }
+        validateLogin(registerForm.getLogin(), errors);
 
         if (registerForm.getUserType() != RoleName.VOLUNTEER
                 && registerForm.getUserType() != RoleName.ORGANIZATION) {
             errors.rejectValue("userType", "type.is.empty",
                     "choose register as company or person");
+        }
+    }
+
+    private void validateLogin(String login, Errors errors) {
+        if (StringUtils.isBlank(login)) {
+            errors.rejectValue("login", "login.is.empty", "login can not be empty");
+            return;
+        }
+
+        if (!userService.isLoginVacant(login)) {
+            errors.rejectValue("login", "login.is.in.use", "login is in use");
         }
     }
 }
