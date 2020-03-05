@@ -17,16 +17,16 @@
         <div class="form__item">
             <label for="login">Login:</label>
             <input required type="text" id="login" maxlength="32" th:field="*{login}">
-            <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></span>
+            <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}" class="error"></span>
         </div>
         <div class="form__item">
             <label for="pass">Password:</label>
             <input required type="password" id="pass" maxlength="32" th:field="*{password}">
-            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></span>
         </div>
-        <input type="submit" id="submit" value="Sign up" class="form__submit">
+        <input type="submit" id="submit" value="Log in" class="form__submit">
     </form>
 </main>
-<footer class="footer"></footer>
+<div th:replace="common :: foot"></div>
 </body>
 </html>
