@@ -26,7 +26,7 @@ public class UserPage extends Page {
                 model.addAttribute("userInfo", user);
             }
         } catch (NumberFormatException e) {
-            return "redirect:/";
+            return "redirect:/not-found";
         }
         return "user";
     }

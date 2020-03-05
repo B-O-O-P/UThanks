@@ -22,9 +22,13 @@
             </div>
             <div class="main-text main-info__text">
                 <p class="main-text__text-line text-line text-line_end text-line_big"
-                   th:if="${userInfo != null}">[[${userInfo.login}]]</p>
+                   th:if="${userInfo != null && userInfo.fullName == null}">
+                    [[${userInfo.login}]]</p>
+                <p class="main-text__text-line text-line text-line_end text-line_big"
+                   th:if="${userInfo != null && userInfo.fullName != null}">
+                    [[${userInfo.fullName}]]</p>
                 <p class="main-text__text-line text-line text-line_end text-line_margined text-line_alpha"
-                   th:if="${userInfo != null}">[[${userInfo.age}]] years</p>
+                   th:if="${userInfo}">[[${userInfo.age}]] years</p>
             </div>
         </div>
         <div class="user-card__item user-card__item_main-text">
@@ -33,7 +37,7 @@
         </div>
         <div class="user-card__item user-card__item_skills">
             <h3 class="text-title">Skills</h3>
-            <p class="text-line" th:if="${userInfo != null}">[[${userInfo.skills}]]</p>
+            <p class="text-line" th:if="${userInfo}">[[${userInfo.skills}]]</p>
             <p class="text-line">Best of the best Best of the best Best of the best Best of the best
                 Best of the best Best of the best Best of the best</p>
         </div>
