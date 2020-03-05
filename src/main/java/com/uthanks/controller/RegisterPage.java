@@ -21,11 +21,9 @@ import javax.validation.Valid;
  */
 @Controller
 public class RegisterPage extends Page {
-    private final UserService userService;
     private final UserCredentialsRegisterValidator userCredentialsRegisterValidator;
 
-    public RegisterPage(UserService userService, UserCredentialsRegisterValidator userCredentialsRegisterValidator) {
-        this.userService = userService;
+    public RegisterPage(UserCredentialsRegisterValidator userCredentialsRegisterValidator) {
         this.userCredentialsRegisterValidator = userCredentialsRegisterValidator;
     }
 
@@ -47,7 +45,7 @@ public class RegisterPage extends Page {
             return "sign-up";
         }
 
-        setUser(httpSession, userService.register(registerForm));
+        setUser(httpSession, getUserService().register(registerForm));
 
         return "redirect:/";
     }
