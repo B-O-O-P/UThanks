@@ -80,4 +80,5 @@ body {
 .form__item input {
     width: 100%;
     background-color: #FFFFFF;
+    font-family: 'Questrial', serif;
 }
