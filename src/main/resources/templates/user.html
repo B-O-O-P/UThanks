@@ -2,6 +2,7 @@
 <html xmlns:th="http://thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <title>UThanks</title>
     <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/user.css}" href="../static/css/user.css">
@@ -15,14 +16,19 @@
         <div class="user-card__item user-card__main-info">
             <div class="main-info__avatar">
                 <div class="avatar-wrapper">
-                    <img class="avatar-image" src="images/user.png" alt="User">
+                    <img class="avatar-image" th:src="@{/images/user.png}" src="images/user.png"
+                         alt="User">
                 </div>
             </div>
             <div class="main-text main-info__text">
-                <p class="main-text__text-line text-line text-line_end text-line_big">Username
-                    Usersurname</p>
-                <p class="main-text__text-line text-line text-line_end text-line_margined text-line_alpha">
-                    10 years</p>
+                <p class="main-text__text-line text-line text-line_end text-line_big"
+                   th:if="${userInfo != null && userInfo.fullName == null}">
+                    [[${userInfo.login}]]</p>
+                <p class="main-text__text-line text-line text-line_end text-line_big"
+                   th:if="${userInfo != null && userInfo.fullName != null}">
+                    [[${userInfo.fullName}]]</p>
+                <p class="main-text__text-line text-line text-line_end text-line_margined text-line_alpha"
+                   th:if="${userInfo}">[[${userInfo.age}]] years</p>
             </div>
         </div>
         <div class="user-card__item user-card__item_main-text">
@@ -31,6 +37,7 @@
         </div>
         <div class="user-card__item user-card__item_skills">
             <h3 class="text-title">Skills</h3>
+            <p class="text-line" th:if="${userInfo}">[[${userInfo.skills}]]</p>
             <p class="text-line">Best of the best Best of the best Best of the best Best of the best
                 Best of the best Best of the best Best of the best</p>
         </div>
@@ -39,10 +46,12 @@
             <div class="event-carousel">
                 <!--TODO сделать шаблон карточки thymeleaf-->
                 <button class="carousel-arrow event-carousel__arrow_left">
-                    <img class="carousel-arrow-svg" src="images/arrow-right.svg" alt="left arrow">
+                    <img class="carousel-arrow-svg" th:src="@{/images/arrow-right.svg}"
+                         src="images/arrow-right.svg" alt="left arrow">
                 </button>
                 <button class="carousel-arrow event-carousel__arrow_right">
-                    <img class="carousel-arrow-svg" src="images/arrow-right.svg" alt="right arrow">
+                    <img class="carousel-arrow-svg" th:src="@{/images/arrow-right.svg}"
+                         src="images/arrow-right.svg" alt="right arrow">
                 </button>
             </div>
         </div>
@@ -63,11 +72,9 @@
                     Post your comment:
                 </label>
                 <textarea class="comment-area comment-form__text-area" id="comment"
-                          placeholder="Post a new comment here" aria-required="true">
-
-                </textarea>
+                          placeholder="Post a new comment here" aria-required="true"></textarea>
                 <button class="comment-form__button" type="submit">
-                    Post comment
+                    Add comment
                 </button>
             </form>
         </div>
