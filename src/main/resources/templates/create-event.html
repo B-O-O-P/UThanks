@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <title>UThanks</title>
     <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/sign-up.css}" href="../static/css/sign-up.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/create-event.css}" href="../static/css/create-event.css">
 </head>
 <body>
 <div th:replace="common :: #menu-check"></div>
@@ -19,15 +19,17 @@
             <input required type="text" id="name">
             <!--            <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></span>-->
         </div>
-        <div class="form__time-borders">
-            <div class="form__item">
-                <label for="date-begin">Start:</label>
-                <input required type="date" id="date-begin">
-            </div>
-            <div class="form__item">
-                <label for="date-end">Finish:</label>
-                <input required type="date" id="date-end">
-            </div>
+        <div class="form__item">
+            <label for="date-begin">Start:</label>
+            <input required type="date" id="date-begin">
+        </div>
+        <div class="form__item">
+            <label for="date-end">Finish:</label>
+            <input required type="date" id="date-end">
+        </div>
+        <div class="form__item">
+            <label for="date-end">Desired amount of volunteers:</label>
+            <input required type="number" id="volunteers-count" max="100">
         </div>
 
         <div class="form__item">

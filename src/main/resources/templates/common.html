@@ -24,7 +24,8 @@
             </label>
             <nav class="menu-sign-up" th:fragment="menu-sign">
                 <div class="menu__item">
-                    <a th:if="${session.user}" th:href="@{/user/{id}(id=${session.user.id})}" class="menu__item">Profile</a>
+                    <a th:if="${session.user}" th:href="@{/user/{id}(id=${session.user.id})}"
+                       class="menu__item">Profile</a>
                     <a th:unless="${session.user}" th:href="@{/sign-up}" class="menu__item">Sign up</a>
                 </div>
                 <div class="menu__item">
@@ -48,6 +49,10 @@
         </div>
         <div class="menu__item">
             <a th:href="@{/not-found}">Our contacts</a>
+        </div>
+        <div class="menu__item">
+            <a th:if="${session.user} and ${session.user.role.getName() == organizationRole}"
+               th:href="@{/create-event}">Create event</a>
         </div>
     </nav>
     <div class="carousel" th:fragment="carousel">
