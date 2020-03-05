@@ -1,9 +1,7 @@
 package com.uthanks.controller;
 
-import com.uthanks.domain.Role.RoleName;
 import com.uthanks.form.UserCredentials;
 import com.uthanks.form.validators.UserCredentialsRegisterValidator;
-import com.uthanks.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
