@@ -20,6 +20,8 @@ body {
     align-content: space-around;
     flex-direction: column;
 
+    margin-bottom: 20px;
+
     font-family: 'Questrial', serif;
 }
 .form__name {
@@ -76,6 +78,9 @@ body {
     justify-content: space-between;
 }
 
+.input-label {
+    font-size: 20px;
+}
 
 .form__item input {
     width: 100%;

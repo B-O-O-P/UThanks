@@ -15,25 +15,25 @@
     <form class="form">
         <div class="form__name">Create an event</div>
         <div class="form__item">
-            <label for="name">Name:</label>
+            <label for="name" class="input-label">Name:</label>
             <input required type="text" id="name">
             <!--            <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></span>-->
         </div>
         <div class="form__item">
-            <label for="date-begin">Start:</label>
+            <label for="date-begin" class="input-label">Start:</label>
             <input required type="date" id="date-begin">
         </div>
         <div class="form__item">
-            <label for="date-end">Finish:</label>
+            <label for="date-end" class="input-label">Finish:</label>
             <input required type="date" id="date-end">
         </div>
         <div class="form__item">
-            <label for="date-end">Desired amount of volunteers:</label>
+            <label for="date-end" class="input-label">Desired amount of volunteers:</label>
             <input required type="number" id="volunteers-count" max="100">
         </div>
 
         <div class="form__item">
-            <label for="desc">Description:</label>
+            <label for="desc" class="input-label">Description:</label>
             <textarea required type="text" id="desc" class="form__desc" rows="10"></textarea>
         </div>
         <input type="submit" id="submit" value="Create event" class="form__submit">
