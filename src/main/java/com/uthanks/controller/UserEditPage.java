@@ -6,12 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-/**
- * Class for profile page of website.
- */
 @Controller
-public class UserPage extends Page {
-    @GetMapping(path = "/user/{id}")
+public class UserEditPage extends Page {
+    @GetMapping(path = "/user/{id}/edit")
     public String index(@PathVariable("id") String requestId, Model model) {
         try {
             User user = getUserService().findById(Long.parseLong(requestId));
@@ -21,6 +18,6 @@ public class UserPage extends Page {
         } catch (NumberFormatException e) {
             return "redirect:/not-found";
         }
-        return "user";
+        return "user-edit";
     }
 }

@@ -31,11 +31,15 @@
                    th:if="${userInfo}">[[${userInfo.age}]] years</p>
             </div>
         </div>
+        <div class="user-card__item edit-info">
+            <a class="edit-info__button" th:href="@{/user/{id}/edit(id=${userInfo.id})}">Edit profile</a>
+        </div>
         <div class="user-card__item user-card__item_main-text">
             <h3 class="text-title">About</h3>
             <p class="text-line">Best of the best</p>
         </div>
-        <div class="user-card__item user-card__item_skills">
+        <div class="user-card__item user-card__item_skills"
+             th:if="${userInfo.role.getName()} == ${volunteerRole}">
             <h3 class="text-title">Skills</h3>
             <p class="text-line" th:if="${userInfo}">[[${userInfo.skills}]]</p>
             <p class="text-line">Best of the best Best of the best Best of the best Best of the best

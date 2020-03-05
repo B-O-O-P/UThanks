@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>UThanks</title>
+    <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/user-edit.css}"
+          href="../static/css/user-edit.css">
+</head>
+<body>
+<div th:replace="common :: #menu-check"></div>
+<div th:replace="common :: head"></div>
+<main class="content">
+    <div th:replace="common :: menu"></div>
+    <div class="edit-form" th:if="${session.user} and ${userInfo.id == session.user.id}">
+        <div class="input-area edit-form__item edit-form__item_title">
+            <h1 class="page-title">Edit profile</h1>
+        </div>
+        <div class="input-info edit-form__item">
+            <label class="info-name input-info__label" for="info-name">Full name: </label>
+            <input class="info-input input-info__input" id="info-name" type="text"
+                   th:value="${session.user.fullName}">
+        </div>
+        <div class="input-info edit-form__item">
+            <label class="info-name input-info__label" for="info-age">Age: </label>
+            <input class="info-input input-info__input" id="info-age" type="number"
+                   th:value="${session.user.age}">
+        </div>
+        <div class="input-info edit-form__item">
+            <label class="info-name input-info__label" for="info-country">Country: </label>
+            <input class="info-input input-info__input" id="info-country" type="text"
+                   th:value="${session.user.countryId}">
+        </div>
+        <div class="input-info edit-form__item">
+            <label class="info-name input-info__label" for="info-skills">Skills: </label>
+            <textarea class="info-input info-input_area input-info__input" id="info-skills">[[${session.user.skills}]]</textarea>
+        </div>
+        <div class="input-info edit-form__item">
+            <input class="input-info__submit info-submit" type="submit">
+        </div>
+    </div>
+</main>
+<footer th:replace="common :: foot"></footer>
+</body>
+</html>

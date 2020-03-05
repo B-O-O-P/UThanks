@@ -157,7 +157,7 @@
 }
 
 .comment {
-    border-bottom: 1px solid #CA8264 ;
+    border-bottom: 1px solid #CA8264;
 }
 
 .comment-area {
@@ -187,4 +187,25 @@
     transition: 0.2s;
     background-color: #FEE044;
     cursor: pointer;
+}
+
+.edit-info {
+    border-radius: 0;
+    box-shadow: none;
+    text-align: center;
+}
+
+.edit-info__button {
+    display: inline-block;
+    height: 42px;
+    padding: 8px 24px;
+    margin: auto;
+    white-space: nowrap;
+    border: solid 1px #D3B307;
+    box-shadow: 3px 3px 3px #C4C4C4;
+    cursor: pointer;
+    background-color: #FEE044;
+    outline: none;
+    text-decoration: none;
+    color: inherit;
 }
