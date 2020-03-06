@@ -24,6 +24,7 @@ import javax.persistence.CascadeType;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -81,4 +82,11 @@ public class User {
     @OneToMany(mappedBy = "receiveUser")
     @OrderBy("creationTime DESC")
     private List<Comment> receivedComments;
+
+    public void addEvent(Event event) {
+        if (events == null) {
+            events = new ArrayList<>();
+        }
+        events.add(event);
+    }
 }

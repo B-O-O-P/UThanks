@@ -41,6 +41,10 @@ public class Page {
         }
     }
 
+    User getUser(HttpSession httpSession) {
+        return (User) httpSession.getAttribute("user");
+    }
+
     void unsetUser(HttpSession httpSession) {
         httpSession.removeAttribute("user");
     }

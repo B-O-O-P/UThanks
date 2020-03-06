@@ -17,12 +17,12 @@
         <li class="page-content__card" th:each="event : ${events}">
             <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}" class="card-photo">
             <div class="card-info">
-                <h3 class="card-name">NEERC</h3>
+                <h3 class="card-name" th:text="${event.name}">NEERC</h3>
                 <div class="card-comp-wrap"><span class="card-company">Company: </span>
-                    <span class="card-company">ITMO University</span></div>
+                    <span class="card-company" th:text="${event.creator.login}">ITMO University</span></div>
 
                 <h4 class="card-about-events">Description</h4>
-                <div class="card-about">
+                <div class="card-about" th:text="${event.description}">
                     Blah-blah-blah-blah-blah-blah-blah-blah-blah-blah-blah
                     -blah-blah-blah-blah-blah-blah-blah-blah-blah-blah-blah
                     -blah-blah-blah-blah-blah-blah-blah-blah-blah-blah-blah

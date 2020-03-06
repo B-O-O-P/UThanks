@@ -37,10 +37,10 @@ public class Event {
     @CreationTimestamp
     private Date creationTime;
 
-    @DateTimeFormat
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date eventBeginTime;
 
-    @DateTimeFormat
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date eventEndTime;
 
     private int neededUsers;
@@ -54,5 +54,5 @@ public class Event {
     private List<User> volunteers;
 
     @Lob
-    private String skills;
+    private String description;
 }
