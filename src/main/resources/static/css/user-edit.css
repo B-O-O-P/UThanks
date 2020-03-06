@@ -1,14 +1,7 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .edit-form {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    font-family: 'Questrial', serif;
 }
 
 .page-title {
@@ -16,7 +9,7 @@
 }
 
 .edit-form__item {
-    margin: 30px;
+    margin-bottom: 30px;
 }
 
 .input-info {

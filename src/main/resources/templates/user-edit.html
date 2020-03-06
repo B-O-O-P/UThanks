@@ -31,14 +31,14 @@
         <div class="input-info edit-form__item">
             <label class="info-name input-info__label" for="info-country">Country: </label>
             <input class="info-input input-info__input" id="info-country" type="text"
-                   th:value="${session.user.countryId}">
+                   th:value="${session.user.countryId}" >
         </div>
         <div class="input-info edit-form__item">
             <label class="info-name input-info__label" for="info-skills">Skills: </label>
             <textarea class="info-input info-input_area input-info__input" id="info-skills">[[${session.user.skills}]]</textarea>
         </div>
         <div class="input-info edit-form__item">
-            <input class="input-info__submit info-submit" type="submit">
+            <input class="input-info__submit info-submit" type="submit" th:value="Save">
         </div>
     </div>
 </main>
