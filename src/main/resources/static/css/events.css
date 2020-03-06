@@ -30,6 +30,7 @@
     font-family: 'Questrial', serif;
     font-weight: normal;
 }
+
 .page-content__card:hover {
     box-shadow: 1px 1px 3px #A8A8A8;
 }

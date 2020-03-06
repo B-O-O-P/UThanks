@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>UThanks</title>
-    <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/sign-up.css}" href="../static/css/sign-up.css">
 </head>
 <body>
@@ -16,15 +15,15 @@
         <div class="form__name">Log in</div>
         <div class="form__item">
             <label for="login">Login:</label>
-            <input required type="text" id="login" maxlength="32" th:field="*{login}">
+            <input class="input-text" required type="text" id="login" maxlength="32" th:field="*{login}">
             <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}" class="error"></span>
         </div>
         <div class="form__item">
             <label for="pass">Password:</label>
-            <input required type="password" id="pass" maxlength="32" th:field="*{password}">
+            <input class="input-text" required type="password" id="pass" maxlength="32" th:field="*{password}">
             <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></span>
         </div>
-        <input type="submit" id="submit" value="Log in" class="form__submit">
+        <input type="submit" id="submit" value="Log in" class="input-button input-button_login">
     </form>
 </main>
 <div th:replace="common :: foot"></div>

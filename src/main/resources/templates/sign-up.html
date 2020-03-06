@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>UThanks</title>
-    <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/sign-up.css}" href="../static/css/sign-up.css">
 </head>
 <body>
@@ -16,31 +15,31 @@
         <div class="form__name">Sign up</div>
         <div class="form__radio">
             <div class="radio-index">
-                <input type="radio" name="type" id="comp" th:value="${organizationRole}" th:field="*{userType}" checked>
+                <input class="input-text" type="radio" name="type" id="comp" th:value="${organizationRole}" th:field="*{userType}" checked>
                 <label for="comp">Company</label>
             </div>
             <div class="radio-index">
-                <input type="radio" name="type" id="pers" th:value="${volunteerRole}" th:field="*{userType}">
+                <input class="input-text" type="radio" name="type" id="pers" th:value="${volunteerRole}" th:field="*{userType}">
                 <label for="pers">Person</label>
             </div>
         </div>
         <span th:if="${#fields.hasErrors('userType')}" th:errors="*{userType}" class="error error_padding"></span>
         <div class="form__item">
             <label for="login">Login:</label>
-            <input required type="text" id="login" maxlength="32" th:field="*{login}">
+            <input class="input-text" required type="text" id="login" maxlength="32" th:field="*{login}">
             <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}" class="error"></span>
         </div>
         <div class="form__item">
             <label for="pass">Password:</label>
-            <input required type="password" id="pass" maxlength="32" th:field="*{password}">
+            <input class="input-text" required type="password" id="pass" maxlength="32" th:field="*{password}">
             <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></span>
         </div>
         <div class="form__item">
             <label for="email">E-mail:</label>
-            <input required type="email" id="email" th:field="*{email}">
+            <input class="input-text" required type="email" id="email" th:field="*{email}">
             <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></span>
         </div>
-        <input type="submit" id="submit" value="Sign up" class="form__submit">
+        <input type="submit" id="submit" value="Sign up" class="input-button">
     </form>
 </main>
 <footer class="footer"></footer>

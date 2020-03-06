@@ -32,7 +32,6 @@
     flex-direction: column;
     justify-items: center;
     align-items: center;
-    padding: 12px;
 }
 
 .profile__item {
@@ -89,7 +88,7 @@
     box-sizing: content-box;
     height: 250px;
     border-radius: 8px;
-    border: 1px solid gray;
+    border: 1px solid #BABABA;
     margin: 20px 30px;
 }
 
@@ -140,16 +139,15 @@
 
 .comments-list {
     list-style: none;
-    padding-left: 16px;
 }
 
 .comment {
-    border-bottom: 1px solid #CA8264;
+    border-bottom: 1px solid #BABABA;
 }
 
 .comment-area {
-    background-color: #E6D1C8;
-    border: 2px solid #B6765B;
+    background-color: #FFF8EA;
+    border: 2px solid #BABABA;
     border-radius: 8px;
     height: 150px;
     padding: 12px;
@@ -182,7 +180,7 @@
     text-align: center;
 }
 
-.edit-info__button {
+.input-button_edit-info {
     display: inline-block;
     height: 42px;
     padding: 8px 24px;
