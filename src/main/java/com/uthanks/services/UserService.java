@@ -49,6 +49,10 @@ public class UserService {
         return login == null || password == null ? null : userRepository.findByLoginAndPassword(login, password);
     }
 
+    public User findByLogin(String login) {
+        return login == null ? null : userRepository.findByLogin(login);
+    }
+
     public List<User> findOrganizations() {
         return userRepository.findByRoleId(ORGANIZATION_ROLE.getId());
     }
