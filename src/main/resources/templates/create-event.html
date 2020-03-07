@@ -17,7 +17,7 @@
         <div class="form__item">
             <label for="name" class="input-label">Name:</label>
             <input required type="text" id="name" th:field="*{name}">
-            <!--            <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></span>-->
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
         </div>
         <div class="form__item">
             <label for="date-begin" class="input-label">Start:</label>
@@ -26,10 +26,12 @@
         <div class="form__item">
             <label for="date-end" class="input-label">Finish:</label>
             <input required type="date" id="date-end" th:field="*{eventEndTime}">
+            <span th:if="${#fields.hasErrors('eventEndTime')}" th:errors="*{eventEndTime}" class="error"></span>
         </div>
         <div class="form__item">
             <label for="date-end" class="input-label">Desired amount of volunteers:</label>
             <input required type="number" id="volunteers-count" max="100" th:field="*{neededUsers}">
+            <span th:if="${#fields.hasErrors('neededUsers')}" th:errors="*{neededUsers}" class="error"></span>
         </div>
 
         <div class="form__item">

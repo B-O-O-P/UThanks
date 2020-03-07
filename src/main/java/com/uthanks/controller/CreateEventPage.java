@@ -3,10 +3,13 @@ package com.uthanks.controller;
 import com.uthanks.domain.Event;
 import com.uthanks.domain.Role.RoleName;
 import com.uthanks.domain.User;
+import com.uthanks.form.validators.EventValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -20,6 +23,17 @@ import javax.validation.Valid;
 
 @Controller
 public class CreateEventPage extends Page {
+    private final EventValidator eventValidator;
+
+    public CreateEventPage(EventValidator eventValidator) {
+        this.eventValidator = eventValidator;
+    }
+
+    @InitBinder("event")
+    public void initRegisterFormBinder(WebDataBinder binder) {
+        binder.addValidators(eventValidator);
+    }
+
     @GetMapping(path = "/create-event")
     public String createEventGet(Model model, HttpSession httpSession) {
         User user = getUser(httpSession);

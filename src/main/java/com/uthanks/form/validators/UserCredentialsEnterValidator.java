@@ -3,7 +3,6 @@ package com.uthanks.form.validators;
 import com.uthanks.domain.User;
 import com.uthanks.form.UserCredentials;
 import com.uthanks.services.UserService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -12,7 +11,7 @@ import org.springframework.validation.Validator;
  * Class for validation of data for login.
  */
 @Component
-public class UserCredentialsEnterValidator implements Validator {
+public class UserCredentialsEnterValidator extends CredentialsValidator implements Validator {
     private final UserService userService;
 
     public UserCredentialsEnterValidator(UserService userService) {
@@ -32,8 +31,7 @@ public class UserCredentialsEnterValidator implements Validator {
 
         UserCredentials enterForm = (UserCredentials) target;
 
-        if (StringUtils.isBlank(enterForm.getLogin())) {
-            errors.rejectValue("login", "login.is.empty", "login can not be empty");
+        if (!validateIsBlank(errors, enterForm.getLogin(), "login")) {
             return;
         }
 
