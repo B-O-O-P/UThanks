@@ -41,7 +41,11 @@ public class Page {
         }
     }
 
+    // return null if session is null or does not contain user attribute
     User getUser(HttpSession httpSession) {
+        if (httpSession == null) {
+            return null;
+        }
         return (User) httpSession.getAttribute("user");
     }
 

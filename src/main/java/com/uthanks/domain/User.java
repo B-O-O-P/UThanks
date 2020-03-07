@@ -83,10 +83,11 @@ public class User {
     @OrderBy("creationTime DESC")
     private List<Comment> receivedComments;
 
-    public void addEvent(Event event) {
+    // return true if event was added, else return false
+    public boolean addEvent(Event event) {
         if (events == null) {
             events = new ArrayList<>();
         }
-        events.add(event);
+        return events.add(event);
     }
 }
