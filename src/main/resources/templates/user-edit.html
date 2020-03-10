@@ -7,12 +7,13 @@
 </head>
 <body>
 <div th:replace="common :: #menu-check"></div>
-<main class="content" th:action="@{/user/{id}/edit(id=${userInfo.id})}" th:object="${userInfo}"
-      method="post">
+<main class="content">
     <div th:replace="common :: menu"></div>
-    <form class="form form_edit" th:if="${session.user} and ${userInfo.id == session.user.id}">
+    <form class="form form_edit" th:if="${session.user} and ${userInfo.id == session.user.id}"
+          th:action="@{/user/{id}/edit(id=${userInfo.id})}" th:object="${userInfo}"
+          method="post">
         <div class="input-area form__item_edit edit-form__item_title">
-            <h1 class="page-title">Edit profile</h1>
+            <h2 class="page-title">Edit profile</h2>
         </div>
         <div class="input-info form__item form__item_edit">
             <label class="info-name input-info__label" for="info-name">Full name: </label>

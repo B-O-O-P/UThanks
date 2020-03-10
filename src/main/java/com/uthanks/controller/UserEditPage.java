@@ -28,11 +28,17 @@ public class UserEditPage extends Page {
     }
 
     @PostMapping(path = "/user/{id}/edit")
-    public String editPost(@Valid @ModelAttribute("userInfo") User user,
+    public String editPost(@Valid @ModelAttribute("userInfo") User updatedUser,
                            BindingResult bindingResult,
                            HttpSession httpSession, @PathVariable("id") String postId) {
-
-        setUser(httpSession, getUserService().saveAdditionalInfo(user));
+        try {
+            User user = getUserService().findById(Long.parseLong(postId));
+            if (user != null) {
+                setUser(httpSession, getUserService().saveAdditionalInfo(user, updatedUser));
+            }
+        } catch (NumberFormatException e) {
+            return "user-edit";
+        }
 
         return "redirect:/user/" + postId;
     }
