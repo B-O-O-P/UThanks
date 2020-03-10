@@ -6,9 +6,11 @@
           th:href="@{/css/not-found.css}">
 </head>
 <body>
+<div th:replace="common :: #menu-check"></div>
 <main class="content">
+    <div th:replace="common :: menu"></div>
     Something went wrong :(
 </main>
-<footer class="footer"></footer>
+<footer th:replace="common :: foot"></footer>
 </body>
 </html>

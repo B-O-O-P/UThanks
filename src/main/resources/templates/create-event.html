@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org" lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+<head th:replace="common :: head(~{::link})">
     <title>UThanks</title>
-    <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/create-event.css}" href="../static/css/create-event.css">
 </head>
 <body>
 <div th:replace="common :: #menu-check"></div>
-<div th:replace="common :: head"></div>
 <main class="content">
     <div th:replace="common :: menu"></div>
     <form class="form" th:action="@{/create-event}" th:object="${event}" method="post">
@@ -38,7 +34,7 @@
             <label for="desc" class="input-label">Description:</label>
             <textarea required type="text" id="desc" class="input-area form__desc" rows="10" th:field="*{description}"></textarea>
         </div>
-        <input type="submit" id="submit" value="Create event" class="form__submit">
+        <input type="submit" id="submit" value="Create event" class="input-button form__submit">
     </form>
 </main>
 <div th:replace="common :: foot"></div>
