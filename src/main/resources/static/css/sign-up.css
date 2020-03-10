@@ -1,35 +1,4 @@
-body {
-    display: grid;
-    grid-template-rows: 80px 1fr 80px;
-    background-color: #FFF8EA;
-}
-
-.form {
-    display: flex;
-    align-content: space-around;
-    flex-direction: column;
-}
-
-.form__name {
-    margin: 30px 0;
-    font-size: 30px;
-}
-
-.form__radio {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-
-    margin: 30px 0;
-
-    font-size: 20px;
-}
-
-.form__item {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 30px;
-}
+@import "form.css";
 
 .input-button_sign,
 .input-button_login {

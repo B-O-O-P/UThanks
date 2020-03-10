@@ -3,13 +3,19 @@ package com.uthanks.controller;
 import com.uthanks.domain.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @Controller
 public class UserEditPage extends Page {
     @GetMapping(path = "/user/{id}/edit")
-    public String index(@PathVariable("id") String requestId, Model model) {
+    public String editGet(@PathVariable("id") String requestId, Model model) {
         try {
             User user = getUserService().findById(Long.parseLong(requestId));
             if (user != null) {
@@ -19,5 +25,15 @@ public class UserEditPage extends Page {
             return "redirect:/not-found";
         }
         return "user-edit";
+    }
+
+    @PostMapping(path = "/user/{id}/edit")
+    public String editPost(@Valid @ModelAttribute("userInfo") User user,
+                           BindingResult bindingResult,
+                           HttpSession httpSession, @PathVariable("id") String postId) {
+
+        setUser(httpSession, getUserService().saveAdditionalInfo(user));
+
+        return "redirect:/user/" + postId;
     }
 }

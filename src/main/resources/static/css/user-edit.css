@@ -1,4 +1,6 @@
-.edit-form {
+@import "form.css";
+
+.form_edit {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -8,7 +10,7 @@
     font-weight: normal;
 }
 
-.edit-form__item {
+.form__item_edit {
     margin-bottom: 30px;
 }
 
@@ -22,27 +24,18 @@
     margin-bottom: 16px;
 }
 
-.info-input {
+.input-text__edit {
     height: 32px;
     outline-color: #C4C4C4;
 }
 
-.info-input_area {
+.input-area_edit {
     height: inherit;
     resize: none;
 }
 
-.info-submit {
-    height: 42px;
-    font-size: 24px;
-    text-align: center;
-    outline: none;
-    padding: 0 25px;
-    border: solid 1px #D3B307;
-    box-shadow: 3px 3px 3px #C4C4C4;
-    background-color: #FEE044;
-    text-decoration: none;
-    cursor: pointer;
+.input-button_edit-info {
+    display: block;
 }
 
 .input-info__submit {

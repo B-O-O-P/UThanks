@@ -51,7 +51,7 @@ public class User {
 
     private String fullName;
 
-    private int countryId;
+    private String country;
 
     private int age;
 
