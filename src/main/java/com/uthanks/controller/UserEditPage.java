@@ -32,10 +32,8 @@ public class UserEditPage extends Page {
                            BindingResult bindingResult,
                            HttpSession httpSession, @PathVariable("id") String postId) {
         try {
-            User user = getUserService().findById(Long.parseLong(postId));
-            if (user != null) {
-                setUser(httpSession, getUserService().saveAdditionalInfo(user, updatedUser));
-            }
+            setUser(httpSession, getUserService().saveAdditionalInfo(Long.parseLong(postId), updatedUser.getAge(),
+                    updatedUser.getCountry(), updatedUser.getFullName(), updatedUser.getSkills()));
         } catch (NumberFormatException e) {
             return "user-edit";
         }
