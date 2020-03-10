@@ -40,10 +40,6 @@
     margin-bottom: 32px;
 }
 
-.user-card__item_skills {
-    background: #94939A;
-}
-
 .profile__item_main-info {
     display: flex;
     flex-direction: row;
