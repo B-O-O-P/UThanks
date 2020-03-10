@@ -2,6 +2,7 @@
 
 .input-button_sign,
 .input-button_login {
-    width: inherit;
+    width: 300px;
+    align-self: center;
 }
 
