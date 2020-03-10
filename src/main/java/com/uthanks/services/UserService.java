@@ -54,7 +54,7 @@ public class UserService {
     }
 
     public User findById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException((String.format("No user with id=%d found", id))));
+        return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException(String.format("No user with id=%d found", id)));
     }
 
     public User saveAdditionalInfo(User user, User updated) {
