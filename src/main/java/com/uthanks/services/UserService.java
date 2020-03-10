@@ -55,9 +55,15 @@ public class UserService {
     }
 
     public User findById(Long id) {
-        if (id == null) {
-            throw new IllegalArgumentException("Id must not be null");
-        }
-        return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException((String.format("No user with id=%d found", id))));
+        return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException(String.format("No user with id=%d found", id)));
+    }
+
+    public User saveAdditionalInfo(User user, User updated) {
+        user.setAge(updated.getAge());
+        user.setCountry(updated.getCountry());
+        user.setFullName(updated.getFullName());
+        user.setSkills(updated.getSkills());
+        userRepository.save(user);
+        return user;
     }
 }

@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org" lang="en">
-<head>
+<head th:fragment="head(links)">
+    <title>UThanks</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title>UThanks</title>
     <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" href="../static/css/common.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}"
+          href="../static/css/common.css">
+
+    <th:block th:replace="${links}"/>
 </head>
 <body>
 <input type="checkbox" id="menu-check">
@@ -16,7 +19,8 @@
         <h1 class="header__name">
             <a href="/">Uthanks</a>
         </h1>
-        <img class="header__btn-search page-btn" th:src="@{/images/search.png}" src="../static/images/search.png">
+        <img class="header__btn-search page-btn" th:src="@{/images/search.png}"
+             src="../static/images/search.png">
         <div class="menu-sign-up-btn-wrapper">
             <label for="menu-sign-check">
                 <img class="header__btn-search page-btn" th:src="@{/images/user.png}"
@@ -26,11 +30,13 @@
                 <div class="menu__item">
                     <a th:if="${session.user}" th:href="@{/user/{id}(id=${session.user.id})}"
                        class="menu__item">Profile</a>
-                    <a th:unless="${session.user}" th:href="@{/sign-up}" class="menu__item">Sign up</a>
+                    <a th:unless="${session.user}" th:href="@{/sign-up}" class="menu__item">Sign
+                        up</a>
                 </div>
                 <div class="menu__item">
                     <a th:if="${session.user}" th:href="@{/log-out}" class="menu__item">Log out</a>
-                    <a th:unless="${session.user}" th:href="@{/log-in}" class="menu__item">Log in</a>
+                    <a th:unless="${session.user}" th:href="@{/log-in}" class="menu__item">Log
+                        in</a>
                 </div>
             </nav>
         </div>

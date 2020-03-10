@@ -1,9 +1,3 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
 .text-title {
     font-size: 32px;
     padding: 12px;
@@ -32,37 +26,26 @@
 }
 
 
-.user-card {
+.profile {
     font-size: 25px;
     display: flex;
     flex-direction: column;
     justify-items: center;
     align-items: center;
-    padding: 12px;
 }
 
-.user-card__item {
+.profile__item {
     width: 100%;
     padding: 4px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
-    border-radius: 8px;
     margin-bottom: 32px;
 }
 
-.user-card__item_skills {
-    background: #94939A;
-}
-
-.user-card__main-info {
+.profile__item_main-info {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     box-shadow: none;
     border-radius: 0;
-}
-
-.user-card__item_main-text {
-    background: white;
 }
 
 .main-info__avatar {
@@ -90,7 +73,6 @@
 .user-card__item_events {
     display: flex;
     flex-direction: column;
-    background: #9DBA8E;
 }
 
 .event-carousel {
@@ -98,13 +80,10 @@
     box-sizing: content-box;
     height: 250px;
     border-radius: 8px;
-    border: 1px solid gray;
+    border: 1px solid #BABABA;
     margin: 20px 30px;
 }
 
-.user-card__item_comments {
-    background: #E4A388;
-}
 
 .main-text__text-line {
     margin-bottom: 12px;
@@ -146,23 +125,21 @@
 }
 
 .comments {
-    border: 2px solid #B6765B;
     border-radius: 8px;
     margin: 12px;
 }
 
 .comments-list {
     list-style: none;
-    padding-left: 16px;
 }
 
 .comment {
-    border-bottom: 1px solid #CA8264 ;
+    border-bottom: 1px solid #BABABA;
 }
 
 .comment-area {
-    background-color: #E6D1C8;
-    border: 2px solid #B6765B;
+    background-color: #FFF8EA;
+    border: 2px solid #BABABA;
     border-radius: 8px;
     height: 150px;
     padding: 12px;
@@ -187,4 +164,16 @@
     transition: 0.2s;
     background-color: #FEE044;
     cursor: pointer;
+}
+
+.edit-info {
+    border-radius: 0;
+    box-shadow: none;
+    text-align: center;
+}
+
+.input-button_edit-info {
+    display: inline-block;
+    padding: 8px 24px;
+    color: inherit;
 }
