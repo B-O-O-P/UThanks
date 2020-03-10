@@ -17,6 +17,8 @@ public class UserCredentials {
     @NotEmpty
     private String login;
 
+    private String name;
+
     @NotNull
     @NotEmpty
     @Size(min = 4, max = 32,

@@ -29,6 +29,7 @@ public class UserService {
     public User register(UserCredentials registerForm) {
         User user = new User();
         user.setLogin(registerForm.getLogin());
+        user.setName(registerForm.getName());
         user.setEmail(registerForm.getEmail());
         switch (registerForm.getUserType()) {
             case VOLUNTEER:

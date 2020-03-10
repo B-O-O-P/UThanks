@@ -23,22 +23,27 @@
                 <input type="radio" name="type" id="pers" th:value="${volunteerRole}" th:field="*{userType}">
                 <label for="pers">Person</label>
             </div>
-            <span th:if="${#fields.hasErrors('userType')}" th:errors="*{userType}"></span>
         </div>
+        <span th:if="${#fields.hasErrors('userType')}" th:errors="*{userType}" class="error error_padding"></span>
         <div class="form__item">
             <label for="login">Login:</label>
             <input required type="text" id="login" maxlength="32" th:field="*{login}">
-            <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></span>
+            <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}" class="error"></span>
+        </div>
+        <div class="form__item">
+            <label for="login">Name:</label>
+            <input required type="text" id="name" maxlength="32" th:field="*{name}">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
         </div>
         <div class="form__item">
             <label for="pass">Password:</label>
             <input required type="password" id="pass" maxlength="32" th:field="*{password}">
-            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></span>
         </div>
         <div class="form__item">
             <label for="email">E-mail:</label>
             <input required type="email" id="email" th:field="*{email}">
-            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></span>
         </div>
         <input type="submit" id="submit" value="Sign up" class="form__submit">
     </form>
