@@ -1,0 +1,15 @@
+@import "main-page.css";
+
+.search-wrapper {
+    display: flex;
+}
+.search-wrapper__input {
+    width: calc(100% - 32px);
+}
+.search-wrapper__btn {
+    width: 32px;
+    height: 32px;
+    transform: scale(-1, 1);
+    background-color: mediumvioletred;
+    cursor: pointer;
+}
