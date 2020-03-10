@@ -43,6 +43,8 @@ public class User {
     @NotEmpty
     private String login;
 
+    private String name;
+
     @NotNull
     @NotEmpty
     private String email;
