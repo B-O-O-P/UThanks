@@ -33,6 +33,8 @@ public class UserCredentialsRegisterValidator extends CredentialsValidator imple
 
         validateIsBlank(errors, registerForm.getEmail(), "email");
 
+        validateIsBlank(errors, registerForm.getName(), "name");
+
         validateLogin(registerForm.getLogin(), errors);
 
         if (registerForm.getUserType() != RoleName.VOLUNTEER

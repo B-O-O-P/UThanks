@@ -19,6 +19,10 @@ public class UserCredentials {
 
     @NotNull
     @NotEmpty
+    private String name;
+
+    @NotNull
+    @NotEmpty
     @Size(min = 4, max = 32,
     message = "password must be between {min} and {max} characters long")
     private String password;
