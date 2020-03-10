@@ -1,7 +1,6 @@
 package com.uthanks.form.validators;
 
 import com.uthanks.domain.Role.RoleName;
-import org.apache.commons.lang3.StringUtils;
 import com.uthanks.form.UserCredentials;
 import com.uthanks.services.UserService;
 import org.springframework.stereotype.Component;
@@ -12,7 +11,7 @@ import org.springframework.validation.Validator;
  * Class for validation of data for registration.
  */
 @Component
-public class UserCredentialsRegisterValidator implements Validator {
+public class UserCredentialsRegisterValidator extends CredentialsValidator implements Validator {
     private final UserService userService;
 
     public UserCredentialsRegisterValidator(UserService userService) {
@@ -32,9 +31,9 @@ public class UserCredentialsRegisterValidator implements Validator {
 
         UserCredentials registerForm = (UserCredentials) target;
 
-        if (StringUtils.isBlank(registerForm.getEmail())) {
-            errors.rejectValue("email", "email.is.empty", "email can not be empty");
-        }
+        validateIsBlank(errors, registerForm.getEmail(), "email");
+
+        validateIsBlank(errors, registerForm.getName(), "name");
 
         validateLogin(registerForm.getLogin(), errors);
 
@@ -45,14 +44,16 @@ public class UserCredentialsRegisterValidator implements Validator {
         }
     }
 
-    private void validateLogin(String login, Errors errors) {
-        if (StringUtils.isBlank(login)) {
-            errors.rejectValue("login", "login.is.empty", "login can not be empty");
-            return;
+    private boolean validateLogin(String login, Errors errors) {
+        if (!validateIsBlank(errors, login, "login")) {
+            return false;
         }
 
         if (!userService.isLoginVacant(login)) {
             errors.rejectValue("login", "login.is.in.use", "login is in use");
+            return false;
         }
+
+        return true;
     }
 }

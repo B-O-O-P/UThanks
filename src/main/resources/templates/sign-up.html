@@ -31,6 +31,11 @@
             <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}" class="error"></span>
         </div>
         <div class="form__item">
+            <label for="login">Name:</label>
+            <input required type="text" id="name" maxlength="32" th:field="*{name}">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
+        </div>
+        <div class="form__item">
             <label for="pass">Password:</label>
             <input required type="password" id="pass" maxlength="32" th:field="*{password}">
             <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></span>

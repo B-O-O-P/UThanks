@@ -22,6 +22,8 @@ import java.util.List;
 @Data
 @Entity
 public class Event {
+    private final static String DATE_PATTERN = "yyyy-MM-dd";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -37,10 +39,10 @@ public class Event {
     @CreationTimestamp
     private Date creationTime;
 
-    @DateTimeFormat
+    @DateTimeFormat(pattern = DATE_PATTERN)
     private Date eventBeginTime;
 
-    @DateTimeFormat
+    @DateTimeFormat(pattern = DATE_PATTERN)
     private Date eventEndTime;
 
     private int neededUsers;
@@ -54,5 +56,5 @@ public class Event {
     private List<User> volunteers;
 
     @Lob
-    private String skills;
+    private String description;
 }
