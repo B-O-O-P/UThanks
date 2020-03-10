@@ -17,8 +17,6 @@ public class UserCredentials {
     @NotEmpty
     private String login;
 
-    @NotNull
-    @NotEmpty
     private String name;
 
     @NotNull
