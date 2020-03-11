@@ -23,6 +23,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+// Used our database(
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -36,7 +37,7 @@ public class RegisterValidationTest {
     @Test
     public void validate_null_name() {
         UserCredentials user = new UserCredentials();
-        user.setLogin("Lol");
+        user.setLogin("Lll");
         user.setPassword("password");
         user.setEmail("e@mail.ru");
         Errors errors = new BeanPropertyBindingResult(user, "");
