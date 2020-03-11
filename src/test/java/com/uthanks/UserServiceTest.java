@@ -24,7 +24,7 @@ public class UserServiceTest {
     UserService userService;
 
     @Test
-    public void user_register_test() {
+    public void testRegisterUser() {
         UserCredentials userCredentials = new UserCredentials();
         userCredentials.setLogin("PolinB");
         userCredentials.setEmail("Polina@sd.re");

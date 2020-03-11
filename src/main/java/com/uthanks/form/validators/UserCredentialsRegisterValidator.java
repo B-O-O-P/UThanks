@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import java.util.Objects;
+
 /**
  * Class for validation of data for registration.
  */
@@ -37,11 +39,23 @@ public class UserCredentialsRegisterValidator extends CredentialsValidator imple
 
         validateLogin(registerForm.getLogin(), errors);
 
-        if (registerForm.getUserType() != RoleName.VOLUNTEER
-                && registerForm.getUserType() != RoleName.ORGANIZATION) {
+        validatePassword(registerForm.getPassword(), errors);
+
+        validateRole(registerForm.getUserType(), errors);
+    }
+
+    private boolean validateRole(RoleName role, Errors errors) {
+        if (role == null) {
+            errors.rejectValue("userType", "type.is.null",
+                    "choose register as company or person");
+            return false;
+        }
+        if (role != RoleName.VOLUNTEER && role != RoleName.ORGANIZATION) {
             errors.rejectValue("userType", "type.is.empty",
                     "choose register as company or person");
+            return false;
         }
+        return true;
     }
 
     private boolean validateLogin(String login, Errors errors) {
@@ -56,4 +70,25 @@ public class UserCredentialsRegisterValidator extends CredentialsValidator imple
 
         return true;
     }
+
+    private boolean validatePassword(String password, Errors errors) {
+        if (password == null) {
+            errors.rejectValue("password", "password.is.null",
+                    "password can not be null");
+            return false;
+        }
+        int passwordLen = Objects.requireNonNull(password).length();
+        if (passwordLen < 4) {
+            errors.rejectValue("password", "password.is.too.short",
+                    "password is too short");
+            return false;
+        }
+        if (passwordLen > 32) {
+            errors.rejectValue("password", "password.is.too.long",
+                    "password is too long");
+            return false;
+        }
+        return true;
+    }
+
 }

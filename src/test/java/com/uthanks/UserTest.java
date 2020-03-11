@@ -14,9 +14,6 @@ import org.springframework.test.util.ReflectionTestUtils;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-/**
- * This is not real test class, now it's only for representing code structure.
- */
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class UserTest {
@@ -27,7 +24,7 @@ public class UserTest {
     private UserRepository userRepository;
 
     @Test
-    public void whenFindByName_thenReturnUser() {
+    public void testFindUserByLoginAndPassword() {
         UserService userService = new UserService(userRepository);
         String passwordSha = ReflectionTestUtils.invokeMethod(userService, "getHash", "1234");
         User polinb = new User();
