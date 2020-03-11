@@ -12,4 +12,13 @@ public class CredentialsValidator {
         }
         return true;
     }
+
+    boolean validateNullValue(Errors errors, Object object, String valueName) {
+        if (object == null) {
+            errors.rejectValue(valueName, valueName + ".is.null",
+                    valueName + " can not be null");
+            return false;
+        }
+        return true;
+    }
 }

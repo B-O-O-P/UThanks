@@ -46,11 +46,10 @@ public class UserCredentialsRegisterValidator extends CredentialsValidator imple
     }
 
     private boolean validateRole(RoleName role, Errors errors) {
-        if (role == null) {
-            errors.rejectValue("userType", "type.is.null",
-                    "choose register as company or person");
+        if (!validateNullValue(errors, role, "userType")) {
             return false;
         }
+
         if (role != RoleName.VOLUNTEER && role != RoleName.ORGANIZATION) {
             errors.rejectValue("userType", "type.is.empty",
                     "choose register as company or person");

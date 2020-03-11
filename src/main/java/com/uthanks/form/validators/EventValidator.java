@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import java.util.Calendar;
+
 @Component
 public class EventValidator extends CredentialsValidator implements Validator {
     @Override
@@ -23,14 +25,36 @@ public class EventValidator extends CredentialsValidator implements Validator {
 
         validateIsBlank(errors, event.getName(), "name");
 
-        if (event.getEventEndTime().before(event.getEventBeginTime())) {
-            errors.rejectValue("eventEndTime", "end.date.before.begin.date",
-                    "finish date does not be before start date");
+        validateDates(event.getEventBeginTime(), event.getEventEndTime(), errors);
+
+        validateNeededUsers(event.getNeededUsers(), errors);
+    }
+
+    private boolean validateDates(Calendar beginDate, Calendar endDate, Errors errors) {
+        if (!validateNullValue(errors, beginDate, "eventBeginTime")) {
+            return false;
         }
 
-        if (event.getNeededUsers() <= 0) {
+        if (!validateNullValue(errors, endDate, "eventEndTime")){
+            return false;
+        }
+
+        if (endDate.before(beginDate)) {
+            errors.rejectValue("eventEndTime", "end.date.before.begin.date",
+                    "finish date does not be before start date");
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean validateNeededUsers(int neededUsers, Errors errors) {
+        if (neededUsers < 0) {
             errors.rejectValue("neededUsers", "too.little.needed.users",
                     "too little needed volunteers");
+            return false;
         }
-     }
+
+        return true;
+    }
 }

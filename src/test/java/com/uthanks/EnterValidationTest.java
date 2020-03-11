@@ -1,6 +1,5 @@
 package com.uthanks;
 
-import com.uthanks.domain.Role;
 import com.uthanks.form.UserCredentials;
 import com.uthanks.form.validators.UserCredentialsEnterValidator;
 import org.junit.Test;
@@ -13,7 +12,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 // Used our database(
 @RunWith(SpringRunner.class)

@@ -13,9 +13,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
 
-import java.util.Objects;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 // Used our database(
 @RunWith(SpringRunner.class)
@@ -225,7 +226,7 @@ public class RegisterValidationTest {
         assertTrue(errors.hasFieldErrors("userType"));
         assertEquals(errors.getErrorCount(), errorsCount);
         assertNotNull(errors.getFieldError("userType"));
-        assertEquals(errors.getFieldError("userType").getCode(), "type.is.null");
+        assertEquals(errors.getFieldError("userType").getCode(), "userType.is.null");
     }
 
     @Test
