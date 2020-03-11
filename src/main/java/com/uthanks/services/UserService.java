@@ -4,6 +4,7 @@ import com.uthanks.domain.Role;
 import com.uthanks.domain.User;
 import com.uthanks.form.UserCredentials;
 import com.uthanks.repository.UserRepository;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,11 +27,17 @@ public class UserService {
         return userRepository.countByLogin(login) == 0;
     }
 
+
+    private static String getHash(String string) {
+        return DigestUtils.sha1Hex("e979614203d4fd9f" + string);
+    }
+
     public User register(UserCredentials registerForm) {
         User user = new User();
         user.setLogin(registerForm.getLogin());
         user.setName(registerForm.getName());
         user.setEmail(registerForm.getEmail());
+        user.setPasswordSha(getHash(registerForm.getPassword()));
         switch (registerForm.getUserType()) {
             case VOLUNTEER:
                 user.setRole(VOLUNTEER_ROLE);
@@ -42,12 +49,12 @@ public class UserService {
                 throw new IllegalArgumentException("Unmapped role");
         }
         userRepository.save(user);
-        userRepository.updatePasswordSha(user.getId(), registerForm.getPassword());
         return user;
     }
 
     public User findByLoginAndPassword(String login, String password) {
-        return login == null || password == null ? null : userRepository.findByLoginAndPassword(login, password);
+        return login == null || password == null ? null : userRepository.findByLoginAndPasswordSha(login,
+               getHash(password));
     }
 
     public User findByLogin(String login) {

@@ -45,6 +45,8 @@ public class User {
 
     private String name;
 
+    private String passwordSha;
+
     @NotNull
     @NotEmpty
     private String email;

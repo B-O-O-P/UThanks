@@ -15,13 +15,8 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long> {
     int countByLogin(String login);
 
-    @Transactional
-    @Modifying
-    @Query(value = "UPDATE user SET passwordSha=SHA1(CONCAT('e979614203d4fd9f', ?2)) WHERE id=?1", nativeQuery = true)
-    void updatePasswordSha(long id, String password);
-
-    @Query(value = "SELECT * FROM user WHERE login=?1 AND passwordSha=SHA1(CONCAT('e979614203d4fd9f', ?2))", nativeQuery = true)
-    User findByLoginAndPassword(String login, String password);
+    @Query(value = "SELECT * FROM user WHERE login=?1 AND password_sha=?2", nativeQuery = true)
+    User findByLoginAndPasswordSha(String login, String passwordSha);
 
     @Query(value = "SELECT * FROM user WHERE role_id=?1", nativeQuery = true)
     List<User> findByRoleId(long roleId);

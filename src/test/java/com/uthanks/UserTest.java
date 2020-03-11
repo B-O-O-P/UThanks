@@ -1,18 +1,15 @@
 package com.uthanks;
 
-import com.uthanks.domain.Role;
 import com.uthanks.domain.User;
 import com.uthanks.repository.UserRepository;
-import org.apache.commons.lang3.StringUtils;
+import com.uthanks.services.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -31,13 +28,15 @@ public class UserTest {
 
     @Test
     public void whenFindByName_thenReturnUser() {
+        UserService userService = new UserService(userRepository);
+        String passwordSha = ReflectionTestUtils.invokeMethod(userService, "getHash", "1234");
         User polinb = new User();
         polinb.setLogin("PolinB");
         polinb.setEmail("Polin@sa");
-        entityManager.persist(polinb);
-        entityManager.flush();
+        polinb.setPasswordSha(passwordSha);
+        polinb = entityManager.persistAndFlush(polinb);
 
-        User found = userRepository.findByLogin(polinb.getLogin());
+        User found = userRepository.findByLoginAndPasswordSha(polinb.getLogin(), passwordSha);
 
         assertThat(found.getLogin(), is(polinb.getLogin()));
     }

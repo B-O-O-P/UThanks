@@ -8,13 +8,6 @@ import org.springframework.validation.Validator;
 
 @Component
 public class EventValidator extends CredentialsValidator implements Validator {
-    private final EventService eventService;
-
-    public EventValidator(EventService eventService) {
-        this.eventService = eventService;
-    }
-
-
     @Override
     public boolean supports(Class<?> clazz) {
         return Event.class.equals(clazz);

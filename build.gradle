@@ -47,6 +47,8 @@ dependencies {
 
     // Dependency for StringUtils
     implementation "org.apache.commons:commons-lang3:$versionLang3"
+
+    implementation "commons-codec:commons-codec:1.14"
 }
 
 application {
