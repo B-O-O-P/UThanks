@@ -168,67 +168,6 @@ body {
     background-color: #FFFACC;
 }
 
-.carousel {
-    position: relative;
-    width: 398px;
-    padding: 10px 40px;
-}
-
-.li__img {
-    width: 130px;
-    height: 130px;
-    display: block;
-}
-
-.arrow {
-    position: absolute;
-    top: 60px;
-    padding: 0;
-    background: #ddd;
-    border-radius: 15px;
-    border: 1px solid gray;
-    font-size: 24px;
-    line-height: 24px;
-    color: #444;
-    display: block;
-}
-
-.arrow:focus {
-    outline: none;
-}
-
-.arrow:hover {
-    background: #ccc;
-    cursor: pointer;
-}
-
-.prev {
-    left: 7px;
-}
-
-.next {
-    right: 7px;
-}
-
-.gallery {
-    width: 390px;
-    overflow: hidden;
-}
-
-.gallery ul {
-    height: 130px;
-    width: 9999px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    transition: margin-left .2s;
-    font-size: 0;
-}
-
-.gallery li {
-    display: inline-block;
-    width: 130px;
-}
 
 .error {
     color: red;
@@ -266,4 +205,77 @@ body {
     height: 32px;
     font-size: 24px;
     outline-color: #C4C4C4;
+}
+
+
+/** CAROUSEL **/
+.event-carousel {
+    position: relative;
+    box-sizing: content-box;
+    height: 250px;
+    border-radius: 8px;
+    border: 1px solid #BABABA;
+    margin: 20px 30px;
+}
+
+.carousel-arrow {
+    background: none;
+    outline: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+
+.carousel-arrow-svg {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.event-carousel__arrow_left {
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    margin-top: -15px;
+    transform: scale(-1, 1);
+}
+
+.event-carousel__arrow_right {
+    position: absolute;
+    top: 50%;
+    right: -30px;
+    margin-top: -15px;
+}
+.event-carousel-card-super-wrapper {
+    overflow: hidden;
+
+    max-width: 100%;
+}
+
+.event-carousel-card-wrapper {
+    display: flex;
+    transition: transform 700ms;
+}
+
+.event-carousel__card {
+    width: 200px;
+    height: 250px;
+    margin: inherit;
+}
+.event-carousel__card-photo {
+    height: 200px;
+    width: 200px;
+    padding: 30px 10px;
+    object-fit: cover;
+    object-position: center;
+}
+.event-carousel__card-name {
+    display: block;
+    overflow: hidden;
+
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+    text-wrap: none;
+    text-overflow: ellipsis;
 }
