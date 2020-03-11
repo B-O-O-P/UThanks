@@ -28,7 +28,7 @@
         </div>
         <div class="form__item">
             <label for="login">Name:</label>
-            <input required type="text" id="name" maxlength="32" th:field="*{name}">
+            <input class="input-text" required type="text" id="name" maxlength="32" th:field="*{name}">
             <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
         </div>
         <div class="form__item">
@@ -43,6 +43,8 @@
         </div>
         <input type="submit" id="submit" value="Sign up" class="input-button input-button_sign">
     </form>
+    <div th:replace="common :: to-top"></div>
+    <script th:replace="common :: to-top-script"></script>
 </main>
 <footer class="footer"></footer>
 </body>

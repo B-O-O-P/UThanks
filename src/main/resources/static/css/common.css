@@ -168,6 +168,25 @@ body {
     background-color: #FFFACC;
 }
 
+
+.arrow-to-top {
+    position: fixed;
+    display: block;
+
+    right: 50px;
+    bottom: 50px;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 42px;
+    background-color: #939393;
+    font-size: 30px;
+    text-align: center;
+
+    cursor: pointer;
+}
+
 .carousel {
     position: relative;
     width: 398px;
