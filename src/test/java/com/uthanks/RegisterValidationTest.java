@@ -15,9 +15,7 @@ import org.springframework.validation.Errors;
 
 import java.util.Objects;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 // Used our database(
 @RunWith(SpringRunner.class)
@@ -56,7 +54,8 @@ public class RegisterValidationTest {
         validator.validate(user, errors);
         assertTrue(errors.hasFieldErrors("name"));
         assertEquals(errors.getErrorCount(), errorsCount);
-        assertEquals(Objects.requireNonNull(errors.getFieldError("name")).getCode(), "name.is.empty");
+        assertNotNull(errors.getFieldError("name"));
+        assertEquals(errors.getFieldError("name").getCode(), "name.is.empty");
     }
 
     @Test
@@ -72,7 +71,8 @@ public class RegisterValidationTest {
         validator.validate(user, errors);
         assertTrue(errors.hasFieldErrors("name"));
         assertEquals(errors.getErrorCount(), errorsCount);
-        assertEquals(Objects.requireNonNull(errors.getFieldError("name")).getCode(), "name.is.empty");
+        assertNotNull(errors.getFieldError("name"));
+        assertEquals(errors.getFieldError("name").getCode(), "name.is.empty");
     }
 
     @Test
@@ -88,7 +88,8 @@ public class RegisterValidationTest {
         validator.validate(user, errors);
         assertTrue(errors.hasFieldErrors("login"));
         assertEquals(errors.getErrorCount(), errorsCount);
-        assertEquals(Objects.requireNonNull(errors.getFieldError("login")).getCode(), "login.is.empty");
+        assertNotNull(errors.getFieldError("login"));
+        assertEquals(errors.getFieldError("login").getCode(), "login.is.empty");
     }
 
     @Test
@@ -104,7 +105,8 @@ public class RegisterValidationTest {
         validator.validate(user, errors);
         assertTrue(errors.hasFieldErrors("login"));
         assertEquals(errors.getErrorCount(), errorsCount);
-        assertEquals(Objects.requireNonNull(errors.getFieldError("login")).getCode(), "login.is.empty");
+        assertNotNull(errors.getFieldError("login"));
+        assertEquals(errors.getFieldError("login").getCode(), "login.is.empty");
     }
 
     @Test
@@ -120,8 +122,8 @@ public class RegisterValidationTest {
         validator.validate(user, errors);
         assertTrue(errors.hasFieldErrors("password"));
         assertEquals(errors.getErrorCount(), errorsCount);
-        assertEquals(Objects.requireNonNull(errors.getFieldError("password")).getCode(),
-                "password.is.too.short");
+        assertNotNull(errors.getFieldError("password"));
+        assertEquals(errors.getFieldError("password").getCode(), "password.is.too.short");
     }
 
     @Test
@@ -137,8 +139,8 @@ public class RegisterValidationTest {
         validator.validate(user, errors);
         assertTrue(errors.hasFieldErrors("password"));
         assertEquals(errors.getErrorCount(), errorsCount);
-        assertEquals(Objects.requireNonNull(errors.getFieldError("password")).getCode(),
-                "password.is.too.long");
+        assertNotNull(errors.getFieldError("password"));
+        assertEquals(errors.getFieldError("password").getCode(), "password.is.too.long");
     }
 
     @Test
@@ -154,8 +156,8 @@ public class RegisterValidationTest {
         validator.validate(user, errors);
         assertTrue(errors.hasFieldErrors("password"));
         assertEquals(errors.getErrorCount(), errorsCount);
-        assertEquals(Objects.requireNonNull(errors.getFieldError("password")).getCode(),
-                "password.is.null");
+        assertNotNull(errors.getFieldError("password"));
+        assertEquals(errors.getFieldError("password").getCode(), "password.is.null");
     }
 
     @Test
@@ -171,8 +173,8 @@ public class RegisterValidationTest {
         validator.validate(user, errors);
         assertTrue(errors.hasFieldErrors("password"));
         assertEquals(errors.getErrorCount(), errorsCount);
-        assertEquals(Objects.requireNonNull(errors.getFieldError("password")).getCode(),
-                "password.is.too.short");
+        assertNotNull(errors.getFieldError("password"));
+        assertEquals(errors.getFieldError("password").getCode(), "password.is.null");
     }
 
     @Test
@@ -188,8 +190,8 @@ public class RegisterValidationTest {
         validator.validate(user, errors);
         assertTrue(errors.hasFieldErrors("email"));
         assertEquals(errors.getErrorCount(), errorsCount);
-        assertEquals(Objects.requireNonNull(errors.getFieldError("email")).getCode(),
-                "email.is.empty");
+        assertNotNull(errors.getFieldError("email"));
+        assertEquals(errors.getFieldError("email").getCode(), "email.is.empty");
     }
 
     @Test
@@ -205,8 +207,8 @@ public class RegisterValidationTest {
         validator.validate(user, errors);
         assertTrue(errors.hasFieldErrors("email"));
         assertEquals(errors.getErrorCount(), errorsCount);
-        assertEquals(Objects.requireNonNull(errors.getFieldError("email")).getCode(),
-                "email.is.empty");
+        assertNotNull(errors.getFieldError("email"));
+        assertEquals(errors.getFieldError("email").getCode(), "email.is.empty");
     }
 
     @Test
@@ -222,8 +224,8 @@ public class RegisterValidationTest {
         validator.validate(user, errors);
         assertTrue(errors.hasFieldErrors("userType"));
         assertEquals(errors.getErrorCount(), errorsCount);
-        assertEquals(Objects.requireNonNull(errors.getFieldError("userType")).getCode(),
-                "type.is.null");
+        assertNotNull(errors.getFieldError("userType"));
+        assertEquals(errors.getFieldError("userType").getCode(), "type.is.null");
     }
 
     @Test

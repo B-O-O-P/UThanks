@@ -3,6 +3,7 @@ package com.uthanks.form.validators;
 import com.uthanks.domain.Role.RoleName;
 import com.uthanks.form.UserCredentials;
 import com.uthanks.services.UserService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -72,12 +73,12 @@ public class UserCredentialsRegisterValidator extends CredentialsValidator imple
     }
 
     private boolean validatePassword(String password, Errors errors) {
-        if (password == null) {
+        if (StringUtils.isEmpty(password)) {
             errors.rejectValue("password", "password.is.null",
                     "password can not be null");
             return false;
         }
-        int passwordLen = Objects.requireNonNull(password).length();
+        int passwordLen = password.length();
         if (passwordLen < 4) {
             errors.rejectValue("password", "password.is.too.short",
                     "password is too short");
