@@ -24,4 +24,8 @@ public class EventService {
         user.addEvent(event);
         eventRepository.save(event);
     }
+
+    public Event findById(Long id) {
+        return eventRepository.findById(id).orElseThrow(() -> new IllegalArgumentException(String.format("No event with id=%d found", id)));
+    }
 }

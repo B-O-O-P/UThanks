@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head th:replace="common :: head(~{::link})">
+    <title>UThanks</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/event.css}"
+          href="../static/css/event.css">
+</head>
+<body>
+<div th:replace="common :: #menu-check"></div>
+<main class="content">
+    <div th:replace="common :: menu"></div>
+    <div class="profile">
+        <div class="profile__item profile__item_main-info">
+            <div class="main-info__avatar">
+                <div class="avatar-wrapper">
+                    <img class="avatar-image" th:src="@{/images/dummy-event.jpg}"
+                         src="images/dummy-event.jpg"
+                         alt="Event">
+                </div>
+            </div>
+            <div class="main-text main-info__text">
+            </div>
+        </div>
+        <div class="profile__item edit-info">
+        </div>
+        <div class="card profile__item user-card__item_main-text">
+            <h3 class="text-title">About</h3>
+            <p class="text-line">Best of the best</p>
+        </div>
+        <div th:replace="common :: to-top"></div>
+        <script th:replace="common :: to-top-script"></script>
+    </div>
+</main>
+<footer th:replace="common :: foot"></footer>
+</body>
+</html>

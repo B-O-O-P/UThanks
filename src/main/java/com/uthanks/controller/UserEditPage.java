@@ -14,7 +14,7 @@ import javax.validation.Valid;
 
 @Controller
 public class UserEditPage extends Page {
-    @GetMapping(path = "/user/{id}/edit")
+    @GetMapping(path = "/users/{id}/edit")
     public String editGet(@PathVariable("id") String requestId, Model model) {
         try {
             User user = getUserService().findById(Long.parseLong(requestId));
@@ -27,7 +27,7 @@ public class UserEditPage extends Page {
         return "user-edit";
     }
 
-    @PostMapping(path = "/user/{id}/edit")
+    @PostMapping(path = "/users/{id}/edit")
     public String editPost(@Valid @ModelAttribute("userInfo") User updatedUser,
                            BindingResult bindingResult,
                            HttpSession httpSession, @PathVariable("id") String postId) {
@@ -38,6 +38,6 @@ public class UserEditPage extends Page {
             return "user-edit";
         }
 
-        return "redirect:/user/" + postId;
+        return "redirect:/users/" + postId;
     }
 }
