@@ -2,26 +2,35 @@ const carousel = document.getElementsByClassName('event-carousel')[0];
 const carouselSuperWrapper = document.getElementsByClassName('event-carousel-card-super-wrapper')[0];
 let wrapper = document.getElementsByClassName('event-carousel-card-wrapper')[0];
 let cards = Array.from(document.getElementsByClassName('event-carousel__card'));
-
-wrapper.style.display = 'none';
-
-let widthSuper = parseInt(carouselSuperWrapper.offsetWidth);
+let count = 0;
 let widthCard = 200;
-let count = (widthSuper - (widthSuper % widthCard)) / widthCard;
-let margins = (widthSuper % widthCard) / (Math.min(count, cards.length) + 1);
+let margins = 0;
 
-carouselSuperWrapper.style.width = `${carouselSuperWrapper.offsetWidth}px`;
+function resizing() {
+    wrapper.style.display = 'none';
 
-cards.forEach(card => {
-    card.style.margin = `0 ${margins / 2}px`;
-});
-if (cards.length !== 0) {
-    cards[0].style.marginLeft =  `${margins}px`;
-    cards[cards.length - 1].style.marginRight = `${margins}px`
+    let widthSuper = parseInt(carouselSuperWrapper.offsetWidth);
+    count = (widthSuper - (widthSuper % widthCard)) / widthCard;
+    margins = ((widthSuper % widthCard)) / (Math.min(count, cards.length) + 1);
+
+    if (Math.min(count, cards.length) === cards.length) {
+        margins += ((widthCard) * (count - cards.length)) / (cards.length + 1);
+    }
+
+    carouselSuperWrapper.style.width = `${carouselSuperWrapper.offsetWidth}px`;
+
+    cards.forEach(card => {
+        card.style.margin = `0 ${margins / 2}px`;
+    });
+    if (cards.length !== 0) {
+        cards[0].style.marginLeft =  `${margins}px`;
+        cards[cards.length - 1].style.marginRight = `${margins}px`
+    }
+
+    wrapper.style.display = 'flex';
 }
 
-wrapper.style.display = 'flex';
-
+resizing();
 
 let cardsInLeft = 0; // положение ленты прокрутки
 
@@ -60,3 +69,4 @@ if (cardsInLeft === Math.max(cards.length - count, 0)) {
     arrowLeft.style.opacity = '0.5'
 }
 
+window.addEventListener('resize', resizing);
