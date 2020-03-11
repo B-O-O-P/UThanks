@@ -1,44 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org" lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+<head th:replace="common :: head(~{::link})">
     <title>UThanks</title>
-    <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/create-event.css}" href="../static/css/create-event.css">
 </head>
 <body>
 <div th:replace="common :: #menu-check"></div>
-<div th:replace="common :: head"></div>
 <main class="content">
     <div th:replace="common :: menu"></div>
     <form class="form" th:action="@{/create-event}" th:object="${event}" method="post">
         <div class="form__name">Create an event</div>
         <div class="form__item">
             <label for="name" class="input-label">Name:</label>
-            <input required type="text" id="name" th:field="*{name}">
+            <input class="input-text" required type="text" id="name" th:field="*{name}">
             <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
         </div>
         <div class="form__item">
             <label for="date-begin" class="input-label">Start:</label>
-            <input required type="date" id="date-begin" th:field="*{eventBeginTime}">
+            <input class="input-text" required type="date" id="date-begin" th:field="*{eventBeginTime}">
         </div>
         <div class="form__item">
             <label for="date-end" class="input-label">Finish:</label>
-            <input required type="date" id="date-end" th:field="*{eventEndTime}">
+            <input class="input-text" required type="date" id="date-end" th:field="*{eventEndTime}">
             <span th:if="${#fields.hasErrors('eventEndTime')}" th:errors="*{eventEndTime}" class="error"></span>
         </div>
         <div class="form__item">
             <label for="date-end" class="input-label">Desired amount of volunteers:</label>
-            <input required type="number" id="volunteers-count" max="100" th:field="*{neededUsers}">
+            <input class="input-text" required type="number" id="volunteers-count" max="100" th:field="*{neededUsers}">
             <span th:if="${#fields.hasErrors('neededUsers')}" th:errors="*{neededUsers}" class="error"></span>
         </div>
 
         <div class="form__item">
             <label for="desc" class="input-label">Description:</label>
-            <textarea required type="text" id="desc" class="form__desc" rows="10" th:field="*{description}"></textarea>
+            <textarea required type="text" id="desc" class="input-area form__desc" rows="10" th:field="*{description}"></textarea>
         </div>
-        <input type="submit" id="submit" value="Create event" class="form__submit">
+        <input type="submit" id="submit" value="Create event" class="input-button form__submit">
     </form>
 </main>
 <div th:replace="common :: foot"></div>

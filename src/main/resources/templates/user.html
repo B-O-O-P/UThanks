@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
+<head th:replace="common :: head(~{::link})">
     <title>UThanks</title>
-    <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/user.css}" href="../static/css/user.css">
 </head>
 <body>
 <div th:replace="common :: #menu-check"></div>
-<div th:replace="common :: head"></div>
 <main class="content">
     <div th:replace="common :: menu"></div>
-    <div class="user-card">
-        <div class="user-card__item user-card__main-info">
+    <div class="profile">
+        <div class="profile__item profile__item_main-info">
             <div class="main-info__avatar">
                 <div class="avatar-wrapper">
                     <img class="avatar-image" th:src="@{/images/user.png}" src="images/user.png"
@@ -31,17 +27,21 @@
                    th:if="${userInfo}">[[${userInfo.age}]] years</p>
             </div>
         </div>
-        <div class="user-card__item user-card__item_main-text">
+        <div class="profile__item edit-info" th:if="${session.user != null && userInfo.id == session.user.id}">
+            <a class="input-button input-button_edit-info" th:href="@{/user/{id}/edit(id=${userInfo.id})}">Edit profile</a>
+        </div>
+        <div class="card profile__item user-card__item_main-text">
             <h3 class="text-title">About</h3>
             <p class="text-line">Best of the best</p>
         </div>
-        <div class="user-card__item user-card__item_skills">
+        <div class="card profile__item user-card__item_skills"
+             th:if="${userInfo.role.getName()} == ${volunteerRole}">
             <h3 class="text-title">Skills</h3>
             <p class="text-line" th:if="${userInfo}">[[${userInfo.skills}]]</p>
             <p class="text-line">Best of the best Best of the best Best of the best Best of the best
                 Best of the best Best of the best Best of the best</p>
         </div>
-        <div class="user-card__item user-card__item_events">
+        <div class="card profile__item user-card__item_events">
             <h3 class="text-title">Events</h3>
             <div class="event-carousel">
                 <!--TODO сделать шаблон карточки thymeleaf-->
@@ -55,7 +55,7 @@
                 </button>
             </div>
         </div>
-        <div class="user-card__item user-card__item_comments">
+        <div class="card profile__item user-card__item_comments">
             <h3 class="text-title">Comments</h3>
             <div class="comments">
                 <ul class="comments-list">

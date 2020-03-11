@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org" lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+<head th:replace="common :: head(~{::link})">
     <title>UThanks</title>
-    <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/companies.css}" href="../static/css/companies.css">
 </head>
 <body>
 <div th:replace="common :: #menu-check"></div>
-<div th:replace="common :: head"></div>
 <main class="content">
     <div th:replace="common :: menu"></div>
     <h2 class="page-name">Companies</h2>
@@ -17,7 +13,7 @@
         <li class="page-content__card" th:each="user : ${companies}">
             <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}" class="card-photo">
             <div class="card-info">
-                <h3 class="card-name" th:text="${user.name}">ITMO University</h3>
+                <h3 class="card-name" th:text="${user.login}">ITMO University</h3>
                 <h4 class="card-about-events">Available events</h4>
                 <div class="card-events">
                     <a href="/not-found" th:href="@{/not-found}"><img src="images/dummy-event.jpg"

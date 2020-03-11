@@ -1,7 +1,6 @@
 package com.uthanks.controller;
 
 import com.uthanks.domain.User;
-import com.uthanks.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

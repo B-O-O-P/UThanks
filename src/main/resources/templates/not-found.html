@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
+<head th:replace="common :: head(~{::link})">
     <title>UThanks</title>
-    <link type="text/css" href="../static/css/not-found.css" rel="stylesheet" th:href="@{/css/not-found.css}">
-    <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
+    <link type="text/css" href="../static/css/not-found.css" rel="stylesheet"
+          th:href="@{/css/not-found.css}">
 </head>
 <body>
-<header class="header">
-    <div class="empty"></div>
-    <h1 class="header__name">Uthanks</h1>
-    <div class="empty"></div>
-    <div class="empty"></div>
-</header>
+<div th:replace="common :: #menu-check"></div>
 <main class="content">
+    <div th:replace="common :: menu"></div>
     Something went wrong :(
 </main>
-<footer class="footer"></footer>
+<footer th:replace="common :: foot"></footer>
 </body>
 </html>
