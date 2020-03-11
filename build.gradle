@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'com.h2database', name: 'h2', version: '1.3.148'
+    testCompile group: 'com.h2database', name: 'h2', version: "$versionH2database"
     // Use JUnit Jupiter API for testing
     testImplementation "org.junit.jupiter:junit-jupiter-api:$versionJunitJupiterApi"
 
@@ -48,7 +48,7 @@ dependencies {
     // Dependency for StringUtils
     implementation "org.apache.commons:commons-lang3:$versionLang3"
 
-    implementation "commons-codec:commons-codec:1.14"
+    implementation "commons-codec:commons-codec:$versionCodec"
 }
 
 application {
