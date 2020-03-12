@@ -19,17 +19,47 @@
                 </div>
             </div>
             <div class="main-text main-info__text">
+                <p class="text-line text-line_end text-line_big main-text__text-line">
+                    [[${eventInfo.name}]]
+                </p>
+                <p class="text-line text-line_end text-line_alpha main-text__text-line">
+                    [[${eventInfo.volunteers.size()}]]/[[${eventInfo.neededUsers}]]
+                </p>
             </div>
         </div>
-        <div class="profile__item edit-info">
+        <div class="profile__item profile__item_dates">
+            <div class="date">[[${eventInfo.eventBeginTime.toString()}]]</div>
+            <div class="date">[[${eventInfo.eventEndTime.toString()}]]</div>
         </div>
-        <div class="card profile__item user-card__item_main-text">
+        <div class="profile__item register"
+             th:if="${session.user != null} and ${session.user.role.getName() == volunteerRole}">
+            <button class="input-button input-button_register" type="submit">Register</button>
+        </div>
+        <div class="card profile__item profile__item_description">
             <h3 class="text-title">About</h3>
             <p class="text-line">Best of the best</p>
+            <p class="text-line">[[${eventInfo.description}]]</p>
         </div>
-        <div th:replace="common :: to-top"></div>
-        <script th:replace="common :: to-top-script"></script>
-    </div>
+        <div class="profile__item profile__item_volunteers"
+             th:if="${session.user} and ${eventInfo.creator.id} == ${session.user.id}">
+            <h3 class="text-title">Volunteers</h3>
+            <div class="volunteers-wrapper">
+                <ul class="volunteers-list">
+                    <li class="card card_volunteer">
+                        <div class="avatar-wrapper avatar-wrapper_mini">
+                            <img class="avatar-image" th:src="@{/images/user.png}"
+                                 src="images/user.png"
+                                 alt="User">
+                        </div>
+                        <p class="text-line">Name</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div th:replace=" common :: to-top">
+                        </div>
+                        <script th:replace="common :: to-top-script"></script>
+            </div>
 </main>
 <footer th:replace="common :: foot"></footer>
 </body>
