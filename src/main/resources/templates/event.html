@@ -20,24 +20,30 @@
             </div>
             <div class="main-text main-info__text">
                 <p class="text-line text-line_end text-line_big main-text__text-line">
-                    [[${eventInfo.name}]]
+                    [[${eventInfo.getName()}]]
                 </p>
                 <p class="text-line text-line_end text-line_alpha main-text__text-line">
-                    [[${eventInfo.volunteers.size()}]]/[[${eventInfo.neededUsers}]]
+                    [[${eventInfo.getVolunteers().size()}]]/[[${eventInfo.getNeededUsers()}]]
                 </p>
             </div>
         </div>
         <div class="profile__item profile__item_dates">
-            <div class="date">[[${eventInfo.eventBeginTime.toString()}]]</div>
-            <div class="date">[[${eventInfo.eventEndTime.toString()}]]</div>
+            <div class="date">Starts [[${eventInfo.eventBeginTime.toString()}]]</div>
+            <div class="date">Ends [[${eventInfo.eventEndTime.toString()}]]</div>
         </div>
-        <div class="profile__item register"
-             th:if="${session.user != null} and ${session.user.role.getName() == volunteerRole}">
-            <button class="input-button input-button_register" type="submit">Register</button>
-        </div>
+        <form class="profile__item register"
+              th:if="${session.user != null} and ${session.user.role.getName() == volunteerRole}
+              and ${eventInfo.getVolunteers().size()} < ${eventInfo.getNeededUsers()}
+              or ${eventInfo.getVolunteers().contains(session.user)}"
+              th:action="@{/events/{id}/(id=${eventInfo.id})}" method="post">
+            <button class="input-button input-button_register" type="submit" name="action"
+                    value="register">
+                <span th:unless="${eventInfo.getVolunteers().contains(session.user)}">Register</span>
+                <span th:if="${eventInfo.getVolunteers().contains(session.user)}">Unregister</span>
+            </button>
+        </form>
         <div class="card profile__item profile__item_description">
             <h3 class="text-title">About</h3>
-            <p class="text-line">Best of the best</p>
             <p class="text-line">[[${eventInfo.description}]]</p>
         </div>
         <div class="profile__item profile__item_volunteers"
@@ -53,11 +59,12 @@
                         </div>
                         <p class="text-line text-line_overflowed"
                            th:if="${volunteer.fullName} or ${volunteer.fullName.isEmpty()}">
-                            [[${volunteer.fullName}]]</p>
+                            [[${volunteer.getFullName()}]]</p>
                         <p class="text-line text-line_overflowed"
                            th:unless="${volunteer.fullName} and ${!volunteer.name.isEmpty()}">
-                            [[${volunteer.name}]]</p>
-                        <a class="card__full-link card__full-link_volunteer" th:href="@{/users/{id}(id=${volunteer.id})}"></a>
+                            [[${volunteer.getName()}]]</p>
+                        <a class="card__full-link card__full-link_volunteer"
+                           th:href="@{/users/{id}(id=${volunteer.id})}"></a>
                     </li>
                 </ul>
             </div>
