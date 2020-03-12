@@ -17,6 +17,7 @@ public class EventPage extends Page {
             Event event = getEventService().findById(Long.parseLong(requestId));
             if (event != null) {
                 model.addAttribute("eventInfo", event);
+                model.addAttribute("volunteers", event.getVolunteers());
             }
         } catch (NumberFormatException e) {
             return "redirect:/not-found";

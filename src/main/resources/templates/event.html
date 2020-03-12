@@ -10,7 +10,7 @@
 <main class="content">
     <div th:replace="common :: menu"></div>
     <div class="profile">
-        <div class="profile__item profile__item_main-info">
+        <div class="main-info profile__item profile__item_main-info">
             <div class="main-info__avatar">
                 <div class="avatar-wrapper">
                     <img class="avatar-image" th:src="@{/images/dummy-event.jpg}"
@@ -45,21 +45,27 @@
             <h3 class="text-title">Volunteers</h3>
             <div class="volunteers-wrapper">
                 <ul class="volunteers-list">
-                    <li class="card card_volunteer">
+                    <li class="card card_volunteer" th:each="volunteer : ${volunteers}">
                         <div class="avatar-wrapper avatar-wrapper_mini">
                             <img class="avatar-image" th:src="@{/images/user.png}"
                                  src="images/user.png"
                                  alt="User">
                         </div>
-                        <p class="text-line">Name</p>
+                        <p class="text-line text-line_overflowed"
+                           th:if="${volunteer.fullName} or ${volunteer.fullName.isEmpty()}">
+                            [[${volunteer.fullName}]]</p>
+                        <p class="text-line text-line_overflowed"
+                           th:unless="${volunteer.fullName} and ${!volunteer.name.isEmpty()}">
+                            [[${volunteer.name}]]</p>
+                        <a class="card__full-link card__full-link_volunteer" th:href="@{/users/{id}(id=${volunteer.id})}"></a>
                     </li>
                 </ul>
             </div>
         </div>
         <div th:replace=" common :: to-top">
-                        </div>
-                        <script th:replace="common :: to-top-script"></script>
-            </div>
+        </div>
+        <script th:replace="common :: to-top-script"></script>
+    </div>
 </main>
 <footer th:replace="common :: foot"></footer>
 </body>

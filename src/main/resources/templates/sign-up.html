@@ -27,7 +27,7 @@
             <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}" class="error"></span>
         </div>
         <div class="form__item">
-            <label for="login">Name:</label>
+            <label for="name">Name:</label>
             <input class="input-text" required type="text" id="name" maxlength="32" th:field="*{name}">
             <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
         </div>

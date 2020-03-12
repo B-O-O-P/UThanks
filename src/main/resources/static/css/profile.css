@@ -9,6 +9,12 @@
     padding: 12px;
 }
 
+.text-line_overflowed {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .text-line_end {
     text-align: end;
 }
@@ -34,6 +40,7 @@
 }
 
 .profile__item {
+    position: relative;
     width: 100%;
     padding: 4px;
     margin-bottom: 32px;

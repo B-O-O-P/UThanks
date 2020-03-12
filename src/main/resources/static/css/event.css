@@ -7,20 +7,23 @@
 }
 
 .volunteers-list {
-    text-decoration: none;
+    width: 100%;
+    list-style: none;
 }
 
 .card_volunteer {
-    padding: 12px;
     width: 100%;
-    display: flex;
+    padding: 12px;
+    display: grid;
     align-items: center;
-    flex-wrap: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    grid-template-columns: 75px 1fr;
 }
 
 .avatar-wrapper_mini {
     height: 75px;
     width: 75px;
+}
+
+.card__full-link_volunteer {
+    padding: 12px;
 }
