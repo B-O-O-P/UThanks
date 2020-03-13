@@ -19,8 +19,8 @@
         <h1 class="header__name">
             <a href="/">Uthanks</a>
         </h1>
-        <img class="header__btn-search page-btn" th:src="@{/images/search.png}"
-             src="../static/images/search.png">
+        <a th:href="@{/search}"> <img class="header__btn-search page-btn" th:src="@{/images/search.png}"
+                                      src="../static/images/search.png"></a>
         <div class="menu-sign-up-btn-wrapper">
             <label for="menu-sign-check">
                 <img class="header__btn-search page-btn" th:src="@{/images/user.png}"
@@ -64,27 +64,62 @@
     <div class="arrow-to-top" th:fragment="to-top">▲</div>
     <script type="text/javascript" src="../static/js/arrow-to-top.js" th:src="@{/js/arrow-to-top.js}"
             th:fragment="to-top-script"></script>
-    <div class="carousel" th:fragment="carousel">
-        <button class="arrow prev">⇦</button>
-        <div class="gallery">
-            <ul class="images">
-                <li><img src="https://ru.js.cx/carousel/1.png" class="li__img"></li>
-                <li><img src="https://ru.js.cx/carousel/2.png" class="li__img"></li>
-                <li><img src="https://ru.js.cx/carousel/3.png" class="li__img"></li>
-                <li><img src="https://ru.js.cx/carousel/4.png" class="li__img"></li>
-                <li><img src="https://ru.js.cx/carousel/5.png" class="li__img"></li>
-                <li><img src="https://ru.js.cx/carousel/6.png" class="li__img"></li>
-                <li><img src="https://ru.js.cx/carousel/7.png" class="li__img"></li>
-                <li><img src="https://ru.js.cx/carousel/8.png" class="li__img"></li>
-                <li><img src="https://ru.js.cx/carousel/9.png" class="li__img"></li>
-                <li><img src="https://ru.js.cx/carousel/10.png" class="li__img"></li>
-            </ul>
+    <div class="event-carousel" th:fragment="event-carousel">
+        <!--TODO сделать шаблон карточки thymeleaf-->
+        <button class="carousel-arrow event-carousel__arrow_left">
+            <img class="carousel-arrow-svg" th:src="@{/images/arrow-right.svg}"
+                 src="images/arrow-right.svg" alt="left arrow">
+        </button>
+        <div class="event-carousel-card-super-wrapper">
+            <div class="event-carousel-card-wrapper">
+                <div class="event-carousel__card card card__full-link" th:fragment="event-card (name, link)">
+                    <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
+                         class="event-carousel__card-photo">
+                    <h4 class="event-carousel__card-name" title="super competition">NEERC1</h4>
+                </div>
+                <div class="event-carousel__card card card__full-link" th:fragment="event-card (name, link)">
+                    <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
+                         class="event-carousel__card-photo">
+                    <h4 class="event-carousel__card-name" title="super competition">NEERC2</h4>
+                </div>
+                <div class="event-carousel__card card card__full-link" th:fragment="event-card (name, link)">
+                    <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
+                         class="event-carousel__card-photo">
+                    <h4 class="event-carousel__card-name" title="super competition">NEERC3</h4>
+                </div>
+                <div class="event-carousel__card card card__full-link" th:fragment="event-card (name, link)">
+                    <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
+                         class="event-carousel__card-photo">
+                    <h4 class="event-carousel__card-name" title="super competition">NEERC4</h4>
+                </div>
+                <div class="event-carousel__card card card__full-link" th:fragment="event-card (name, link)">
+                    <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
+                         class="event-carousel__card-photo">
+                    <h4 class="event-carousel__card-name" title="super competition">NEERC5</h4>
+                </div>
+                <div class="event-carousel__card card card__full-link" th:fragment="event-card (name, link)">
+                    <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
+                         class="event-carousel__card-photo">
+                    <h4 class="event-carousel__card-name" title="super competition">NEERC6</h4>
+                </div>
+                <div class="event-carousel__card card card__full-link" th:fragment="event-card (name, link)">
+                    <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
+                         class="event-carousel__card-photo">
+                    <h4 class="event-carousel__card-name" title="super competition">NEERC7</h4>
+                </div>
+            </div>
         </div>
-        <button class="arrow next">⇨</button>
+        <button class="carousel-arrow event-carousel__arrow_right">
+            <img class="carousel-arrow-svg" th:src="@{/images/arrow-right.svg}"
+                 src="images/arrow-right.svg" alt="right arrow">
+        </button>
     </div>
-    <script type="text/javascript" src="../static/js/carousel.js" th:src="@{/js/carousel.js}"
-            th:fragment="carousel-script"></script>
+    <script type="text/javascript" th:fragment="event-carousel-script" src="../static/js/carousel.js"
+            th:src="@{/js/carousel.js}"></script>
+
 </main>
 <footer class="footer" th:fragment="foot"></footer>
+<footer class="footer footer-pic" th:fragment="foot-pic"><img src="images/hands.png" th:src="@{/images/hands.png}"
+                                                   class="background-pic"></footer>
 </body>
 </html>

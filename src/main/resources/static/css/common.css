@@ -20,6 +20,9 @@ body {
     font-family: 'Questrial', serif;
     font-size: 24px;
 }
+.content {
+    z-index: 1;
+}
 
 .wrapper {
     height: 80px;
@@ -39,6 +42,10 @@ body {
 
     font-weight: normal;
     top: 0;
+}
+
+.header__btn-search {
+    transform: scale(-1, 1);
 }
 
 .header__name {
@@ -167,7 +174,9 @@ body {
 .footer {
     background-color: #FFFACC;
 }
-
+.footer-pic {
+    position: relative;
+}
 
 .arrow-to-top {
     position: fixed;
@@ -258,6 +267,13 @@ body {
     margin-left: 30px;
 }
 
+.background-pic {
+    position: absolute;
+    bottom: 80px;
+    width: 100%;
+    opacity: 0.5;
+}
+
 /* CARD */
 .card {
     border-radius: 0;
@@ -285,4 +301,79 @@ body {
     height: 32px;
     font-size: 24px;
     outline-color: #C4C4C4;
+}
+
+
+/** CAROUSEL **/
+.event-carousel {
+    position: relative;
+    box-sizing: content-box;
+    height: 250px;
+    /*border-radius: 8px;*/
+    /*border: 1px solid #BABABA;*/
+    margin: 20px 30px;
+}
+
+.carousel-arrow {
+    background: none;
+    outline: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+
+.carousel-arrow-svg {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.event-carousel__arrow_left {
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    margin-top: -15px;
+    transform: scale(-1, 1);
+}
+
+.event-carousel__arrow_right {
+    position: absolute;
+    top: 50%;
+    right: -30px;
+    margin-top: -15px;
+}
+.event-carousel-card-super-wrapper {
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #BABABA;
+
+    max-width: 100%;
+}
+
+.event-carousel-card-wrapper {
+    display: flex;
+    transition: transform 700ms;
+}
+
+.event-carousel__card {
+    width: 200px;
+    height: 250px;
+    margin: inherit;
+}
+.event-carousel__card-photo {
+    height: 200px;
+    width: 200px;
+    padding: 30px 10px;
+    object-fit: cover;
+    object-position: center;
+}
+.event-carousel__card-name {
+    display: block;
+    overflow: hidden;
+
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+    text-wrap: none;
+    text-overflow: ellipsis;
 }
