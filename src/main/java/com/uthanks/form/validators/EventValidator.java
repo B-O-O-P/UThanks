@@ -31,11 +31,11 @@ public class EventValidator extends CredentialsValidator implements Validator {
     }
 
     private boolean validateDates(Calendar beginDate, Calendar endDate, Errors errors) {
-        if (!validateNullValue(errors, beginDate, "eventBeginTime")) {
+        if (!validateNotNullValue(errors, beginDate, "eventBeginTime")) {
             return false;
         }
 
-        if (!validateNullValue(errors, endDate, "eventEndTime")){
+        if (!validateNotNullValue(errors, endDate, "eventEndTime")){
             return false;
         }
 

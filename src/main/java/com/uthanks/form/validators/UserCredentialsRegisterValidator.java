@@ -46,7 +46,7 @@ public class UserCredentialsRegisterValidator extends CredentialsValidator imple
     }
 
     private boolean validateRole(RoleName role, Errors errors) {
-        if (!validateNullValue(errors, role, "userType")) {
+        if (!validateNotNullValue(errors, role, "userType")) {
             return false;
         }
 
