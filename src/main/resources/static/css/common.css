@@ -174,7 +174,9 @@ body {
 .footer {
     background-color: #FFFACC;
 }
-
+.footer-pic {
+    position: relative;
+}
 
 .arrow-to-top {
     position: fixed;
