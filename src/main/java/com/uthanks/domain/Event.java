@@ -16,6 +16,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -37,13 +38,13 @@ public class Event {
     private String name;
 
     @CreationTimestamp
-    private Date creationTime;
+    private Calendar creationTime;
 
     @DateTimeFormat(pattern = DATE_PATTERN)
-    private Date eventBeginTime;
+    private Calendar eventBeginTime;
 
     @DateTimeFormat(pattern = DATE_PATTERN)
-    private Date eventEndTime;
+    private Calendar eventEndTime;
 
     private int neededUsers;
 

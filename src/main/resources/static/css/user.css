@@ -5,15 +5,6 @@
     flex-direction: column;
 }
 
-.event-carousel {
-    position: relative;
-    box-sizing: content-box;
-    height: 250px;
-    border-radius: 8px;
-    border: 1px solid #BABABA;
-    margin: 20px 30px;
-}
-
 
 .main-text__text-line {
     margin-bottom: 12px;
@@ -24,35 +15,6 @@
     flex-direction: column;
 }
 
-
-.carousel-arrow {
-    background: none;
-    outline: none;
-    border: none;
-    width: 30px;
-    height: 30px;
-}
-
-.carousel-arrow-svg {
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
-}
-
-.event-carousel__arrow_left {
-    position: absolute;
-    top: 50%;
-    left: -30px;
-    margin-top: -15px;
-    transform: scale(-1, 1);
-}
-
-.event-carousel__arrow_right {
-    position: absolute;
-    top: 50%;
-    right: -30px;
-    margin-top: -15px;
-}
 
 .comments {
     border-radius: 8px;

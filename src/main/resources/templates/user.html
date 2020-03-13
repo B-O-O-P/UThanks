@@ -18,11 +18,11 @@
             </div>
             <div class="main-text main-info__text">
                 <p class="main-text__text-line text-line text-line_end text-line_big"
-                   th:if="${userInfo != null && userInfo.fullName == null}">
+                   th:if="${userInfo != null && userInfo.name == null}">
                     [[${userInfo.login}]]</p>
                 <p class="main-text__text-line text-line text-line_end text-line_big"
-                   th:if="${userInfo != null && userInfo.fullName != null}">
-                    [[${userInfo.fullName}]]</p>
+                   th:if="${userInfo != null && userInfo.name != null}">
+                    [[${userInfo.name}]]</p>
                 <p class="main-text__text-line text-line text-line_end text-line_margined text-line_alpha"
                    th:if="${userInfo}">[[${userInfo.age}]] years</p>
             </div>
@@ -43,17 +43,8 @@
         </div>
         <div class="card profile__item user-card__item_events">
             <h3 class="text-title">Events</h3>
-            <div class="event-carousel">
-                <!--TODO сделать шаблон карточки thymeleaf-->
-                <button class="carousel-arrow event-carousel__arrow_left">
-                    <img class="carousel-arrow-svg" th:src="@{/images/arrow-right.svg}"
-                         src="images/arrow-right.svg" alt="left arrow">
-                </button>
-                <button class="carousel-arrow event-carousel__arrow_right">
-                    <img class="carousel-arrow-svg" th:src="@{/images/arrow-right.svg}"
-                         src="images/arrow-right.svg" alt="right arrow">
-                </button>
-            </div>
+            <div th:replace="common :: event-carousel" class="event-carousel"></div>
+            <script th:replace="common :: event-carousel-script"></script>
         </div>
         <div class="card profile__item user-card__item_comments">
             <h3 class="text-title">Comments</h3>

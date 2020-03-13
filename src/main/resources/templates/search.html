@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head th:replace="common :: head(~{::link})">
+    <title>UThanks</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/search.css}" href="../static/css/search.css">
+</head>
+<body>
+<div th:replace="common :: #menu-check"></div>
+<main class="content">
+    <div th:replace="common :: menu"></div>
+    <div class="search-wrapper">
+        <input class="input-text search-wrapper__input" type="text" id="search" placeholder="Search">
+        <img src="images/search.png" th:src="@{/images/search.png}" class="search-wrapper__btn">
+    </div>
+</main>
+<div th:replace="common :: foot-pic"></div>
+</body>
+</html>
