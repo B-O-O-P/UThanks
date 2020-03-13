@@ -2,6 +2,7 @@ package com.uthanks;
 
 import com.uthanks.form.UserCredentials;
 import com.uthanks.form.validators.UserCredentialsEnterValidator;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,6 @@ import org.springframework.validation.Errors;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 // Used our database(
 @RunWith(SpringRunner.class)
@@ -27,6 +27,17 @@ public class EnterValidationTest {
     @Autowired
     private UserCredentialsEnterValidator validator;
 
+    private UserCredentials user;
+    private Errors errors;
+
+    @Before
+    public void init() {
+        user = new UserCredentials();
+        user.setLogin("Lalala");
+        user.setPassword("password");
+        errors = new BeanPropertyBindingResult(user, "");
+    }
+
     @Test
     public void testValidateGoodUser() {
         // TODO user must be in database
@@ -34,57 +45,49 @@ public class EnterValidationTest {
 
     @Test
     public void testValidateNullLogin() {
-        int errorsCount = 1;
-        UserCredentials user = new UserCredentials();
         user.setLogin(null);
-        user.setPassword("password");
-        Errors errors = new BeanPropertyBindingResult(user, "");
         validator.validate(user, errors);
-        assertTrue(errors.hasFieldErrors("login"));
-        assertEquals(errors.getErrorCount(), errorsCount);
         assertNotNull(errors.getFieldError("login"));
         assertEquals(errors.getFieldError("login").getCode(), "login.is.empty");
     }
 
     @Test
     public void testValidateEmptyLogin() {
-        int errorsCount = 1;
-        UserCredentials user = new UserCredentials();
         user.setLogin("");
-        user.setPassword("password");
-        Errors errors = new BeanPropertyBindingResult(user, "");
         validator.validate(user, errors);
-        assertTrue(errors.hasFieldErrors("login"));
-        assertEquals(errors.getErrorCount(), errorsCount);
         assertNotNull(errors.getFieldError("login"));
         assertEquals(errors.getFieldError("login").getCode(), "login.is.empty");
     }
 
     @Test
     public void testValidateNullPassword() {
-        int errorsCount = 1;
-        UserCredentials user = new UserCredentials();
-        user.setLogin("Aaaaa");
         user.setPassword(null);
-        Errors errors = new BeanPropertyBindingResult(user, "");
         validator.validate(user, errors);
-        assertTrue(errors.hasFieldErrors("password"));
-        assertEquals(errors.getErrorCount(), errorsCount);
         assertNotNull(errors.getFieldError("password"));
         assertEquals(errors.getFieldError("password").getCode(), "password.is.empty");
     }
 
     @Test
     public void testValidateEmptyPassword() {
-        int errorsCount = 1;
-        UserCredentials user = new UserCredentials();
-        user.setLogin("Aaaaa");
         user.setPassword("");
-        Errors errors = new BeanPropertyBindingResult(user, "");
         validator.validate(user, errors);
-        assertTrue(errors.hasFieldErrors("password"));
-        assertEquals(errors.getErrorCount(), errorsCount);
         assertNotNull(errors.getFieldError("password"));
         assertEquals(errors.getFieldError("password").getCode(), "password.is.empty");
+    }
+
+    /* Depends on current DataBase if "Lalala" is not used */
+    @Test
+    public void testValidateUserNotFoundInDb() {
+        validator.validate(user, errors);
+        assertNotNull(errors.getFieldError("password"));
+        assertEquals(errors.getFieldError("password").getCode(), "invalid.login.or.password");
+    }
+
+    @Test
+    public void testValidateWithErrors() {
+        int errorsCount = 1;
+        errors.reject("f.f");
+        validator.validate(user, errors);
+        assertEquals(errors.getErrorCount(), errorsCount);
     }
 }
