@@ -44,6 +44,11 @@ public class RegisterValidationTest {
         errors = new BeanPropertyBindingResult(user, "");
     }
 
+    @Test
+    public void testValidateSupportUser() {
+        assertTrue(validator.supports(user.getClass()));
+    }
+
     /* Depends on current DataBase if "Lll" is not used */
     @Test
     public void testValidateGoodUser() {

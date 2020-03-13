@@ -19,6 +19,7 @@ import java.util.GregorianCalendar;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -43,6 +44,11 @@ public class CreateEventValidationTest {
         event.setEventEndTime(endDate);
         event.setNeededUsers(10);
         errors = new BeanPropertyBindingResult(event, "");
+    }
+
+    @Test
+    public void testValidateSupportEvent() {
+        assertTrue(validator.supports(event.getClass()));
     }
 
     @Test

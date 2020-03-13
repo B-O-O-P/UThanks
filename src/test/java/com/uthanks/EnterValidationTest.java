@@ -15,6 +15,7 @@ import org.springframework.validation.Errors;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 // Used our database(
 @RunWith(SpringRunner.class)
@@ -36,6 +37,11 @@ public class EnterValidationTest {
         user.setLogin("Lalala");
         user.setPassword("password");
         errors = new BeanPropertyBindingResult(user, "");
+    }
+
+    @Test
+    public void testValidateSupportUser() {
+        assertTrue(validator.supports(user.getClass()));
     }
 
     @Test
