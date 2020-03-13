@@ -69,37 +69,37 @@
         </button>
         <div class="event-carousel-card-super-wrapper">
             <div class="event-carousel-card-wrapper">
-                <div class="event-carousel__card card" th:fragment="event-card (name, link)">
+                <div class="event-carousel__card card card__full-link" th:fragment="event-card (name, link)">
                     <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
                          class="event-carousel__card-photo">
                     <h4 class="event-carousel__card-name" title="super competition">NEERC1</h4>
                 </div>
-                <div class="event-carousel__card card" th:fragment="event-card (name, link)">
+                <div class="event-carousel__card card card__full-link" th:fragment="event-card (name, link)">
                     <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
                          class="event-carousel__card-photo">
                     <h4 class="event-carousel__card-name" title="super competition">NEERC2</h4>
                 </div>
-                <div class="event-carousel__card card" th:fragment="event-card (name, link)">
+                <div class="event-carousel__card card card__full-link" th:fragment="event-card (name, link)">
                     <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
                          class="event-carousel__card-photo">
                     <h4 class="event-carousel__card-name" title="super competition">NEERC3</h4>
                 </div>
-                <div class="event-carousel__card card" th:fragment="event-card (name, link)">
+                <div class="event-carousel__card card card__full-link" th:fragment="event-card (name, link)">
                     <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
                          class="event-carousel__card-photo">
                     <h4 class="event-carousel__card-name" title="super competition">NEERC4</h4>
                 </div>
-                <div class="event-carousel__card card" th:fragment="event-card (name, link)">
+                <div class="event-carousel__card card card__full-link" th:fragment="event-card (name, link)">
                     <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
                          class="event-carousel__card-photo">
                     <h4 class="event-carousel__card-name" title="super competition">NEERC5</h4>
                 </div>
-                <div class="event-carousel__card card" th:fragment="event-card (name, link)">
+                <div class="event-carousel__card card card__full-link" th:fragment="event-card (name, link)">
                     <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
                          class="event-carousel__card-photo">
                     <h4 class="event-carousel__card-name" title="super competition">NEERC6</h4>
                 </div>
-                <div class="event-carousel__card card" th:fragment="event-card (name, link)">
+                <div class="event-carousel__card card card__full-link" th:fragment="event-card (name, link)">
                     <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
                          class="event-carousel__card-photo">
                     <h4 class="event-carousel__card-name" title="super competition">NEERC7</h4>
@@ -116,5 +116,7 @@
 
 </main>
 <footer class="footer" th:fragment="foot"></footer>
+<footer class="footer footer-pic" th:fragment="foot-pic"><img src="images/hands.png" th:src="@{/images/hands.png}"
+                                                   class="background-pic"></footer>
 </body>
 </html>

@@ -37,36 +37,36 @@ let cardsInLeft = 0; // положение ленты прокрутки
 const arrowLeft = document.getElementsByClassName('event-carousel__arrow_left')[0];
 const arrowRight = document.getElementsByClassName('event-carousel__arrow_right')[0];
 
-function toLeft() {
+function toRight() {
     if (cardsInLeft !== Math.max(cards.length - count, 0)) {
         cardsInLeft++;
         let pxToTransform = cardsInLeft * (margins + widthCard);
         wrapper.style.transform = `translateX(${pxToTransform * (-1)}px)`;
-        arrowRight.style.opacity = '1';
+        arrowLeft.style.opacity = '1';
     }
     if (cardsInLeft === Math.max(cards.length - count, 0)) {
-        arrowLeft.style.opacity = '0.5'
+        arrowRight.style.opacity = '0.5'
     }
 }
 
-function toRight() {
+function toLeft() {
     if (cardsInLeft !== 0) {
         cardsInLeft--;
         let pxToTransform = cardsInLeft * (margins + widthCard);
         wrapper.style.transform = `translateX(${pxToTransform * (-1)}px)`;
-        arrowLeft.style.opacity = '1';
+        arrowRight.style.opacity = '1';
     }
     if (cardsInLeft === 0) {
-        arrowRight.style.opacity = '0.5'
+        arrowLeft.style.opacity = '0.5'
     }
 }
 
 arrowLeft.addEventListener('click', toLeft);
 arrowRight.addEventListener('click', toRight);
 
-arrowRight.style.opacity = '0.5';
+arrowLeft.style.opacity = '0.5';
 if (cardsInLeft === Math.max(cards.length - count, 0)) {
-    arrowLeft.style.opacity = '0.5'
+    arrowRight.style.opacity = '0.5'
 }
 
 function throttle(func, ms) {
