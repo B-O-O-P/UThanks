@@ -54,8 +54,6 @@ public class User {
     @CreationTimestamp
     private Date creationTime;
 
-    private String fullName;
-
     private String country;
 
     private int age;

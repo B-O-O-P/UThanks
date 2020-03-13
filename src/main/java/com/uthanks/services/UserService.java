@@ -69,11 +69,11 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException(String.format("No user with id=%d found", id)));
     }
 
-    public User saveAdditionalInfo(Long id, int age, String country, String fullName, String skills) {
+    public User saveAdditionalInfo(Long id, int age, String country, String name, String skills) {
         User user = findById(id);
         user.setAge(age);
         user.setCountry(country);
-        user.setFullName(fullName);
+        user.setName(name);
         user.setSkills(skills);
         userRepository.save(user);
         return user;
