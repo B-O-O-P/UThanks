@@ -41,7 +41,7 @@ public class EventValidator extends CredentialsValidator implements Validator {
 
         if (endDate.before(beginDate)) {
             errors.rejectValue("eventEndTime", "end.date.before.begin.date",
-                    "finish date does not be before start date");
+                    "start date must come before end date");
             return false;
         }
 
@@ -50,8 +50,8 @@ public class EventValidator extends CredentialsValidator implements Validator {
 
     private boolean validateNeededUsers(int neededUsers, Errors errors) {
         if (neededUsers < 0) {
-            errors.rejectValue("neededUsers", "too.little.needed.users",
-                    "too little needed volunteers");
+            errors.rejectValue("neededUsers", "negate.needed.users",
+                    "needed users can not be negate");
             return false;
         }
 

@@ -13,10 +13,12 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-// Used our database(
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -32,8 +34,12 @@ public class EnterValidationTest {
 
     @Before
     public void init() {
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String login = currentDateTime.format(formatter);
+
         user = new UserCredentials();
-        user.setLogin("Lalala");
+        user.setLogin(login);
         user.setPassword("password");
         errors = new BeanPropertyBindingResult(user, "");
     }
@@ -49,34 +55,33 @@ public class EnterValidationTest {
     }
 
     @Test
-    public void testValidateNullLogin() {
+    public void testValidateNotNullLogin() {
         user.setLogin(null);
         validator.validate(user, errors);
         assertEquals(errors.getFieldError("login").getCode(), "login.is.empty");
     }
 
     @Test
-    public void testValidateEmptyLogin() {
+    public void testValidateNotEmptyLogin() {
         user.setLogin("");
         validator.validate(user, errors);
         assertEquals(errors.getFieldError("login").getCode(), "login.is.empty");
     }
 
     @Test
-    public void testValidateNullPassword() {
+    public void testValidateNotNullPassword() {
         user.setPassword(null);
         validator.validate(user, errors);
         assertEquals(errors.getFieldError("password").getCode(), "password.is.empty");
     }
 
     @Test
-    public void testValidateEmptyPassword() {
+    public void testValidateNotEmptyPassword() {
         user.setPassword("");
         validator.validate(user, errors);
         assertEquals(errors.getFieldError("password").getCode(), "password.is.empty");
     }
 
-    /* Depends on current DataBase if "Lalala" is not used */
     @Test
     public void testValidateUserNotFoundInDb() {
         validator.validate(user, errors);

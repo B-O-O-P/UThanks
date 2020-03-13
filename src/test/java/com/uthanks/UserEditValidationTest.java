@@ -13,7 +13,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -42,21 +45,21 @@ public class UserEditValidationTest {
     }
 
     @Test
-    public void testValidateNullName() {
+    public void testValidateNotNullName() {
         additionalInfo.setName(null);
         validator.validate(additionalInfo, errors);
         assertEquals(errors.getFieldError("name").getCode(), "name.is.empty");
     }
 
     @Test
-    public void testValidateEmptyName() {
+    public void testValidateNotEmptyName() {
         additionalInfo.setName("");
         validator.validate(additionalInfo, errors);
         assertEquals(errors.getFieldError("name").getCode(), "name.is.empty");
     }
 
     @Test
-    public void testValidateBlankName() {
+    public void testValidateNotBlankName() {
         additionalInfo.setName("    ");
         validator.validate(additionalInfo, errors);
         assertEquals(errors.getFieldError("name").getCode(), "name.is.empty");

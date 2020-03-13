@@ -58,21 +58,21 @@ public class CreateEventValidationTest {
     }
 
     @Test
-    public void testValidateNullName() {
+    public void testValidateNotNullName() {
         event.setName(null);
         validator.validate(event, errors);
         assertEquals(errors.getFieldError("name").getCode(), "name.is.empty");
     }
 
     @Test
-    public void testValidateEmptyName() {
+    public void testValidateNotEmptyName() {
         event.setName("");
         validator.validate(event, errors);
         assertEquals(errors.getFieldError("name").getCode(), "name.is.empty");
     }
 
     @Test
-    public void testValidateBlankName() {
+    public void testValidateNotBlankName() {
         event.setName("     ");
         validator.validate(event, errors);
         assertNotNull(errors.getFieldError("name"));
@@ -80,14 +80,14 @@ public class CreateEventValidationTest {
     }
 
     @Test
-    public void testValidateNullBeginTime() {
+    public void testValidateNotNullBeginTime() {
         event.setEventBeginTime(null);
         validator.validate(event, errors);
         assertEquals(errors.getFieldError("eventBeginTime").getCode(), "eventBeginTime.is.null");
     }
 
     @Test
-    public void testValidateNullEndTime() {
+    public void testValidateNotNullEndTime() {
         event.setEventEndTime(null);
         validator.validate(event, errors);
         assertEquals(errors.getFieldError("eventEndTime").getCode(), "eventEndTime.is.null");
@@ -102,10 +102,10 @@ public class CreateEventValidationTest {
     }
 
     @Test
-    public void testValidateNullNeededUsers() {
+    public void testValidateNotNullNeededUsers() {
         event.setNeededUsers(-122);
         validator.validate(event, errors);
-        assertEquals(errors.getFieldError("neededUsers").getCode(), "too.little.needed.users");
+        assertEquals(errors.getFieldError("neededUsers").getCode(), "negate.needed.users");
     }
 
     @Test

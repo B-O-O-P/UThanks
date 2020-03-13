@@ -13,12 +13,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
-// Used our database(
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -34,8 +35,12 @@ public class RegisterValidationTest {
 
     @Before
     public void init() {
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String login = currentDateTime.format(formatter);
+
         user = new UserCredentials(
-                "Lll",
+                login,
                 "Lalala",
                 "password",
                 "e@mail.ru",
@@ -48,7 +53,6 @@ public class RegisterValidationTest {
         assertTrue(validator.supports(user.getClass()));
     }
 
-    /* Depends on current DataBase if "Lll" is not used */
     @Test
     public void testValidateGoodUser() {
         validator.validate(user, errors);
@@ -56,63 +60,63 @@ public class RegisterValidationTest {
     }
 
     @Test
-    public void testValidateNullName() {
+    public void testValidateNotNullName() {
         user.setName(null);
         validator.validate(user, errors);
         assertEquals(errors.getFieldError("name").getCode(), "name.is.empty");
     }
 
     @Test
-    public void testValidateEmptyName() {
+    public void testValidateNotEmptyName() {
         user.setName("    ");
         validator.validate(user, errors);
         assertEquals(errors.getFieldError("name").getCode(), "name.is.empty");
     }
 
     @Test
-    public void testValidateNullLogin() {
+    public void testValidateNotNullLogin() {
         user.setLogin(null);
         validator.validate(user, errors);
         assertEquals(errors.getFieldError("login").getCode(), "login.is.empty");
     }
 
     @Test
-    public void testValidateEmptyLogin() {
+    public void testValidateNotEmptyLogin() {
         user.setLogin("   ");
         validator.validate(user, errors);
         assertEquals(errors.getFieldError("login").getCode(), "login.is.empty");
     }
 
     @Test
-    public void testValidateTooShortPassword() {
+    public void testValidateNotTooShortPassword() {
         user.setPassword("p12");
         validator.validate(user, errors);
         assertEquals(errors.getFieldError("password").getCode(), "password.is.too.short");
     }
 
     @Test
-    public void testValidateTooLongPassword() {
+    public void testValidateNotTooLongPassword() {
         user.setPassword("1234567890123456789012345678901234567890");
         validator.validate(user, errors);
         assertEquals(errors.getFieldError("password").getCode(), "password.is.too.long");
     }
 
     @Test
-    public void testValidateNullPassword() {
+    public void testValidateNotNullPassword() {
         user.setPassword(null);
         validator.validate(user, errors);
         assertEquals(errors.getFieldError("password").getCode(), "password.is.null");
     }
 
     @Test
-    public void testValidateEmptyPassword() {
+    public void testValidateNotEmptyPassword() {
         user.setPassword("");
         validator.validate(user, errors);
         assertEquals(errors.getFieldError("password").getCode(), "password.is.null");
     }
 
     @Test
-    public void testValidateNullEmail() {
+    public void testValidateNotNullEmail() {
         user.setEmail(null);
         validator.validate(user, errors);
         assertEquals(errors.getFieldError("email").getCode(), "email.is.empty");
@@ -126,21 +130,21 @@ public class RegisterValidationTest {
     }
 
     @Test
-    public void testValidateNullRole() {
+    public void testValidateNotNullRole() {
         user.setUserType(null);
         validator.validate(user, errors);
         assertEquals(errors.getFieldError("userType").getCode(), "userType.is.null");
     }
 
     @Test
-    public void testValidateInvalidRole() {
+    public void testValidateNotInvalidRole() {
         user.setUserType(Role.RoleName.ADMIN);
         validator.validate(user, errors);
         assertEquals(errors.getFieldError("userType").getCode(), "type.is.empty");
     }
 
     @Test
-    public void testValidateNullRoleAndNullLogin() {
+    public void testValidateNotNullRoleAndNullLogin() {
         user.setLogin(null);
         user.setUserType(null);
         validator.validate(user, errors);

@@ -37,6 +37,7 @@ public class UserCredentialsEnterValidator extends CredentialsValidator implemen
         if (StringUtils.isEmpty(enterForm.getPassword())) {
             errors.rejectValue("password", "password.is.empty",
                     "password can not be empty");
+            return;
         }
 
         if (!errors.hasErrors()) {
