@@ -61,7 +61,6 @@ public class CreateEventValidationTest {
     public void testValidateNullName() {
         event.setName(null);
         validator.validate(event, errors);
-        assertNotNull(errors.getFieldError("name"));
         assertEquals(errors.getFieldError("name").getCode(), "name.is.empty");
     }
 
@@ -69,7 +68,6 @@ public class CreateEventValidationTest {
     public void testValidateEmptyName() {
         event.setName("");
         validator.validate(event, errors);
-        assertNotNull(errors.getFieldError("name"));
         assertEquals(errors.getFieldError("name").getCode(), "name.is.empty");
     }
 
@@ -85,7 +83,6 @@ public class CreateEventValidationTest {
     public void testValidateNullBeginTime() {
         event.setEventBeginTime(null);
         validator.validate(event, errors);
-        assertNotNull(errors.getFieldError("eventBeginTime"));
         assertEquals(errors.getFieldError("eventBeginTime").getCode(), "eventBeginTime.is.null");
     }
 
@@ -93,7 +90,6 @@ public class CreateEventValidationTest {
     public void testValidateNullEndTime() {
         event.setEventEndTime(null);
         validator.validate(event, errors);
-        assertNotNull(errors.getFieldError("eventEndTime"));
         assertEquals(errors.getFieldError("eventEndTime").getCode(), "eventEndTime.is.null");
     }
 
@@ -102,7 +98,6 @@ public class CreateEventValidationTest {
         Calendar beginDate = new GregorianCalendar(2016, Calendar.FEBRUARY,2);
         event.setEventBeginTime(beginDate);
         validator.validate(event, errors);
-        assertNotNull(errors.getFieldError("eventEndTime"));
         assertEquals(errors.getFieldError("eventEndTime").getCode(), "end.date.before.begin.date");
     }
 
@@ -110,7 +105,6 @@ public class CreateEventValidationTest {
     public void testValidateNullNeededUsers() {
         event.setNeededUsers(-122);
         validator.validate(event, errors);
-        assertNotNull(errors.getFieldError("neededUsers"));
         assertEquals(errors.getFieldError("neededUsers").getCode(), "too.little.needed.users");
     }
 

@@ -13,7 +13,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -53,7 +52,6 @@ public class EnterValidationTest {
     public void testValidateNullLogin() {
         user.setLogin(null);
         validator.validate(user, errors);
-        assertNotNull(errors.getFieldError("login"));
         assertEquals(errors.getFieldError("login").getCode(), "login.is.empty");
     }
 
@@ -61,7 +59,6 @@ public class EnterValidationTest {
     public void testValidateEmptyLogin() {
         user.setLogin("");
         validator.validate(user, errors);
-        assertNotNull(errors.getFieldError("login"));
         assertEquals(errors.getFieldError("login").getCode(), "login.is.empty");
     }
 
@@ -69,7 +66,6 @@ public class EnterValidationTest {
     public void testValidateNullPassword() {
         user.setPassword(null);
         validator.validate(user, errors);
-        assertNotNull(errors.getFieldError("password"));
         assertEquals(errors.getFieldError("password").getCode(), "password.is.empty");
     }
 
@@ -77,7 +73,6 @@ public class EnterValidationTest {
     public void testValidateEmptyPassword() {
         user.setPassword("");
         validator.validate(user, errors);
-        assertNotNull(errors.getFieldError("password"));
         assertEquals(errors.getFieldError("password").getCode(), "password.is.empty");
     }
 
@@ -85,7 +80,6 @@ public class EnterValidationTest {
     @Test
     public void testValidateUserNotFoundInDb() {
         validator.validate(user, errors);
-        assertNotNull(errors.getFieldError("password"));
         assertEquals(errors.getFieldError("password").getCode(), "invalid.login.or.password");
     }
 
