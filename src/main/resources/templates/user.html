@@ -18,11 +18,11 @@
             </div>
             <div class="main-text main-info__text">
                 <p class="main-text__text-line text-line text-line_end text-line_big"
-                   th:if="${userInfo != null && userInfo.fullName == null}">
+                   th:if="${userInfo != null && userInfo.name == null}">
                     [[${userInfo.login}]]</p>
                 <p class="main-text__text-line text-line text-line_end text-line_big"
-                   th:if="${userInfo != null && userInfo.fullName != null}">
-                    [[${userInfo.fullName}]]</p>
+                   th:if="${userInfo != null && userInfo.name != null}">
+                    [[${userInfo.name}]]</p>
                 <p class="main-text__text-line text-line text-line_end text-line_margined text-line_alpha"
                    th:if="${userInfo}">[[${userInfo.age}]] years</p>
             </div>

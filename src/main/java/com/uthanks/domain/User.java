@@ -45,14 +45,14 @@ public class User {
 
     private String name;
 
+    private String passwordSha;
+
     @NotNull
     @NotEmpty
     private String email;
 
     @CreationTimestamp
     private Date creationTime;
-
-    private String fullName;
 
     private String country;
 
