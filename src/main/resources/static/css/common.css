@@ -45,6 +45,10 @@ body {
     top: 0;
 }
 
+.header__btn-search {
+    transform: scale(-1, 1);
+}
+
 .header__name {
     margin: 20px;
     font-size: 35px;
