@@ -49,6 +49,8 @@
         <div class="profile__item profile__item_volunteers"
              th:if="${session.user} and ${eventInfo.creator.id} == ${session.user.id}">
             <h3 class="text-title">Volunteers</h3>
+            <p class="text-line text-line_centered text-line_big"
+               th:if="${eventInfo.getVolunteers().size() == 0}">No volunteers registered :(</p>
             <div class="volunteers-wrapper">
                 <ul class="volunteers-list">
                     <li class="card card_volunteer" th:each="volunteer : ${volunteers}">

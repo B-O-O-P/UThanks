@@ -276,6 +276,7 @@ body {
 
 /** INPUTS **/
 .input-button {
+    color: black;
     height: 42px;
     width: 100%;
     text-align: center;
@@ -288,6 +289,10 @@ body {
     background-color: #FEE044;
     text-decoration: none;
     cursor: pointer;
+}
+
+.input-button:visited {
+    color: inherit;
 }
 
 .input-text {
