@@ -1,0 +1,84 @@
+.page-name {
+    margin-left: 30px;
+    font-weight: normal;
+    font-size: 30px;
+    font-family: 'Questrial', serif;
+}
+
+.page-content {
+    display: flex;
+    margin: auto;
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.page-content li {
+    list-style-type: none;
+}
+
+.page-content__card {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+
+    margin: 10px;
+    padding: 0;
+    width: 320px;
+
+    box-shadow: 1px 1px 3px #C4C4C4;
+    background-color: #FFFACC;
+    font-family: 'Questrial', serif;
+    font-weight: normal;
+}
+.page-content__card:hover {
+    box-shadow: 1px 1px 3px #A8A8A8;
+}
+
+.card-name {
+    font-size: 24px;
+    font-weight: normal;
+    text-align: right;
+    padding-right: 10px;
+    margin: 10px;
+}
+
+.card-about-events {
+    font-size: 20px;
+    font-weight: normal;
+    text-align: right;
+    margin: 10px;
+    padding-right: 10px;
+}
+
+.card-photo {
+    display: flex;
+    margin: auto;
+    width: 90px;
+    height: 90px;
+    border-radius: 90px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.card-events {
+    display: flex;
+    margin: auto;
+}
+
+.card-event-pic {
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card-more {
+    display: block;
+    width: calc(100% - 10px);
+    text-decoration: underline;
+    color: #686450;
+    margin: 5px;
+    font-size: 15px;
+    text-align: right;
+}

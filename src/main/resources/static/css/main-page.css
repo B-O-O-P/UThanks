@@ -1,0 +1,15 @@
+.hands {
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.slogan {
+    font-size: 24px;
+    text-align: center;
+}
+
+.main-info {
+    padding: 10px;
+    font-size: 20px;
+}

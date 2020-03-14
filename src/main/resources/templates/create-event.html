@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head th:replace="common :: head(~{::link})">
+    <title>UThanks</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/create-event.css}" href="../static/css/create-event.css">
+</head>
+<body>
+<div th:replace="common :: #menu-check"></div>
+<main class="content">
+    <div th:replace="common :: menu"></div>
+    <form class="form" th:action="@{/create-event}" th:object="${event}" method="post">
+        <div class="form__name">Create an event</div>
+        <div class="form__item">
+            <label for="name" class="input-label">Name:</label>
+            <input class="input-text" required type="text" id="name" th:field="*{name}">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
+        </div>
+        <div class="form__item">
+            <label for="date-begin" class="input-label">Start:</label>
+            <input class="input-text" required type="date" id="date-begin" th:field="*{eventBeginTime}">
+        </div>
+        <div class="form__item">
+            <label for="date-end" class="input-label">Finish:</label>
+            <input class="input-text" required type="date" id="date-end" th:field="*{eventEndTime}">
+            <span th:if="${#fields.hasErrors('eventEndTime')}" th:errors="*{eventEndTime}" class="error"></span>
+        </div>
+        <div class="form__item">
+            <label for="date-end" class="input-label">Desired amount of volunteers:</label>
+            <input class="input-text" required type="number" id="volunteers-count" max="100" th:field="*{neededUsers}">
+            <span th:if="${#fields.hasErrors('neededUsers')}" th:errors="*{neededUsers}" class="error"></span>
+        </div>
+
+        <div class="form__item">
+            <label for="desc" class="input-label">Description:</label>
+            <textarea required type="text" id="desc" class="input-area form__desc" rows="10" th:field="*{description}"></textarea>
+        </div>
+        <input type="submit" id="submit" value="Create event" class="input-button form__submit">
+    </form>
+    <div th:replace="common :: to-top"></div>
+    <script th:replace="common :: to-top-script"></script>
+</main>
+<div th:replace="common :: foot-pic"></div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head th:replace="common :: head(~{::link})">
+    <title>UThanks</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/event.css}"
+          href="../static/css/event.css">
+</head>
+<body>
+<div th:replace="common :: #menu-check"></div>
+<main class="content">
+    <div th:replace="common :: menu"></div>
+    <div class="profile">
+        <div class="main-info profile__item profile__item_main-info">
+            <div class="main-info__avatar">
+                <div class="avatar-wrapper">
+                    <img class="avatar-image" th:src="@{/images/dummy-event.jpg}"
+                         src="images/dummy-event.jpg"
+                         alt="Event">
+                </div>
+            </div>
+            <div class="main-text main-info__text">
+                <p class="text-line text-line_end text-line_big main-text__text-line">
+                    [[${eventInfo.getName()}]]
+                </p>
+                <p class="text-line text-line_end text-line_alpha main-text__text-line">
+                    [[${eventInfo.getVolunteers().size()}]]/[[${eventInfo.getNeededUsers()}]]
+                </p>
+            </div>
+        </div>
+        <div class="profile__item profile__item_dates">
+            <div class="date">Starts: [[${eventInfo.printDate(eventInfo.getEventBeginTime())}]]</div>
+            <div class="date">Ends:   [[${eventInfo.printDate(eventInfo.getEventEndTime())}]]</div>
+        </div>
+        <form class="profile__item register"
+              th:if="${session.user != null} and ${session.user.role.getName() == volunteerRole}
+              and ${eventInfo.getVolunteers().size()} < ${eventInfo.getNeededUsers()}
+              or ${eventInfo.getVolunteers().contains(session.user)}"
+              th:action="@{/events/{id}/(id=${eventInfo.id})}" method="post">
+            <button class="input-button input-button_register" type="submit" name="action"
+                    value="register">
+                <span th:unless="${eventInfo.getVolunteers().contains(session.user)}">Register</span>
+                <span th:if="${eventInfo.getVolunteers().contains(session.user)}">Unregister</span>
+            </button>
+        </form>
+        <div class="card profile__item profile__item_description">
+            <h3 class="text-title">About</h3>
+            <p class="text-line">[[${eventInfo.description}]]</p>
+        </div>
+        <div class="profile__item profile__item_volunteers"
+             th:if="${session.user} and ${eventInfo.creator.id} == ${session.user.id}">
+            <h3 class="text-title">Volunteers</h3>
+            <p class="text-line text-line_centered text-line_big"
+               th:if="${eventInfo.getVolunteers().size() == 0}">No volunteers registered :(</p>
+            <div class="volunteers-wrapper">
+                <ul class="volunteers-list">
+                    <li class="card card_volunteer" th:each="volunteer : ${volunteers}">
+                        <div class="avatar-wrapper avatar-wrapper_mini">
+                            <img class="avatar-image" th:src="@{/images/user.png}"
+                                 src="images/user.png"
+                                 alt="User">
+                        </div>
+                        <p class="text-line text-line_overflowed">
+                            [[${volunteer.getName()}]]</p>
+                        <a class="card__full-link card__full-link_volunteer"
+                           th:href="@{/users/{id}(id=${volunteer.id})}"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div th:replace=" common :: to-top">
+        </div>
+        <script th:replace="common :: to-top-script"></script>
+    </div>
+</main>
+<footer th:replace="common :: foot"></footer>
+</body>
+</html>

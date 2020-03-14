@@ -1,28 +1,131 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head th:fragment="head(links)">
+    <title>UThanks</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title>UThanks</title>
     <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" href="../static/css/common.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}"
+          href="../static/css/common.css">
+
+    <th:block th:replace="${links}"/>
 </head>
 <body>
 <input type="checkbox" id="menu-check">
-<header class="header">
-    <label for="menu-check" class="header__btn-menu page-btn">☰</label>
-    <h1 class="header__name">Uthanks</h1>
-    <button class="header__btn-search page-btn">🔎</button>
-    <a href="/sign-up" class="header__btn-log-in">Sign up</a>
-</header>
-<nav class="menu">
-    <h2 class="menu__name">Menu</h2>
-    <div class="menu__item">Companies</div>
-    <div class="menu__item">Events</div>
-    <div class="menu__item">About us</div>
-    <div class="menu__item">Our contacts</div>
-</nav>
-<main class="content"></main>
-<footer class="footer"></footer>
+<div class="wrapper" th:fragment="head">
+    <input type="checkbox" id="menu-sign-check">
+    <header class="header">
+        <label for="menu-check" class="header__btn-menu page-btn">☰</label>
+        <h1 class="header__name">
+            <a href="/">Uthanks</a>
+        </h1>
+        <a th:href="@{/search}"> <img class="header__btn-search page-btn" th:src="@{/images/search.png}"
+                                      src="../static/images/search.png"></a>
+        <div class="menu-sign-up-btn-wrapper">
+            <label for="menu-sign-check">
+                <img class="header__btn-search page-btn" th:src="@{/images/user.png}"
+                     src="../static/images/user.png">
+            </label>
+            <nav class="menu-sign-up" th:fragment="menu-sign">
+                <div class="menu__item">
+                    <a th:if="${session.user}" th:href="@{/users/{id}(id=${session.user.id})}"
+                       class="menu__item">Profile</a>
+                    <a th:unless="${session.user}" th:href="@{/sign-up}" class="menu__item">Sign
+                        up</a>
+                </div>
+                <div class="menu__item">
+                    <a th:if="${session.user}" th:href="@{/log-out}" class="menu__item">Log out</a>
+                    <a th:unless="${session.user}" th:href="@{/log-in}" class="menu__item">Log
+                        in</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+</div>
+
+<main class="content">
+    <nav class="menu" th:fragment="menu">
+        <h2 class="menu__name">Menu</h2>
+        <div class="menu__item">
+            <a th:href="@{/companies}"> Companies</a></div>
+        <div class="menu__item">
+            <a th:href="@{/events}">Events</a></div>
+        <div class="menu__item">
+            <a th:href="@{/not-found}">About us</a>
+        </div>
+        <div class="menu__item">
+            <a th:href="@{/not-found}">Our contacts</a>
+        </div>
+        <div class="menu__item">
+            <a th:if="${session.user} and ${session.user.role.getName() == organizationRole}"
+               th:href="@{/create-event}">Create event</a>
+        </div>
+    </nav>
+    <div class="arrow-to-top" th:fragment="to-top">▲</div>
+    <script type="text/javascript" src="../static/js/arrow-to-top.js" th:src="@{/js/arrow-to-top.js}"
+            th:fragment="to-top-script"></script>
+    <div class="event-carousel" th:fragment="event-carousel">
+        <button class="carousel-arrow event-carousel__arrow_left">
+            <img class="carousel-arrow-svg" th:src="@{/images/arrow-right.svg}"
+                 src="images/arrow-right.svg" alt="left arrow">
+        </button>
+        <div class="event-carousel-card-super-wrapper">
+            <div class="event-carousel-card-wrapper">
+                <div class="event-carousel__card card" th:fragment="event-card (name, link)">
+                    <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
+                         class="event-carousel__card-photo">
+                    <h4 class="event-carousel__card-name" title="super competition">NEERC1</h4>
+                    <a class="card__full-link" th:href="@{events/}"></a>
+                </div>
+                <div class="event-carousel__card card" th:fragment="event-card (name, link)">
+                    <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
+                         class="event-carousel__card-photo">
+                    <h4 class="event-carousel__card-name" title="super competition">NEERC2</h4>
+                    <a class="card__full-link" th:href="@{events/}"></a>
+                </div>
+                <div class="event-carousel__card card" th:fragment="event-card (name, link)">
+                    <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
+                         class="event-carousel__card-photo">
+                    <h4 class="event-carousel__card-name" title="super competition">NEERC3</h4>
+                    <a class="card__full-link" th:href="@{events/}"></a>
+                </div>
+                <div class="event-carousel__card card" th:fragment="event-card (name, link)">
+                    <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
+                         class="event-carousel__card-photo">
+                    <h4 class="event-carousel__card-name" title="super competition">NEERC4</h4>
+                    <a class="card__full-link" th:href="@{events/}"></a>
+                </div>
+                <div class="event-carousel__card card" th:fragment="event-card (name, link)">
+                    <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
+                         class="event-carousel__card-photo">
+                    <h4 class="event-carousel__card-name" title="super competition">NEERC5</h4>
+                    <a class="card__full-link" th:href="@{events/}"></a>
+                </div>
+                <div class="event-carousel__card card" th:fragment="event-card (name, link)">
+                    <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
+                         class="event-carousel__card-photo">
+                    <h4 class="event-carousel__card-name" title="super competition">NEERC6</h4>
+                    <a class="card__full-link" th:href="@{events/}"></a>
+                </div>
+                <div class="event-carousel__card card" th:fragment="event-card (name, link)">
+                    <img src="../static/images/dummy.jpg" th:src="@{/images/dummy.jpg}"
+                         class="event-carousel__card-photo">
+                    <h4 class="event-carousel__card-name" title="super competition">NEERC7</h4>
+                    <a class="card__full-link" th:href="@{events/}"></a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-arrow event-carousel__arrow_right">
+            <img class="carousel-arrow-svg" th:src="@{/images/arrow-right.svg}"
+                 src="images/arrow-right.svg" alt="right arrow">
+        </button>
+    </div>
+    <script type="text/javascript" th:fragment="event-carousel-script" src="../static/js/carousel.js"
+            th:src="@{/js/carousel.js}"></script>
+
+</main>
+<footer class="footer" th:fragment="foot"></footer>
+<footer class="footer footer-pic" th:fragment="foot-pic"><img src="images/hands.png" th:src="@{/images/hands.png}"
+                                                   class="background-pic"></footer>
 </body>
 </html>

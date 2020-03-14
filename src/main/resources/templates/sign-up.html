@@ -1,47 +1,51 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head th:replace="common :: head(~{::link})">
     <title>UThanks</title>
-    <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/sign-up.css}" href="../static/css/sign-up.css">
 </head>
 <body>
-<header class="header">
-    <button class="header__btn-menu page-btn">☰</button>
-    <h1 class="header__name">Uthanks</h1>
-    <button class="header__btn-search page-btn">🔎</button>
-    <a href="/sign-up" class="header__btn-log-in">Sign up</a>
-</header>
+<div th:replace="common :: #menu-check"></div>
 <main class="content">
-    <form class="form">
+    <div th:replace="common :: menu"></div>
+    <form class="form" th:action="@{/sign-up}" th:object="${registerForm}" method="post">
         <div class="form__name">Sign up</div>
         <div class="form__radio">
             <div class="radio-index">
-                <input type="radio" name="type" id="comp" checked>
+                <input class="input-text" type="radio" name="type" id="comp" th:value="${organizationRole}" th:field="*{userType}" checked>
                 <label for="comp">Company</label>
             </div>
             <div class="radio-index">
-                <input type="radio" name="type" id="pers">
+                <input class="input-text" type="radio" name="type" id="pers" th:value="${volunteerRole}" th:field="*{userType}">
                 <label for="pers">Person</label>
             </div>
         </div>
+        <span th:if="${#fields.hasErrors('userType')}" th:errors="*{userType}" class="error error_padding"></span>
         <div class="form__item">
             <label for="login">Login:</label>
-            <input required type="text" id="login" maxlength="32">
+            <input class="input-text" required type="text" id="login" maxlength="32" th:field="*{login}">
+            <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}" class="error"></span>
+        </div>
+        <div class="form__item">
+            <label for="name">Name:</label>
+            <input class="input-text" required type="text" id="name" maxlength="32" th:field="*{name}">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
         </div>
         <div class="form__item">
             <label for="pass">Password:</label>
-            <input required type="password" id="pass" maxlength="32">
+            <input class="input-text" required type="password" id="pass" maxlength="32" th:field="*{password}">
+            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></span>
         </div>
         <div class="form__item">
             <label for="email">E-mail:</label>
-            <input required type="email" id="email">
+            <input class="input-text" required type="email" id="email" th:field="*{email}">
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></span>
         </div>
-        <input type="submit" id="submit" value="Sign up" class="form__submit">
+        <input type="submit" id="submit" value="Sign up" class="input-button input-button_sign">
     </form>
+    <div th:replace="common :: to-top"></div>
+    <script th:replace="common :: to-top-script"></script>
 </main>
-<footer class="footer"></footer>
+<div th:replace="common :: foot-pic"></div>
 </body>
 </html>

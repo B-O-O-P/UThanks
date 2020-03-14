@@ -1,0 +1,43 @@
+@import "form.css";
+
+.form_edit {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.page-title {
+    font-weight: normal;
+}
+
+.form__item_edit {
+    margin-bottom: 30px;
+}
+
+.input-info {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-info__label {
+    margin-bottom: 16px;
+}
+
+.input-text__edit {
+    height: 32px;
+    outline-color: #C4C4C4;
+}
+
+.input-area_edit {
+    height: inherit;
+    resize: none;
+}
+
+.input-button_register {
+    display: block;
+}
+
+.input-info__submit {
+    margin: auto;
+}

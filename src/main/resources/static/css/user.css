@@ -1,0 +1,71 @@
+@import "profile.css";
+
+.user-card__item_events {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.main-text__text-line {
+    margin-bottom: 12px;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.comments {
+    border-radius: 8px;
+    margin: 12px;
+}
+
+.comments-list {
+    list-style: none;
+}
+
+.comment {
+    border-bottom: 1px solid #BABABA;
+}
+
+.comment-area {
+    background-color: #FFF8EA;
+    border: 2px solid #BABABA;
+    border-radius: 8px;
+    height: 150px;
+    padding: 12px;
+}
+
+.comment-form__text-area {
+    margin: 12px;
+}
+
+.comment-form__button {
+    padding: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #FEE877;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    font-size: 24px;
+    outline: none;
+    margin: 16px 12px 12px;
+}
+
+.comment-form__button:hover {
+    transition: 0.2s;
+    background-color: #FEE044;
+    cursor: pointer;
+}
+
+.edit-info {
+    border-radius: 0;
+    box-shadow: none;
+    text-align: center;
+}
+
+.input-button_register {
+    display: inline-block;
+    padding: 8px 24px;
+    color: inherit;
+}

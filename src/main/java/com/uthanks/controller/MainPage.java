@@ -12,10 +12,12 @@ import javax.servlet.http.HttpSession;
 public class MainPage extends Page {
     @GetMapping(path = "")
     public String index() {
-        return "common";
+        return "main-page";
     }
 
+    @GetMapping(path = "/log-out")
     public String index(HttpSession httpSession) {
+        unsetUser(httpSession);
         return "redirect:/";
     }
 }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head th:replace="common :: head(~{::link})">
+    <title>UThanks</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main-page.css}" href="../static/css/main-page.css">
+</head>
+<body>
+<div th:replace="common :: #menu-check"></div>
+<main class="content">
+    <div th:replace="common :: menu"></div>
+    <img src="images/hands.png" th:src="@{/images/hands.png}" class="hands">
+    <div class="slogan">
+        Want to help people? </br>
+        Do not know how to do it? </br>
+        That’s why we are existing! </br>
+    </div>
+    <div th:replace="common :: event-carousel"></div>
+    <script th:replace="common :: event-carousel-script"></script>
+<!--    <div class="User?" th:if="${session.user}" th:text="${session.user.getLogin()}"></div>-->
+    <div class="main-info">
+        Uthanks is a social network for volunteers. It helps people to find each other in different
+        situations.
+        Nowadays, almost every person has a mobile phone with a stable Internet connection. It makes communication
+        between people much easier. Old and slow methods of finding volunteers for events are in the past. With our
+        website, organizations just need to write an announcement and wait for replies from Uthanks users.
+        People with an opportunity and desire to help somebody can sign up and find a task where their qualities may be
+        useful.
+    </div>
+    <div th:replace="common :: to-top"></div>
+    <script th:replace="common :: to-top-script"></script>
+</main>
+<div th:replace="common :: foot"></div>
+</body>
+</html>
