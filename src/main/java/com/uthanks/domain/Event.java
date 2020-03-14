@@ -17,7 +17,6 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 @Data
