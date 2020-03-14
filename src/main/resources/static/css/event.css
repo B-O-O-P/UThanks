@@ -1,0 +1,29 @@
+@import "profile.css";
+
+.input-button_register {
+    display: inline-block;
+    padding: 8px 24px;
+    color: inherit;
+}
+
+.volunteers-list {
+    width: 100%;
+    list-style: none;
+}
+
+.card_volunteer {
+    width: 100%;
+    padding: 12px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 75px 1fr;
+}
+
+.avatar-wrapper_mini {
+    height: 75px;
+    width: 75px;
+}
+
+.card__full-link_volunteer {
+    padding: 12px;
+}

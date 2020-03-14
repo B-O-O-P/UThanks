@@ -6,8 +6,8 @@ import com.uthanks.form.validators.UserAdditionalInfoValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.WebDataBinder;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -25,7 +25,7 @@ public class UserEditPage extends Page {
         binder.addValidators(userAdditionalInfoValidator);
     }
 
-    @GetMapping(path = "/user/{id}/edit")
+    @GetMapping(path = "/users/{id}/edit")
     public String editGet(@PathVariable("id") String requestId, Model model, HttpSession httpSession) {
         try {
             User sessionUser = getUser(httpSession);
@@ -43,7 +43,7 @@ public class UserEditPage extends Page {
         return "user-edit";
     }
 
-    @PostMapping(path = "/user/{id}/edit")
+    @PostMapping(path = "/users/{id}/edit")
     public String editPost(@Valid @ModelAttribute("userInfo") UserAdditionalInfo additionalInfo,
                            BindingResult bindingResult,
                            HttpSession httpSession, @PathVariable("id") String postId) {
@@ -58,6 +58,6 @@ public class UserEditPage extends Page {
             return "user-edit";
         }
 
-        return "redirect:/user/" + postId;
+        return "redirect:/users/" + postId;
     }
 }

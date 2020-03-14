@@ -10,7 +10,7 @@
 <main class="content">
     <div th:replace="common :: menu"></div>
     <form class="form form_edit" th:if="${session.user}"
-          th:action="@{/user/{id}/edit(id=${session.user.id})}" th:object="${userInfo}"
+          th:action="@{/users/{id}/edit(id=${session.user.id})}" th:object="${userInfo}"
           method="post">
         <div class="input-area form__item_edit edit-form__item_title">
             <h2 class="page-title">Edit profile</h2>
@@ -20,6 +20,7 @@
             <input class="input-text input-text__edit input-info__input" id="info-name" type="text"
                    th:value="${session.user.name}" th:field="*{name}" required>
             <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
+
         </div>
         <div class="input-info form__item form__item_edit">
             <label class="info-name input-info__label" for="info-age">Age: </label>

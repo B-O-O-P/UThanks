@@ -28,9 +28,9 @@
             </div>
         </div>
         <div class="profile__item edit-info" th:if="${session.user != null && userInfo.id == session.user.id}">
-            <a class="input-button input-button_edit-info" th:href="@{/user/{id}/edit(id=${userInfo.id})}">Edit profile</a>
+            <a class="input-button input-button_edit-info" th:href="@{/users/{id}/edit(id=${userInfo.id})}">Edit profile</a>
         </div>
-        <div class="card profile__item user-card__item_main-text">
+        <div class="card profile__item profile__item_description">
             <h3 class="text-title">About</h3>
             <p class="text-line">Best of the best</p>
         </div>

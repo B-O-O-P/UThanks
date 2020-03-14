@@ -1,10 +1,6 @@
 package com.uthanks.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
-
-import org.hibernate.annotations.CreationTimestamp;
-
 import javax.persistence.Entity;
 import javax.persistence.GenerationType;
 import javax.persistence.Index;
@@ -21,6 +17,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.ManyToMany;
 import javax.persistence.JoinTable;
 import javax.persistence.CascadeType;
+import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -91,5 +90,20 @@ public class User {
             events = new ArrayList<>();
         }
         return events.add(event);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+
+        if (!(obj instanceof User)) {
+            return false;
+        }
+
+        User other = (User) obj;
+
+        return this.getId() == other.getId();
     }
 }

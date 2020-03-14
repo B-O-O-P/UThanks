@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  */
 @Controller
 public class UserPage extends Page {
-    @GetMapping(path = "/user/{id}")
+    @GetMapping(path = "/users/{id}")
     public String index(@PathVariable("id") String requestId, Model model) {
         try {
             User user = getUserService().findById(Long.parseLong(requestId));
