@@ -28,8 +28,8 @@
             </div>
         </div>
         <div class="profile__item profile__item_dates">
-            <div class="date">Starts [[${eventInfo.eventBeginTime.toString()}]]</div>
-            <div class="date">Ends [[${eventInfo.eventEndTime.toString()}]]</div>
+            <div class="date">Starts [[${eventInfo.getEventBeginTime().toString()}]]</div>
+            <div class="date">Ends [[${eventInfo.getEventEndTime().toString()}]]</div>
         </div>
         <form class="profile__item register"
               th:if="${session.user != null} and ${session.user.role.getName() == volunteerRole}
@@ -44,7 +44,7 @@
         </form>
         <div class="card profile__item profile__item_description">
             <h3 class="text-title">About</h3>
-            <p class="text-line">[[${eventInfo.description}]]</p>
+            <p class="text-line">[[${eventInfo.getDescription()}]]</p>
         </div>
         <div class="profile__item profile__item_volunteers"
              th:if="${session.user} and ${eventInfo.creator.id} == ${session.user.id}">
