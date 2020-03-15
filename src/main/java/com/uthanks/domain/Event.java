@@ -16,8 +16,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -58,4 +59,9 @@ public class Event {
 
     @Lob
     private String description;
+
+    public String printDate(Calendar date) {
+        DateFormat df = new SimpleDateFormat("dd MMM yyy");
+        return df.format(date.getTime());
+    }
 }
