@@ -24,7 +24,9 @@
                    th:if="${userInfo != null && userInfo.name != null}">
                     [[${userInfo.getName()}]]</p>
                 <p class="main-text__text-line text-line text-line_end text-line_margined text-line_alpha"
-                   th:if="${userInfo}">[[${userInfo.getAge()}]] year<span th:if="${userInfo.getAge() != 1}">s</span></p>
+                   th:if="${userInfo} and ${userInfo.getAge() != 0}">[[${userInfo.getAge()}]] year<span th:if="${userInfo.getAge() != 1}">s</span></p>
+                <p class="main-text__text-line text-line text-line_end text-line_margined text-line_alpha"
+                   th:if="${userInfo} and ${userInfo.getCountry() != null}">[[${userInfo.getCountry()}]]</p>
             </div>
         </div>
         <div class="profile__item edit-info" th:if="${session.user != null && userInfo.id == session.user.id}">

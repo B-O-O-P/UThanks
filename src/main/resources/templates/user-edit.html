@@ -37,7 +37,7 @@
             <label class="input-info__label" for="info-about">About: </label>
             <textarea class="input-area input-text__edit input-area_edit input-i nfo__input"
                       id="info-about"
-                      th:field="*{skills}">[[${session.user.getDescription()}]]</textarea>
+                      th:field="*{description}">[[${session.user.getDescription()}]]</textarea>
         </div>
         <div class="input-info form__item form__item_edit"
              th:if="${session.user.getRole().getName()} == ${volunteerRole}">
