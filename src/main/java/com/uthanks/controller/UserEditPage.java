@@ -29,13 +29,14 @@ public class UserEditPage extends Page {
     public String editGet(@PathVariable("id") String requestId, Model model, HttpSession httpSession) {
         try {
             User sessionUser = getUser(httpSession);
-            Long requestNumberId = Long.parseLong(requestId);
+            long requestNumberId = Long.parseLong(requestId);
             if (sessionUser == null || requestNumberId != sessionUser.getId()) {
                 return "redirect:/not-found";
             }
             User user = getUserService().findById(Long.parseLong(requestId));
             if (user != null) {
-                model.addAttribute("userInfo", new UserAdditionalInfo());
+                model.addAttribute("userInfo",
+                        new UserAdditionalInfo(user.getName(), user.getCountry(), user.getAge(), user.getSkills()));
             }
         } catch (NumberFormatException e) {
             return "redirect:/not-found";
