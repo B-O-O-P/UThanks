@@ -18,33 +18,33 @@
         <div class="input-info form__item form__item_edit">
             <label class="input-info__label" for="info-name">Name: </label>
             <input class="input-text input-text__edit input-info__input" id="info-name" type="text"
-                   th:value="${session.user.name}" th:field="*{name}" required>
+                   th:field="*{name}" required>
             <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
 
         </div>
         <div class="input-info form__item form__item_edit">
             <label class="input-info__label" for="info-age">Age: </label>
             <input class="input-text input-text__edit input-info__input" id="info-age" type="number"
-                   th:value="${session.user.age}" th:field="*{age}">
+                   th:field="*{age}">
         </div>
         <div class="input-info form__item form__item_edit">
             <label class="input-info__label" for="info-country">Country: </label>
             <input class="input-text input-text__edit input-info__input" id="info-country"
                    type="text"
-                   th:value="${session.user.country}" th:field="*{country}">
+                   th:field="*{country}">
         </div>
         <div class="input-info form__item form__item_edit">
             <label class="input-info__label" for="info-about">About: </label>
             <textarea class="input-area input-text__edit input-area_edit input-i nfo__input"
                       id="info-about"
-                      th:field="*{description}">[[${session.user.description}]]</textarea>
+                      th:field="*{description}"></textarea>
         </div>
         <div class="input-info form__item form__item_edit"
              th:if="${session.user.getRole().getName()} == ${volunteerRole}">
             <label class="input-info__label" for="info-skills">Skills: </label>
             <textarea class="input-area input-text__edit input-area_edit input-i nfo__input"
                       id="info-skills"
-                      th:field="*{skills}">[[${session.user.skills}]]</textarea>
+                      th:field="*{skills}"></textarea>
         </div>
         <div class="input-info form__item form__item_edit">
             <input class="input-info__submit input-button input-button_edit-info" type="submit"
