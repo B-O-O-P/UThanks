@@ -3,14 +3,17 @@ package com.uthanks.controller;
 import com.uthanks.domain.User;
 import com.uthanks.form.UserAdditionalInfo;
 import com.uthanks.form.validators.UserAdditionalInfoValidator;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.WebDataBinder;
-
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class UserEditPage extends Page {
@@ -36,7 +39,8 @@ public class UserEditPage extends Page {
             User user = getUserService().findById(Long.parseLong(requestId));
             if (user != null) {
                 model.addAttribute("userInfo",
-                        new UserAdditionalInfo(user.getName(), user.getCountry(), user.getAge(), user.getSkills()));
+                        new UserAdditionalInfo(user.getName(), user.getCountry(), user.getAge(),
+                                user.getDescription(), user.getSkills()));
             }
         } catch (NumberFormatException e) {
             return "redirect:/not-found";
