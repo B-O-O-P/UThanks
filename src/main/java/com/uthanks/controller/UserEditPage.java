@@ -58,7 +58,7 @@ public class UserEditPage extends Page {
 
         try {
             setUser(httpSession, getUserService().saveAdditionalInfo(Long.parseLong(postId), additionalInfo.getAge(),
-                    additionalInfo.getCountry(), additionalInfo.getName(), additionalInfo.getSkills()));
+                    additionalInfo.getCountry(), additionalInfo.getName(), additionalInfo.getDescription(), additionalInfo.getSkills()));
         } catch (NumberFormatException e) {
             return "user-edit";
         }

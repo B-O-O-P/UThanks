@@ -35,14 +35,14 @@
         </div>
         <div class="input-info form__item form__item_edit">
             <label class="input-info__label" for="info-about">About: </label>
-            <textarea class="input-area input-text__edit input-area_edit input-i nfo__input"
+            <textarea class="input-area input-text__edit input-area_edit input-info__input"
                       id="info-about"
                       th:field="*{description}"></textarea>
         </div>
         <div class="input-info form__item form__item_edit"
              th:if="${session.user.getRole().getName()} == ${volunteerRole}">
             <label class="input-info__label" for="info-skills">Skills: </label>
-            <textarea class="input-area input-text__edit input-area_edit input-i nfo__input"
+            <textarea class="input-area input-text__edit input-area_edit input-info__input"
                       id="info-skills"
                       th:field="*{skills}"></textarea>
         </div>
