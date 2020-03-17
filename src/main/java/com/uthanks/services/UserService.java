@@ -74,7 +74,7 @@ public class UserService {
         user.setCountry(country);
         user.setName(name);
         user.setDescription(description);
-        if (user.getSkills() != null) {
+        if (skills != null) {
             user.setSkills(skills);
         }
         userRepository.save(user);
