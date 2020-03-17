@@ -58,6 +58,9 @@ public class User {
     private int age;
 
     @Lob
+    private String description;
+
+    @Lob
     private String skills;
 
     @ManyToOne
@@ -84,7 +87,6 @@ public class User {
     @OrderBy("creationTime DESC")
     private List<Comment> receivedComments;
 
-    // return true if event was added, else return false
     public boolean addEvent(Event event) {
         if (events == null) {
             events = new ArrayList<>();

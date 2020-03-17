@@ -19,5 +19,7 @@ public class UserAdditionalInfo {
 
     private int age;
 
+    private String description;
+
     private String skills;
 }
