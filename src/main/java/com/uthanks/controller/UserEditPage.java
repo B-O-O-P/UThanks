@@ -3,14 +3,17 @@ package com.uthanks.controller;
 import com.uthanks.domain.User;
 import com.uthanks.form.UserAdditionalInfo;
 import com.uthanks.form.validators.UserAdditionalInfoValidator;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.WebDataBinder;
-
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class UserEditPage extends Page {
@@ -29,13 +32,15 @@ public class UserEditPage extends Page {
     public String editGet(@PathVariable("id") String requestId, Model model, HttpSession httpSession) {
         try {
             User sessionUser = getUser(httpSession);
-            Long requestNumberId = Long.parseLong(requestId);
+            long requestNumberId = Long.parseLong(requestId);
             if (sessionUser == null || requestNumberId != sessionUser.getId()) {
                 return "redirect:/not-found";
             }
             User user = getUserService().findById(Long.parseLong(requestId));
             if (user != null) {
-                model.addAttribute("userInfo", new UserAdditionalInfo());
+                model.addAttribute("userInfo",
+                        new UserAdditionalInfo(user.getName(), user.getCountry(), user.getAge(),
+                                user.getDescription(), user.getSkills()));
             }
         } catch (NumberFormatException e) {
             return "redirect:/not-found";
@@ -53,7 +58,7 @@ public class UserEditPage extends Page {
 
         try {
             setUser(httpSession, getUserService().saveAdditionalInfo(Long.parseLong(postId), additionalInfo.getAge(),
-                    additionalInfo.getCountry(), additionalInfo.getName(), additionalInfo.getSkills()));
+                    additionalInfo.getCountry(), additionalInfo.getName(), additionalInfo.getDescription(), additionalInfo.getSkills()));
         } catch (NumberFormatException e) {
             return "user-edit";
         }

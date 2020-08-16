@@ -4,10 +4,9 @@ import com.uthanks.domain.Role;
 import com.uthanks.domain.User;
 import com.uthanks.form.UserCredentials;
 import com.uthanks.repository.UserRepository;
+import java.util.List;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * Class for working with userRepository.
@@ -54,7 +53,7 @@ public class UserService {
 
     public User findByLoginAndPassword(String login, String password) {
         return login == null || password == null ? null : userRepository.findByLoginAndPasswordSha(login,
-               getHash(password));
+                getHash(password));
     }
 
     public User findByLogin(String login) {
@@ -69,12 +68,15 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException(String.format("No user with id=%d found", id)));
     }
 
-    public User saveAdditionalInfo(Long id, int age, String country, String name, String skills) {
+    public User saveAdditionalInfo(Long id, int age, String country, String name, String description, String skills) {
         User user = findById(id);
         user.setAge(age);
         user.setCountry(country);
         user.setName(name);
-        user.setSkills(skills);
+        user.setDescription(description);
+        if (skills != null) {
+            user.setSkills(skills);
+        }
         userRepository.save(user);
         return user;
     }

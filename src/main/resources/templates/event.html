@@ -44,7 +44,7 @@
         </form>
         <div class="card profile__item profile__item_description">
             <h3 class="text-title">About</h3>
-            <p class="text-line">[[${eventInfo.description}]]</p>
+            <p class="text-line">[[${eventInfo.getDescription()}]]</p>
         </div>
         <div class="profile__item profile__item_volunteers"
              th:if="${session.user} and ${eventInfo.creator.id} == ${session.user.id}">
